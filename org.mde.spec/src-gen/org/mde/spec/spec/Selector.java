@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.Selector#getVal <em>Val</em>}</li>
- *   <li>{@link org.mde.spec.spec.Selector#getType <em>Type</em>}</li>
  *   <li>{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}</li>
+ *   <li>{@link org.mde.spec.spec.Selector#getType <em>Type</em>}</li>
+ *   <li>{@link org.mde.spec.spec.Selector#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getSelector()
@@ -26,26 +26,26 @@ import org.eclipse.emf.ecore.EObject;
 public interface Selector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Val</b></em>' attribute.
+   * Returns the value of the '<em><b>Var</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Val</em>' attribute.
-   * @see #setVal(String)
-   * @see org.mde.spec.spec.SpecPackage#getSelector_Val()
-   * @model
+   * @return the value of the '<em>Var</em>' containment reference.
+   * @see #setVar(VariableOrValue)
+   * @see org.mde.spec.spec.SpecPackage#getSelector_Var()
+   * @model containment="true"
    * @generated
    */
-  String getVal();
+  VariableOrValue getVar();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.Selector#getVal <em>Val</em>}' attribute.
+   * Sets the value of the '{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Val</em>' attribute.
-   * @see #getVal()
+   * @param value the new value of the '<em>Var</em>' containment reference.
+   * @see #getVar()
    * @generated
    */
-  void setVal(String value);
+  void setVar(VariableOrValue value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.
@@ -73,25 +73,25 @@ public interface Selector extends EObject
   void setType(ElementType value);
 
   /**
-   * Returns the value of the '<em><b>Var</b></em>' containment reference.
+   * Returns the value of the '<em><b>Val</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var</em>' containment reference.
-   * @see #setVar(Variable)
-   * @see org.mde.spec.spec.SpecPackage#getSelector_Var()
+   * @return the value of the '<em>Val</em>' containment reference.
+   * @see #setVal(VariableOrValue)
+   * @see org.mde.spec.spec.SpecPackage#getSelector_Val()
    * @model containment="true"
    * @generated
    */
-  Variable getVar();
+  VariableOrValue getVal();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}' containment reference.
+   * Sets the value of the '{@link org.mde.spec.spec.Selector#getVal <em>Val</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var</em>' containment reference.
-   * @see #getVar()
+   * @param value the new value of the '<em>Val</em>' containment reference.
+   * @see #getVal()
    * @generated
    */
-  void setVar(Variable value);
+  void setVal(VariableOrValue value);
 
 } // Selector

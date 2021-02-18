@@ -27,12 +27,12 @@ public interface OpenCommand extends Command
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(Value)
+   * @see #setValue(VariableOrValue)
    * @see org.mde.spec.spec.SpecPackage#getOpenCommand_Value()
    * @model containment="true"
    * @generated
    */
-  Value getValue();
+  VariableOrValue getValue();
 
   /**
    * Sets the value of the '{@link org.mde.spec.spec.OpenCommand#getValue <em>Value</em>}' containment reference.
@@ -42,6 +42,6 @@ public interface OpenCommand extends Command
    * @see #getValue()
    * @generated
    */
-  void setValue(Value value);
+  void setValue(VariableOrValue value);
 
 } // OpenCommand

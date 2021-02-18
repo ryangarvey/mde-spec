@@ -16,20 +16,34 @@
     <genClasses ecoreClass="Spec.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Model/commands"/>
     </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//Command"/>
+    <genClasses ecoreClass="Spec.ecore#//Command">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Command/comment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Command/custom"/>
+    </genClasses>
     <genClasses ecoreClass="Spec.ecore#//OpenCommand">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//OpenCommand/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Spec.ecore#//VariableOrValue">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//VariableOrValue/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//VariableOrValue/val"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//VariableOrValue/element"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//ClickCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ClickCommand/cmd"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//ClickCommand/selector"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ClickCommand/point"/>
     </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//CommentCommand">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//CommentCommand/str"/>
-    </genClasses>
     <genClasses ecoreClass="Spec.ecore#//SelectCommand">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//SelectCommand/value"/>
+    </genClasses>
+    <genClasses ecoreClass="Spec.ecore#//Selector">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Selector/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Selector/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Selector/val"/>
+    </genClasses>
+    <genClasses ecoreClass="Spec.ecore#//StoreCommand">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//StoreCommand/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//StoreCommand/value"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//RememberCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//RememberCommand/prop"/>
@@ -46,17 +60,8 @@
     <genClasses ecoreClass="Spec.ecore#//SleepCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//SleepCommand/time"/>
     </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//CustomCommand">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//CustomCommand/command"/>
-    </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//Selector">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Selector/val"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Selector/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Selector/var"/>
-    </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//Value">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Value/val"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Value/str"/>
+    <genClasses ecoreClass="Spec.ecore#//ElementInScreen">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ElementInScreen/element"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Variable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Variable/name"/>

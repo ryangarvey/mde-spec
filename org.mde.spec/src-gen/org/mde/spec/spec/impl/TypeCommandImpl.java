@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.SpecPackage;
 import org.mde.spec.spec.TypeCommand;
-import org.mde.spec.spec.Value;
+import org.mde.spec.spec.VariableOrValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +38,7 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * @generated
    * @ordered
    */
-  protected Value val;
+  protected VariableOrValue val;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * @generated
    */
   @Override
-  public Value getVal()
+  public VariableOrValue getVal()
   {
     return val;
   }
@@ -77,9 +77,9 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVal(Value newVal, NotificationChain msgs)
+  public NotificationChain basicSetVal(VariableOrValue newVal, NotificationChain msgs)
   {
-    Value oldVal = val;
+    VariableOrValue oldVal = val;
     val = newVal;
     if (eNotificationRequired())
     {
@@ -95,7 +95,7 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * @generated
    */
   @Override
-  public void setVal(Value newVal)
+  public void setVal(VariableOrValue newVal)
   {
     if (newVal != val)
     {
@@ -154,7 +154,7 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
     switch (featureID)
     {
       case SpecPackage.TYPE_COMMAND__VAL:
-        setVal((Value)newValue);
+        setVal((VariableOrValue)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,7 +171,7 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
     switch (featureID)
     {
       case SpecPackage.TYPE_COMMAND__VAL:
-        setVal((Value)null);
+        setVal((VariableOrValue)null);
         return;
     }
     super.eUnset(featureID);

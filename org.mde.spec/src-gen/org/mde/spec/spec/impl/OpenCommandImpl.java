@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.OpenCommand;
 import org.mde.spec.spec.SpecPackage;
-import org.mde.spec.spec.Value;
+import org.mde.spec.spec.VariableOrValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -38,7 +38,7 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
    * @generated
    * @ordered
    */
-  protected Value value;
+  protected VariableOrValue value;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,7 +67,7 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
    * @generated
    */
   @Override
-  public Value getValue()
+  public VariableOrValue getValue()
   {
     return value;
   }
@@ -77,9 +77,9 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(Value newValue, NotificationChain msgs)
+  public NotificationChain basicSetValue(VariableOrValue newValue, NotificationChain msgs)
   {
-    Value oldValue = value;
+    VariableOrValue oldValue = value;
     value = newValue;
     if (eNotificationRequired())
     {
@@ -95,7 +95,7 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
    * @generated
    */
   @Override
-  public void setValue(Value newValue)
+  public void setValue(VariableOrValue newValue)
   {
     if (newValue != value)
     {
@@ -154,7 +154,7 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
     switch (featureID)
     {
       case SpecPackage.OPEN_COMMAND__VALUE:
-        setValue((Value)newValue);
+        setValue((VariableOrValue)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -171,7 +171,7 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
     switch (featureID)
     {
       case SpecPackage.OPEN_COMMAND__VALUE:
-        setValue((Value)null);
+        setValue((VariableOrValue)null);
         return;
     }
     super.eUnset(featureID);

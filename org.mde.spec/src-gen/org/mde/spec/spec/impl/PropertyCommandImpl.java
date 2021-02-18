@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.PropertyCommand;
 import org.mde.spec.spec.SpecPackage;
-import org.mde.spec.spec.Value;
+import org.mde.spec.spec.VariableOrValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -80,7 +80,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    * @ordered
    */
-  protected Value val;
+  protected VariableOrValue val;
 
   /**
    * <!-- begin-user-doc -->
@@ -159,7 +159,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public Value getVal()
+  public VariableOrValue getVal()
   {
     return val;
   }
@@ -169,9 +169,9 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVal(Value newVal, NotificationChain msgs)
+  public NotificationChain basicSetVal(VariableOrValue newVal, NotificationChain msgs)
   {
-    Value oldVal = val;
+    VariableOrValue oldVal = val;
     val = newVal;
     if (eNotificationRequired())
     {
@@ -187,7 +187,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public void setVal(Value newVal)
+  public void setVal(VariableOrValue newVal)
   {
     if (newVal != val)
     {
@@ -256,7 +256,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
         setCond((String)newValue);
         return;
       case SpecPackage.PROPERTY_COMMAND__VAL:
-        setVal((Value)newValue);
+        setVal((VariableOrValue)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -279,7 +279,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
         setCond(COND_EDEFAULT);
         return;
       case SpecPackage.PROPERTY_COMMAND__VAL:
-        setVal((Value)null);
+        setVal((VariableOrValue)null);
         return;
     }
     super.eUnset(featureID);

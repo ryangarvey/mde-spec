@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.mde.spec.spec.ElementType;
 import org.mde.spec.spec.Selector;
 import org.mde.spec.spec.SpecPackage;
-import org.mde.spec.spec.Variable;
+import org.mde.spec.spec.VariableOrValue;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,9 +25,9 @@ import org.mde.spec.spec.Variable;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getVal <em>Val</em>}</li>
- *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @generated
@@ -35,24 +35,14 @@ import org.mde.spec.spec.Variable;
 public class SelectorImpl extends MinimalEObjectImpl.Container implements Selector
 {
   /**
-   * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
+   * The cached value of the '{@link #getVar() <em>Var</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVal()
+   * @see #getVar()
    * @generated
    * @ordered
    */
-  protected static final String VAL_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getVal() <em>Val</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVal()
-   * @generated
-   * @ordered
-   */
-  protected String val = VAL_EDEFAULT;
+  protected VariableOrValue var;
 
   /**
    * The default value of the '{@link #getType() <em>Type</em>}' attribute.
@@ -75,14 +65,14 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   protected ElementType type = TYPE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' containment reference.
+   * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVar()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected Variable var;
+  protected VariableOrValue val;
 
   /**
    * <!-- begin-user-doc -->
@@ -111,9 +101,26 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public String getVal()
+  public VariableOrValue getVar()
   {
-    return val;
+    return var;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetVar(VariableOrValue newVar, NotificationChain msgs)
+  {
+    VariableOrValue oldVar = var;
+    var = newVar;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__VAR, oldVar, newVar);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -122,12 +129,20 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public void setVal(String newVal)
+  public void setVar(VariableOrValue newVar)
   {
-    String oldVal = val;
-    val = newVal;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__VAL, oldVal, val));
+    if (newVar != var)
+    {
+      NotificationChain msgs = null;
+      if (var != null)
+        msgs = ((InternalEObject)var).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.SELECTOR__VAR, null, msgs);
+      if (newVar != null)
+        msgs = ((InternalEObject)newVar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.SELECTOR__VAR, null, msgs);
+      msgs = basicSetVar(newVar, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__VAR, newVar, newVar));
   }
 
   /**
@@ -161,9 +176,9 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public Variable getVar()
+  public VariableOrValue getVal()
   {
-    return var;
+    return val;
   }
 
   /**
@@ -171,13 +186,13 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVar(Variable newVar, NotificationChain msgs)
+  public NotificationChain basicSetVal(VariableOrValue newVal, NotificationChain msgs)
   {
-    Variable oldVar = var;
-    var = newVar;
+    VariableOrValue oldVal = val;
+    val = newVal;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__VAR, oldVar, newVar);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__VAL, oldVal, newVal);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -189,20 +204,20 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public void setVar(Variable newVar)
+  public void setVal(VariableOrValue newVal)
   {
-    if (newVar != var)
+    if (newVal != val)
     {
       NotificationChain msgs = null;
-      if (var != null)
-        msgs = ((InternalEObject)var).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.SELECTOR__VAR, null, msgs);
-      if (newVar != null)
-        msgs = ((InternalEObject)newVar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.SELECTOR__VAR, null, msgs);
-      msgs = basicSetVar(newVar, msgs);
+      if (val != null)
+        msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.SELECTOR__VAL, null, msgs);
+      if (newVal != null)
+        msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.SELECTOR__VAL, null, msgs);
+      msgs = basicSetVal(newVal, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__VAR, newVar, newVar));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__VAL, newVal, newVal));
   }
 
   /**
@@ -217,6 +232,8 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
     {
       case SpecPackage.SELECTOR__VAR:
         return basicSetVar(null, msgs);
+      case SpecPackage.SELECTOR__VAL:
+        return basicSetVal(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -231,12 +248,12 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
-      case SpecPackage.SELECTOR__VAL:
-        return getVal();
-      case SpecPackage.SELECTOR__TYPE:
-        return getType();
       case SpecPackage.SELECTOR__VAR:
         return getVar();
+      case SpecPackage.SELECTOR__TYPE:
+        return getType();
+      case SpecPackage.SELECTOR__VAL:
+        return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -251,14 +268,14 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
-      case SpecPackage.SELECTOR__VAL:
-        setVal((String)newValue);
+      case SpecPackage.SELECTOR__VAR:
+        setVar((VariableOrValue)newValue);
         return;
       case SpecPackage.SELECTOR__TYPE:
         setType((ElementType)newValue);
         return;
-      case SpecPackage.SELECTOR__VAR:
-        setVar((Variable)newValue);
+      case SpecPackage.SELECTOR__VAL:
+        setVal((VariableOrValue)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -274,14 +291,14 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
-      case SpecPackage.SELECTOR__VAL:
-        setVal(VAL_EDEFAULT);
+      case SpecPackage.SELECTOR__VAR:
+        setVar((VariableOrValue)null);
         return;
       case SpecPackage.SELECTOR__TYPE:
         setType(TYPE_EDEFAULT);
         return;
-      case SpecPackage.SELECTOR__VAR:
-        setVar((Variable)null);
+      case SpecPackage.SELECTOR__VAL:
+        setVal((VariableOrValue)null);
         return;
     }
     super.eUnset(featureID);
@@ -297,12 +314,12 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
-      case SpecPackage.SELECTOR__VAL:
-        return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
-      case SpecPackage.SELECTOR__TYPE:
-        return type != TYPE_EDEFAULT;
       case SpecPackage.SELECTOR__VAR:
         return var != null;
+      case SpecPackage.SELECTOR__TYPE:
+        return type != TYPE_EDEFAULT;
+      case SpecPackage.SELECTOR__VAL:
+        return val != null;
     }
     return super.eIsSet(featureID);
   }
@@ -318,9 +335,7 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (val: ");
-    result.append(val);
-    result.append(", type: ");
+    result.append(" (type: ");
     result.append(type);
     result.append(')');
     return result.toString();

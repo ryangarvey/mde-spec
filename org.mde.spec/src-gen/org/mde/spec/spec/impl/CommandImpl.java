@@ -3,8 +3,11 @@
  */
 package org.mde.spec.spec.impl;
 
+import org.eclipse.emf.common.notify.Notification;
+
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.mde.spec.spec.Command;
@@ -14,11 +17,58 @@ import org.mde.spec.spec.SpecPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Command</b></em>'.
  * <!-- end-user-doc -->
+ * <p>
+ * The following features are implemented:
+ * </p>
+ * <ul>
+ *   <li>{@link org.mde.spec.spec.impl.CommandImpl#getComment <em>Comment</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.CommandImpl#getCustom <em>Custom</em>}</li>
+ * </ul>
  *
  * @generated
  */
 public class CommandImpl extends MinimalEObjectImpl.Container implements Command
 {
+  /**
+   * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getComment()
+   * @generated
+   * @ordered
+   */
+  protected static final String COMMENT_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getComment() <em>Comment</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getComment()
+   * @generated
+   * @ordered
+   */
+  protected String comment = COMMENT_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getCustom() <em>Custom</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCustom()
+   * @generated
+   * @ordered
+   */
+  protected static final String CUSTOM_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getCustom() <em>Custom</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getCustom()
+   * @generated
+   * @ordered
+   */
+  protected String custom = CUSTOM_EDEFAULT;
+
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -38,6 +88,151 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.COMMAND;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getComment()
+  {
+    return comment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setComment(String newComment)
+  {
+    String oldComment = comment;
+    comment = newComment;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.COMMAND__COMMENT, oldComment, comment));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getCustom()
+  {
+    return custom;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setCustom(String newCustom)
+  {
+    String oldCustom = custom;
+    custom = newCustom;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.COMMAND__CUSTOM, oldCustom, custom));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object eGet(int featureID, boolean resolve, boolean coreType)
+  {
+    switch (featureID)
+    {
+      case SpecPackage.COMMAND__COMMENT:
+        return getComment();
+      case SpecPackage.COMMAND__CUSTOM:
+        return getCustom();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eSet(int featureID, Object newValue)
+  {
+    switch (featureID)
+    {
+      case SpecPackage.COMMAND__COMMENT:
+        setComment((String)newValue);
+        return;
+      case SpecPackage.COMMAND__CUSTOM:
+        setCustom((String)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void eUnset(int featureID)
+  {
+    switch (featureID)
+    {
+      case SpecPackage.COMMAND__COMMENT:
+        setComment(COMMENT_EDEFAULT);
+        return;
+      case SpecPackage.COMMAND__CUSTOM:
+        setCustom(CUSTOM_EDEFAULT);
+        return;
+    }
+    super.eUnset(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public boolean eIsSet(int featureID)
+  {
+    switch (featureID)
+    {
+      case SpecPackage.COMMAND__COMMENT:
+        return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
+      case SpecPackage.COMMAND__CUSTOM:
+        return CUSTOM_EDEFAULT == null ? custom != null : !CUSTOM_EDEFAULT.equals(custom);
+    }
+    return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (comment: ");
+    result.append(comment);
+    result.append(", custom: ");
+    result.append(custom);
+    result.append(')');
+    return result.toString();
   }
 
 } //CommandImpl

@@ -73,12 +73,12 @@ public interface PropertyCommand extends Command
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(Value)
+   * @see #setVal(VariableOrValue)
    * @see org.mde.spec.spec.SpecPackage#getPropertyCommand_Val()
    * @model containment="true"
    * @generated
    */
-  Value getVal();
+  VariableOrValue getVal();
 
   /**
    * Sets the value of the '{@link org.mde.spec.spec.PropertyCommand#getVal <em>Val</em>}' containment reference.
@@ -88,6 +88,6 @@ public interface PropertyCommand extends Command
    * @see #getVal()
    * @generated
    */
-  void setVal(Value value);
+  void setVal(VariableOrValue value);
 
 } // PropertyCommand

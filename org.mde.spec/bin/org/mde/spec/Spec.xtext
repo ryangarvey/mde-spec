@@ -8,17 +8,24 @@ Model:
 Command:
 	OpenCommand
   | ClickCommand
-  | CommentCommand
+  | StoreCommand
   | SelectCommand
   | RememberCommand
   | PropertyCommand
   | TypeCommand
   | SleepCommand
-  | CustomCommand
+  | comment=SL_COMMENT
+  | custom=CUSTOM_COMMAND
 ;
 
 OpenCommand:
-	"Open" value=Value
+	"Open" value=VariableOrValue
+;
+
+VariableOrValue:
+	"$"var=[Variable]
+  | val=STRING
+  | element=ElementInScreen
 ;
 
 ClickCommand:
@@ -27,35 +34,15 @@ ClickCommand:
   | "Click" "at" point=Point
 ;
 
-
-CommentCommand:
-	"#" str=STRING
-;
-
 SelectCommand:
 	"Within" value=Selector
   | "Select" value=Selector
   | "Select" "visible" value=Selector
 ;
 
-RememberCommand:
-	"Remember" prop=Property "as" var=Variable
-;
-
-PropertyCommand:
-	"Property" prop=Property cond=Condition val=Value
-;
-	
-TypeCommand:
-	"Type" val=Value
-;
-
-SleepCommand:
-	"Sleep" "for" time=INT ("second" | "seconds")
-;
-
-CustomCommand:
-	"!" command=STRING
+Selector:           
+  var=VariableOrValue          
+  | type=ElementType val=VariableOrValue
 ;
 
 enum ElementType:
@@ -66,37 +53,57 @@ enum ElementType:
   | textarea="textarea"
 ;
 
-Selector:
-    val=STRING                
-  | type=ElementType val=STRING
-  | var=Variable                
-  | type=ElementType var=Variable
+StoreCommand:
+	"Store" name=Variable "as" value=STRING
+;
+
+RememberCommand:
+	"Remember" prop=Property "as" var=Variable
+;
+
+PropertyCommand:
+	"Property" prop=Property cond=Condition val=VariableOrValue
 ;
 
 Property:
-	PropertyType
-;
-
-PropertyType:
     "text"
   | "class"
   | "value"
-;
-
-Value:
-	val=Variable
-  | str=STRING
 ;
 
 Condition:
 	"should" "be"
   | "should" "not" "be"
 ;
+	
+TypeCommand:
+	"Type" val=VariableOrValue
+;
+
+SleepCommand:
+	"Sleep" "for" time=INT ("second" | "seconds")
+;
 
 Point:
 	"{" INT "," INT "}"
 ;
 
+ElementInScreen:
+	element=ID
+;
+
+terminal CUSTOM_COMMAND:
+	'!' !('\n'|'\r')* ('\r'? '\n')?
+;
+
+@Override
+terminal SL_COMMENT:
+    '#' !('\n'|'\r')* ('\r'? '\n')?;
+    
+terminal UNQUOTED:
+    ('A'..'Z'|'a'..'z'|'_' | '-')*
+;
+
 Variable:
-	"$" name=STRING // fix this
+	"$" name=ID
 ;
