@@ -8,8 +8,8 @@ import org.eclipse.xtext.scoping.IScope
 import org.mde.spec.src.org.mde.spec.Spec.xtext.Variable
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference
-import org.mde.spec.src.org.mde.spec.LoopStatement
-import org.mde.spec.src.org.mde.spec.VariableDeclaration
+import org.mde.spec.src.org.mde.spec.Spec.xtext.VariableOrValue
+import org.mde.spec.src.org.mde.spec.Spec.xtext.Variable
 import static extension org.eclipse.xtext.EcoreUtil2.*
 
 import static org.eclipse.xtext.scoping.Scopes.*
@@ -23,23 +23,23 @@ import static org.eclipse.xtext.scoping.Scopes.*
 class SpecScopeProvider extends AbstractDeclarativeScopeProvider {
 
 	def IScope scope_Variable_name(Variable context, EReference ref) {
-		val containingLoopStatement = context.getContextOfType(LoopStatement)
+		val containingVariableOrValue = context.getContextOfType(VariableOrValue)
 				
-		if(containingLoopStatement !== null) {
-			containingLoopStatement.visibleVariablesScope
+		if(containingVariableOrValue !== null) {
+			containingVariableOrValue.visibleVariablesScope
 		}
 		else {
 			val containingProgram = context.getContainerOfType(Spec)
 			
-			scopeFor(containingProgram.statements.filter(VariableDeclaration))
+			scopeFor(containingProgram.statements.filter(Variable))
 		}
 	}
 	def IScope visibleVariableScope(EObject context) {
-		if(context instanceof LoopStatement) {
-			scopeFor(context.statements.filter(VariableDeclaration), context.eContainer.visibleVariablesScope)
+		if(context instanceof VariableOrValue) {
+			scopeFor(context.statements.filter(Variable), context.eContainer.visibleVariablesScope)
 		}
 		else if(context instanceof Spec) {
-			scopeFor(context.statements.filter(VariableDeclaration))
+			scopeFor(context.statements.filter(Variable))
 		}
 	}
 }
