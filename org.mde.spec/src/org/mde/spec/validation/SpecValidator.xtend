@@ -3,6 +3,10 @@
  */
 package org.mde.spec.validation
 
+import org.eclipse.xtext.validation.Check
+import org.mde.spec.spec.Variable
+import org.mde.spec.spec.SpecPackage
+
 //import org.mde.spec.spec.SpecPackage
 //import org.mde.spec.spec.RememberCommand
 
@@ -13,5 +17,13 @@ package org.mde.spec.validation
  */
 class SpecValidator extends AbstractSpecValidator {
 
-		
+	@Check(FAST)
+	def void checkVariableStartsWithDollar(Variable v) {
+		if (v.getName().charAt(0) != "$") {
+			warning("A variable must be used with a '$' preceding it", SpecPackage.Literals.VARIABLE__NAME) 
+		}
+	}
+	
+	@Check(FAST)
+	def void checkUrlIsWellDefined(){}
 }
