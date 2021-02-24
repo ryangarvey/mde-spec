@@ -19,14 +19,15 @@ Command:
 ;
 
 OpenCommand:
-	"Open" value=VariableOrValue
+	{OpenCommand} "Open" STRING
+  | "Open" var=Variable
 ;
 
-VariableOrValue:
-	"$"var=[Variable]
-  | val=STRING
-  | element=ElementInScreen
-;
+//VariableOrValue:
+//	var=[Variable]
+//  | val=STRING
+//  | element=ElementInScreen
+//;
 
 ClickCommand:
 	cmd="Click"
@@ -40,9 +41,11 @@ SelectCommand:
   | "Select" "visible" value=Selector
 ;
 
-Selector:           
-  var=VariableOrValue          
-  | type=ElementType val=VariableOrValue
+Selector:
+	var=[Variable]
+  |	str=STRING   
+  | type=ElementType var=[Variable]
+  | type=ElementType str=STRING
 ;
 
 enum ElementType:
@@ -54,15 +57,16 @@ enum ElementType:
 ;
 
 StoreCommand:
-	"Store" name=Variable "as" value=STRING
+	"Store" name=ID "as" value=STRING
 ;
 
 RememberCommand:
-	"Remember" prop=Property "as" var=Variable
+	"Remember" prop=Property "as" var=ID
 ;
 
 PropertyCommand:
-	"Property" prop=Property cond=Condition val=VariableOrValue
+	"Property" prop=Property cond=Condition val=STRING
+  | "Property" prop=Property cond=Condition var=[Variable]
 ;
 
 Property:
@@ -77,7 +81,8 @@ Condition:
 ;
 	
 TypeCommand:
-	"Type" val=VariableOrValue
+	"Type" str=STRING
+  | "Type" var=[Variable]
 ;
 
 SleepCommand:
@@ -98,10 +103,7 @@ terminal CUSTOM_COMMAND:
 
 @Override
 terminal SL_COMMENT:
-    '#' !('\n'|'\r')* ('\r'? '\n')?;
-    
-terminal UNQUOTED:
-    ('A'..'Z'|'a'..'z'|'_' | '-')*
+    '#' !('\n'|'\r')* ('\r'? '\n')?
 ;
 
 Variable:

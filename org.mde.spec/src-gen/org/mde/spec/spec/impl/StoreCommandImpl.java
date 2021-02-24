@@ -4,16 +4,13 @@
 package org.mde.spec.spec.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.SpecPackage;
 import org.mde.spec.spec.StoreCommand;
-import org.mde.spec.spec.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -32,14 +29,24 @@ import org.mde.spec.spec.Variable;
 public class StoreCommandImpl extends CommandImpl implements StoreCommand
 {
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getName()
    * @generated
    * @ordered
    */
-  protected Variable name;
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
 
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
@@ -88,7 +95,7 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
    * @generated
    */
   @Override
-  public Variable getName()
+  public String getName()
   {
     return name;
   }
@@ -98,38 +105,13 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetName(Variable newName, NotificationChain msgs)
+  @Override
+  public void setName(String newName)
   {
-    Variable oldName = name;
+    String oldName = name;
     name = newName;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.STORE_COMMAND__NAME, oldName, newName);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(Variable newName)
-  {
-    if (newName != name)
-    {
-      NotificationChain msgs = null;
-      if (name != null)
-        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.STORE_COMMAND__NAME, null, msgs);
-      if (newName != null)
-        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.STORE_COMMAND__NAME, null, msgs);
-      msgs = basicSetName(newName, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.STORE_COMMAND__NAME, newName, newName));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.STORE_COMMAND__NAME, oldName, name));
   }
 
   /**
@@ -163,22 +145,6 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case SpecPackage.STORE_COMMAND__NAME:
-        return basicSetName(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -202,7 +168,7 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
     switch (featureID)
     {
       case SpecPackage.STORE_COMMAND__NAME:
-        setName((Variable)newValue);
+        setName((String)newValue);
         return;
       case SpecPackage.STORE_COMMAND__VALUE:
         setValue((String)newValue);
@@ -222,7 +188,7 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
     switch (featureID)
     {
       case SpecPackage.STORE_COMMAND__NAME:
-        setName((Variable)null);
+        setName(NAME_EDEFAULT);
         return;
       case SpecPackage.STORE_COMMAND__VALUE:
         setValue(VALUE_EDEFAULT);
@@ -242,7 +208,7 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
     switch (featureID)
     {
       case SpecPackage.STORE_COMMAND__NAME:
-        return name != null;
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.STORE_COMMAND__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
@@ -260,7 +226,9 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (value: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", value: ");
     result.append(value);
     result.append(')');
     return result.toString();

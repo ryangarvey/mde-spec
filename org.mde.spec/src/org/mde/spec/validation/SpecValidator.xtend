@@ -6,9 +6,7 @@ package org.mde.spec.validation
 import org.eclipse.xtext.validation.Check
 import org.mde.spec.spec.Variable
 import org.mde.spec.spec.SpecPackage
-
-//import org.mde.spec.spec.SpecPackage
-//import org.mde.spec.spec.RememberCommand
+import org.mde.spec.spec.OpenCommand
 
 /**
  * This class contains custom validation rules. 
@@ -23,6 +21,18 @@ class SpecValidator extends AbstractSpecValidator {
 			warning("A variable must be used with a '$' preceding it", SpecPackage.Literals.VARIABLE__NAME) 
 		}
 	}
+	
+	def void checkVariableReferenced(OpenCommand c) {
+		c.eAllContents.forEach[x | print("«x»")]
+	}
+	
+	@Check(FAST)
+	def void checkNameStartsWithLowerCase(Variable v) {
+		if (Character::isUpperCase(v.getName().charAt(0))) {
+			warning("A variable name should be in camelCase", SpecPackage.Literals.VARIABLE__NAME);
+		}
+	}
+	
 	
 	@Check(FAST)
 	def void checkUrlIsWellDefined(){}

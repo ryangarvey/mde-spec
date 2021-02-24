@@ -24,26 +24,26 @@ package org.mde.spec.spec;
 public interface StoreCommand extends Command
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' containment reference.
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' containment reference.
-   * @see #setName(Variable)
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
    * @see org.mde.spec.spec.SpecPackage#getStoreCommand_Name()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  Variable getName();
+  String getName();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.StoreCommand#getName <em>Name</em>}' containment reference.
+   * Sets the value of the '{@link org.mde.spec.spec.StoreCommand#getName <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' containment reference.
+   * @param value the new value of the '<em>Name</em>' attribute.
    * @see #getName()
    * @generated
    */
-  void setName(Variable value);
+  void setName(String value);
 
   /**
    * Returns the value of the '<em><b>Value</b></em>' attribute.

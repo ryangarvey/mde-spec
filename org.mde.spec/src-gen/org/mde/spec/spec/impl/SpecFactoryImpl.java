@@ -69,7 +69,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
       case SpecPackage.MODEL: return createModel();
       case SpecPackage.COMMAND: return createCommand();
       case SpecPackage.OPEN_COMMAND: return createOpenCommand();
-      case SpecPackage.VARIABLE_OR_VALUE: return createVariableOrValue();
       case SpecPackage.CLICK_COMMAND: return createClickCommand();
       case SpecPackage.SELECT_COMMAND: return createSelectCommand();
       case SpecPackage.SELECTOR: return createSelector();
@@ -153,18 +152,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     OpenCommandImpl openCommand = new OpenCommandImpl();
     return openCommand;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public VariableOrValue createVariableOrValue()
-  {
-    VariableOrValueImpl variableOrValue = new VariableOrValueImpl();
-    return variableOrValue;
   }
 
   /**

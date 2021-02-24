@@ -15,8 +15,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}</li>
+ *   <li>{@link org.mde.spec.spec.Selector#getStr <em>Str</em>}</li>
  *   <li>{@link org.mde.spec.spec.Selector#getType <em>Type</em>}</li>
- *   <li>{@link org.mde.spec.spec.Selector#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getSelector()
@@ -26,26 +26,48 @@ import org.eclipse.emf.ecore.EObject;
 public interface Selector extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Var</b></em>' containment reference.
+   * Returns the value of the '<em><b>Var</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var</em>' containment reference.
-   * @see #setVar(VariableOrValue)
+   * @return the value of the '<em>Var</em>' reference.
+   * @see #setVar(Variable)
    * @see org.mde.spec.spec.SpecPackage#getSelector_Var()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  VariableOrValue getVar();
+  Variable getVar();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}' containment reference.
+   * Sets the value of the '{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var</em>' containment reference.
+   * @param value the new value of the '<em>Var</em>' reference.
    * @see #getVar()
    * @generated
    */
-  void setVar(VariableOrValue value);
+  void setVar(Variable value);
+
+  /**
+   * Returns the value of the '<em><b>Str</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Str</em>' attribute.
+   * @see #setStr(String)
+   * @see org.mde.spec.spec.SpecPackage#getSelector_Str()
+   * @model
+   * @generated
+   */
+  String getStr();
+
+  /**
+   * Sets the value of the '{@link org.mde.spec.spec.Selector#getStr <em>Str</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Str</em>' attribute.
+   * @see #getStr()
+   * @generated
+   */
+  void setStr(String value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' attribute.
@@ -71,27 +93,5 @@ public interface Selector extends EObject
    * @generated
    */
   void setType(ElementType value);
-
-  /**
-   * Returns the value of the '<em><b>Val</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(VariableOrValue)
-   * @see org.mde.spec.spec.SpecPackage#getSelector_Val()
-   * @model containment="true"
-   * @generated
-   */
-  VariableOrValue getVal();
-
-  /**
-   * Sets the value of the '{@link org.mde.spec.spec.Selector#getVal <em>Val</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Val</em>' containment reference.
-   * @see #getVal()
-   * @generated
-   */
-  void setVal(VariableOrValue value);
 
 } // Selector

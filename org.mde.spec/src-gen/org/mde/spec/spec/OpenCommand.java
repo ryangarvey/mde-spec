@@ -13,7 +13,7 @@ package org.mde.spec.spec;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.OpenCommand#getValue <em>Value</em>}</li>
+ *   <li>{@link org.mde.spec.spec.OpenCommand#getVar <em>Var</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getOpenCommand()
@@ -23,25 +23,25 @@ package org.mde.spec.spec;
 public interface OpenCommand extends Command
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Var</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(VariableOrValue)
-   * @see org.mde.spec.spec.SpecPackage#getOpenCommand_Value()
+   * @return the value of the '<em>Var</em>' containment reference.
+   * @see #setVar(Variable)
+   * @see org.mde.spec.spec.SpecPackage#getOpenCommand_Var()
    * @model containment="true"
    * @generated
    */
-  VariableOrValue getValue();
+  Variable getVar();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.OpenCommand#getValue <em>Value</em>}' containment reference.
+   * Sets the value of the '{@link org.mde.spec.spec.OpenCommand#getVar <em>Var</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' containment reference.
-   * @see #getValue()
+   * @param value the new value of the '<em>Var</em>' containment reference.
+   * @see #getVar()
    * @generated
    */
-  void setValue(VariableOrValue value);
+  void setVar(Variable value);
 
 } // OpenCommand

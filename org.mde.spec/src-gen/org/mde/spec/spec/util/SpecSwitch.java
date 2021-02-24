@@ -95,13 +95,6 @@ public class SpecSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SpecPackage.VARIABLE_OR_VALUE:
-      {
-        VariableOrValue variableOrValue = (VariableOrValue)theEObject;
-        T result = caseVariableOrValue(variableOrValue);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SpecPackage.CLICK_COMMAND:
       {
         ClickCommand clickCommand = (ClickCommand)theEObject;
@@ -227,22 +220,6 @@ public class SpecSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseOpenCommand(OpenCommand object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable Or Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable Or Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVariableOrValue(VariableOrValue object)
   {
     return null;
   }

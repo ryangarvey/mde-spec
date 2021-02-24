@@ -21,12 +21,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Command/custom"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//OpenCommand">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//OpenCommand/value"/>
-    </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//VariableOrValue">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//VariableOrValue/var"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//VariableOrValue/val"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//VariableOrValue/element"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//OpenCommand/var"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//ClickCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ClickCommand/cmd"/>
@@ -37,25 +32,27 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//SelectCommand/value"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Selector">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Selector/var"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//Selector/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Selector/str"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Selector/type"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Selector/val"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//StoreCommand">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//StoreCommand/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//StoreCommand/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//StoreCommand/value"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//RememberCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//RememberCommand/prop"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//RememberCommand/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//RememberCommand/var"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//PropertyCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//PropertyCommand/prop"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//PropertyCommand/cond"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//PropertyCommand/val"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//PropertyCommand/val"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//PropertyCommand/var"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//TypeCommand">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//TypeCommand/val"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//TypeCommand/str"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//TypeCommand/var"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//SleepCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//SleepCommand/time"/>

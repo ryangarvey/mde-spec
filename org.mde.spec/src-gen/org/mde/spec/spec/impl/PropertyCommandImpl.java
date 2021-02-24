@@ -4,7 +4,6 @@
 package org.mde.spec.spec.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -13,7 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.PropertyCommand;
 import org.mde.spec.spec.SpecPackage;
-import org.mde.spec.spec.VariableOrValue;
+import org.mde.spec.spec.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +25,7 @@ import org.mde.spec.spec.VariableOrValue;
  *   <li>{@link org.mde.spec.spec.impl.PropertyCommandImpl#getProp <em>Prop</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.PropertyCommandImpl#getCond <em>Cond</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.PropertyCommandImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.PropertyCommandImpl#getVar <em>Var</em>}</li>
  * </ul>
  *
  * @generated
@@ -73,14 +73,34 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
   protected String cond = COND_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
+   * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getVal()
    * @generated
    * @ordered
    */
-  protected VariableOrValue val;
+  protected static final String VAL_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getVal() <em>Val</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVal()
+   * @generated
+   * @ordered
+   */
+  protected String val = VAL_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getVar() <em>Var</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVar()
+   * @generated
+   * @ordered
+   */
+  protected Variable var;
 
   /**
    * <!-- begin-user-doc -->
@@ -159,7 +179,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public VariableOrValue getVal()
+  public String getVal()
   {
     return val;
   }
@@ -169,16 +189,13 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVal(VariableOrValue newVal, NotificationChain msgs)
+  @Override
+  public void setVal(String newVal)
   {
-    VariableOrValue oldVal = val;
+    String oldVal = val;
     val = newVal;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.PROPERTY_COMMAND__VAL, oldVal, newVal);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.PROPERTY_COMMAND__VAL, oldVal, val));
   }
 
   /**
@@ -187,20 +204,29 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public void setVal(VariableOrValue newVal)
+  public Variable getVar()
   {
-    if (newVal != val)
+    if (var != null && var.eIsProxy())
     {
-      NotificationChain msgs = null;
-      if (val != null)
-        msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.PROPERTY_COMMAND__VAL, null, msgs);
-      if (newVal != null)
-        msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.PROPERTY_COMMAND__VAL, null, msgs);
-      msgs = basicSetVal(newVal, msgs);
-      if (msgs != null) msgs.dispatch();
+      InternalEObject oldVar = (InternalEObject)var;
+      var = (Variable)eResolveProxy(oldVar);
+      if (var != oldVar)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.PROPERTY_COMMAND__VAR, oldVar, var));
+      }
     }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.PROPERTY_COMMAND__VAL, newVal, newVal));
+    return var;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Variable basicGetVar()
+  {
+    return var;
   }
 
   /**
@@ -209,14 +235,12 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public void setVar(Variable newVar)
   {
-    switch (featureID)
-    {
-      case SpecPackage.PROPERTY_COMMAND__VAL:
-        return basicSetVal(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    Variable oldVar = var;
+    var = newVar;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.PROPERTY_COMMAND__VAR, oldVar, var));
   }
 
   /**
@@ -235,6 +259,9 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
         return getCond();
       case SpecPackage.PROPERTY_COMMAND__VAL:
         return getVal();
+      case SpecPackage.PROPERTY_COMMAND__VAR:
+        if (resolve) return getVar();
+        return basicGetVar();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -256,7 +283,10 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
         setCond((String)newValue);
         return;
       case SpecPackage.PROPERTY_COMMAND__VAL:
-        setVal((VariableOrValue)newValue);
+        setVal((String)newValue);
+        return;
+      case SpecPackage.PROPERTY_COMMAND__VAR:
+        setVar((Variable)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -279,7 +309,10 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
         setCond(COND_EDEFAULT);
         return;
       case SpecPackage.PROPERTY_COMMAND__VAL:
-        setVal((VariableOrValue)null);
+        setVal(VAL_EDEFAULT);
+        return;
+      case SpecPackage.PROPERTY_COMMAND__VAR:
+        setVar((Variable)null);
         return;
     }
     super.eUnset(featureID);
@@ -300,7 +333,9 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
       case SpecPackage.PROPERTY_COMMAND__COND:
         return COND_EDEFAULT == null ? cond != null : !COND_EDEFAULT.equals(cond);
       case SpecPackage.PROPERTY_COMMAND__VAL:
-        return val != null;
+        return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
+      case SpecPackage.PROPERTY_COMMAND__VAR:
+        return var != null;
     }
     return super.eIsSet(featureID);
   }
@@ -320,6 +355,8 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
     result.append(prop);
     result.append(", cond: ");
     result.append(cond);
+    result.append(", val: ");
+    result.append(val);
     result.append(')');
     return result.toString();
   }

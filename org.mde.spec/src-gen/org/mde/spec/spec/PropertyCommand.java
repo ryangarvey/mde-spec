@@ -16,6 +16,7 @@ package org.mde.spec.spec;
  *   <li>{@link org.mde.spec.spec.PropertyCommand#getProp <em>Prop</em>}</li>
  *   <li>{@link org.mde.spec.spec.PropertyCommand#getCond <em>Cond</em>}</li>
  *   <li>{@link org.mde.spec.spec.PropertyCommand#getVal <em>Val</em>}</li>
+ *   <li>{@link org.mde.spec.spec.PropertyCommand#getVar <em>Var</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getPropertyCommand()
@@ -69,25 +70,47 @@ public interface PropertyCommand extends Command
   void setCond(String value);
 
   /**
-   * Returns the value of the '<em><b>Val</b></em>' containment reference.
+   * Returns the value of the '<em><b>Val</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(VariableOrValue)
+   * @return the value of the '<em>Val</em>' attribute.
+   * @see #setVal(String)
    * @see org.mde.spec.spec.SpecPackage#getPropertyCommand_Val()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  VariableOrValue getVal();
+  String getVal();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.PropertyCommand#getVal <em>Val</em>}' containment reference.
+   * Sets the value of the '{@link org.mde.spec.spec.PropertyCommand#getVal <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Val</em>' containment reference.
+   * @param value the new value of the '<em>Val</em>' attribute.
    * @see #getVal()
    * @generated
    */
-  void setVal(VariableOrValue value);
+  void setVal(String value);
+
+  /**
+   * Returns the value of the '<em><b>Var</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Var</em>' reference.
+   * @see #setVar(Variable)
+   * @see org.mde.spec.spec.SpecPackage#getPropertyCommand_Var()
+   * @model
+   * @generated
+   */
+  Variable getVar();
+
+  /**
+   * Sets the value of the '{@link org.mde.spec.spec.PropertyCommand#getVar <em>Var</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Var</em>' reference.
+   * @see #getVar()
+   * @generated
+   */
+  void setVar(Variable value);
 
 } // PropertyCommand

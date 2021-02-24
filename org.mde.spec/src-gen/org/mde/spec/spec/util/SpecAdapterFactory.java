@@ -91,11 +91,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createOpenCommandAdapter();
       }
       @Override
-      public Adapter caseVariableOrValue(VariableOrValue object)
-      {
-        return createVariableOrValueAdapter();
-      }
-      @Override
       public Adapter caseClickCommand(ClickCommand object)
       {
         return createClickCommandAdapter();
@@ -208,21 +203,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createOpenCommandAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.VariableOrValue <em>Variable Or Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.mde.spec.spec.VariableOrValue
-   * @generated
-   */
-  public Adapter createVariableOrValueAdapter()
   {
     return null;
   }

@@ -13,7 +13,8 @@ package org.mde.spec.spec;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.TypeCommand#getVal <em>Val</em>}</li>
+ *   <li>{@link org.mde.spec.spec.TypeCommand#getStr <em>Str</em>}</li>
+ *   <li>{@link org.mde.spec.spec.TypeCommand#getVar <em>Var</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getTypeCommand()
@@ -23,25 +24,47 @@ package org.mde.spec.spec;
 public interface TypeCommand extends Command
 {
   /**
-   * Returns the value of the '<em><b>Val</b></em>' containment reference.
+   * Returns the value of the '<em><b>Str</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Val</em>' containment reference.
-   * @see #setVal(VariableOrValue)
-   * @see org.mde.spec.spec.SpecPackage#getTypeCommand_Val()
-   * @model containment="true"
+   * @return the value of the '<em>Str</em>' attribute.
+   * @see #setStr(String)
+   * @see org.mde.spec.spec.SpecPackage#getTypeCommand_Str()
+   * @model
    * @generated
    */
-  VariableOrValue getVal();
+  String getStr();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.TypeCommand#getVal <em>Val</em>}' containment reference.
+   * Sets the value of the '{@link org.mde.spec.spec.TypeCommand#getStr <em>Str</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Val</em>' containment reference.
-   * @see #getVal()
+   * @param value the new value of the '<em>Str</em>' attribute.
+   * @see #getStr()
    * @generated
    */
-  void setVal(VariableOrValue value);
+  void setStr(String value);
+
+  /**
+   * Returns the value of the '<em><b>Var</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Var</em>' reference.
+   * @see #setVar(Variable)
+   * @see org.mde.spec.spec.SpecPackage#getTypeCommand_Var()
+   * @model
+   * @generated
+   */
+  Variable getVar();
+
+  /**
+   * Sets the value of the '{@link org.mde.spec.spec.TypeCommand#getVar <em>Var</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Var</em>' reference.
+   * @see #getVar()
+   * @generated
+   */
+  void setVar(Variable value);
 
 } // TypeCommand

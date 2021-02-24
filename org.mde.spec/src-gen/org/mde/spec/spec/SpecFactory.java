@@ -51,15 +51,6 @@ public interface SpecFactory extends EFactory
   OpenCommand createOpenCommand();
 
   /**
-   * Returns a new object of class '<em>Variable Or Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Or Value</em>'.
-   * @generated
-   */
-  VariableOrValue createVariableOrValue();
-
-  /**
    * Returns a new object of class '<em>Click Command</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

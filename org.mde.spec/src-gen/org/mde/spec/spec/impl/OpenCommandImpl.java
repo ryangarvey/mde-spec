@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.OpenCommand;
 import org.mde.spec.spec.SpecPackage;
-import org.mde.spec.spec.VariableOrValue;
+import org.mde.spec.spec.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +23,7 @@ import org.mde.spec.spec.VariableOrValue;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.OpenCommandImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.OpenCommandImpl#getVar <em>Var</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,14 +31,14 @@ import org.mde.spec.spec.VariableOrValue;
 public class OpenCommandImpl extends CommandImpl implements OpenCommand
 {
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' containment reference.
+   * The cached value of the '{@link #getVar() <em>Var</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getVar()
    * @generated
    * @ordered
    */
-  protected VariableOrValue value;
+  protected Variable var;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,9 +67,9 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
    * @generated
    */
   @Override
-  public VariableOrValue getValue()
+  public Variable getVar()
   {
-    return value;
+    return var;
   }
 
   /**
@@ -77,13 +77,13 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValue(VariableOrValue newValue, NotificationChain msgs)
+  public NotificationChain basicSetVar(Variable newVar, NotificationChain msgs)
   {
-    VariableOrValue oldValue = value;
-    value = newValue;
+    Variable oldVar = var;
+    var = newVar;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.OPEN_COMMAND__VALUE, oldValue, newValue);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.OPEN_COMMAND__VAR, oldVar, newVar);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -95,20 +95,20 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
    * @generated
    */
   @Override
-  public void setValue(VariableOrValue newValue)
+  public void setVar(Variable newVar)
   {
-    if (newValue != value)
+    if (newVar != var)
     {
       NotificationChain msgs = null;
-      if (value != null)
-        msgs = ((InternalEObject)value).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.OPEN_COMMAND__VALUE, null, msgs);
-      if (newValue != null)
-        msgs = ((InternalEObject)newValue).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.OPEN_COMMAND__VALUE, null, msgs);
-      msgs = basicSetValue(newValue, msgs);
+      if (var != null)
+        msgs = ((InternalEObject)var).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.OPEN_COMMAND__VAR, null, msgs);
+      if (newVar != null)
+        msgs = ((InternalEObject)newVar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.OPEN_COMMAND__VAR, null, msgs);
+      msgs = basicSetVar(newVar, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.OPEN_COMMAND__VALUE, newValue, newValue));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.OPEN_COMMAND__VAR, newVar, newVar));
   }
 
   /**
@@ -121,8 +121,8 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   {
     switch (featureID)
     {
-      case SpecPackage.OPEN_COMMAND__VALUE:
-        return basicSetValue(null, msgs);
+      case SpecPackage.OPEN_COMMAND__VAR:
+        return basicSetVar(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -137,8 +137,8 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   {
     switch (featureID)
     {
-      case SpecPackage.OPEN_COMMAND__VALUE:
-        return getValue();
+      case SpecPackage.OPEN_COMMAND__VAR:
+        return getVar();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,8 +153,8 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   {
     switch (featureID)
     {
-      case SpecPackage.OPEN_COMMAND__VALUE:
-        setValue((VariableOrValue)newValue);
+      case SpecPackage.OPEN_COMMAND__VAR:
+        setVar((Variable)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +170,8 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   {
     switch (featureID)
     {
-      case SpecPackage.OPEN_COMMAND__VALUE:
-        setValue((VariableOrValue)null);
+      case SpecPackage.OPEN_COMMAND__VAR:
+        setVar((Variable)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,8 +187,8 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   {
     switch (featureID)
     {
-      case SpecPackage.OPEN_COMMAND__VALUE:
-        return value != null;
+      case SpecPackage.OPEN_COMMAND__VAR:
+        return var != null;
     }
     return super.eIsSet(featureID);
   }
