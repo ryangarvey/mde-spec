@@ -14,9 +14,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.mde.spec.spec.Selector#getType <em>Type</em>}</li>
  *   <li>{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}</li>
  *   <li>{@link org.mde.spec.spec.Selector#getStr <em>Str</em>}</li>
- *   <li>{@link org.mde.spec.spec.Selector#getType <em>Type</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getSelector()
@@ -25,6 +25,31 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Selector extends EObject
 {
+  /**
+   * Returns the value of the '<em><b>Type</b></em>' attribute.
+   * The literals are from the enumeration {@link org.mde.spec.spec.ElementType}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Type</em>' attribute.
+   * @see org.mde.spec.spec.ElementType
+   * @see #setType(ElementType)
+   * @see org.mde.spec.spec.SpecPackage#getSelector_Type()
+   * @model
+   * @generated
+   */
+  ElementType getType();
+
+  /**
+   * Sets the value of the '{@link org.mde.spec.spec.Selector#getType <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Type</em>' attribute.
+   * @see org.mde.spec.spec.ElementType
+   * @see #getType()
+   * @generated
+   */
+  void setType(ElementType value);
+
   /**
    * Returns the value of the '<em><b>Var</b></em>' reference.
    * <!-- begin-user-doc -->
@@ -68,30 +93,5 @@ public interface Selector extends EObject
    * @generated
    */
   void setStr(String value);
-
-  /**
-   * Returns the value of the '<em><b>Type</b></em>' attribute.
-   * The literals are from the enumeration {@link org.mde.spec.spec.ElementType}.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Type</em>' attribute.
-   * @see org.mde.spec.spec.ElementType
-   * @see #setType(ElementType)
-   * @see org.mde.spec.spec.SpecPackage#getSelector_Type()
-   * @model
-   * @generated
-   */
-  ElementType getType();
-
-  /**
-   * Sets the value of the '{@link org.mde.spec.spec.Selector#getType <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Type</em>' attribute.
-   * @see org.mde.spec.spec.ElementType
-   * @see #getType()
-   * @generated
-   */
-  void setType(ElementType value);
 
 } // Selector

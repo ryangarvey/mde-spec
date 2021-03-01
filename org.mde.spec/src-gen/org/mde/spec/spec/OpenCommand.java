@@ -13,6 +13,7 @@ package org.mde.spec.spec;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.mde.spec.spec.OpenCommand#getVal <em>Val</em>}</li>
  *   <li>{@link org.mde.spec.spec.OpenCommand#getVar <em>Var</em>}</li>
  * </ul>
  *
@@ -22,6 +23,28 @@ package org.mde.spec.spec;
  */
 public interface OpenCommand extends Command
 {
+  /**
+   * Returns the value of the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Val</em>' attribute.
+   * @see #setVal(String)
+   * @see org.mde.spec.spec.SpecPackage#getOpenCommand_Val()
+   * @model
+   * @generated
+   */
+  String getVal();
+
+  /**
+   * Sets the value of the '{@link org.mde.spec.spec.OpenCommand#getVal <em>Val</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Val</em>' attribute.
+   * @see #getVal()
+   * @generated
+   */
+  void setVal(String value);
+
   /**
    * Returns the value of the '<em><b>Var</b></em>' containment reference.
    * <!-- begin-user-doc -->

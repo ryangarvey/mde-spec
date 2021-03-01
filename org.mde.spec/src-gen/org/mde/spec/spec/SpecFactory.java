@@ -123,15 +123,6 @@ public interface SpecFactory extends EFactory
   SleepCommand createSleepCommand();
 
   /**
-   * Returns a new object of class '<em>Element In Screen</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Element In Screen</em>'.
-   * @generated
-   */
-  ElementInScreen createElementInScreen();
-
-  /**
    * Returns a new object of class '<em>Variable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

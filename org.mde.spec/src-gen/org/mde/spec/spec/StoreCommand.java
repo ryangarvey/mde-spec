@@ -13,8 +13,8 @@ package org.mde.spec.spec;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.StoreCommand#getName <em>Name</em>}</li>
- *   <li>{@link org.mde.spec.spec.StoreCommand#getValue <em>Value</em>}</li>
+ *   <li>{@link org.mde.spec.spec.StoreCommand#getVar <em>Var</em>}</li>
+ *   <li>{@link org.mde.spec.spec.StoreCommand#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getStoreCommand()
@@ -24,47 +24,47 @@ package org.mde.spec.spec;
 public interface StoreCommand extends Command
 {
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * Returns the value of the '<em><b>Var</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.mde.spec.spec.SpecPackage#getStoreCommand_Name()
+   * @return the value of the '<em>Var</em>' containment reference.
+   * @see #setVar(Variable)
+   * @see org.mde.spec.spec.SpecPackage#getStoreCommand_Var()
+   * @model containment="true"
+   * @generated
+   */
+  Variable getVar();
+
+  /**
+   * Sets the value of the '{@link org.mde.spec.spec.StoreCommand#getVar <em>Var</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Var</em>' containment reference.
+   * @see #getVar()
+   * @generated
+   */
+  void setVar(Variable value);
+
+  /**
+   * Returns the value of the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Val</em>' attribute.
+   * @see #setVal(String)
+   * @see org.mde.spec.spec.SpecPackage#getStoreCommand_Val()
    * @model
    * @generated
    */
-  String getName();
+  String getVal();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.StoreCommand#getName <em>Name</em>}' attribute.
+   * Sets the value of the '{@link org.mde.spec.spec.StoreCommand#getVal <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
+   * @param value the new value of the '<em>Val</em>' attribute.
+   * @see #getVal()
    * @generated
    */
-  void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see org.mde.spec.spec.SpecPackage#getStoreCommand_Value()
-   * @model
-   * @generated
-   */
-  String getValue();
-
-  /**
-   * Sets the value of the '{@link org.mde.spec.spec.StoreCommand#getValue <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
-   * @generated
-   */
-  void setValue(String value);
+  void setVal(String value);
 
 } // StoreCommand

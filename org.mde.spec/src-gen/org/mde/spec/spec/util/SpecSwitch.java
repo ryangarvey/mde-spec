@@ -158,13 +158,6 @@ public class SpecSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SpecPackage.ELEMENT_IN_SCREEN:
-      {
-        ElementInScreen elementInScreen = (ElementInScreen)theEObject;
-        T result = caseElementInScreen(elementInScreen);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SpecPackage.VARIABLE:
       {
         Variable variable = (Variable)theEObject;
@@ -348,22 +341,6 @@ public class SpecSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSleepCommand(SleepCommand object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Element In Screen</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Element In Screen</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseElementInScreen(ElementInScreen object)
   {
     return null;
   }

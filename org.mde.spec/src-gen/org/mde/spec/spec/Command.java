@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.mde.spec.spec.Command#getComment <em>Comment</em>}</li>
  *   <li>{@link org.mde.spec.spec.Command#getCustom <em>Custom</em>}</li>
+ *   <li>{@link org.mde.spec.spec.Command#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getCommand()
@@ -67,5 +68,27 @@ public interface Command extends EObject
    * @generated
    */
   void setCustom(String value);
+
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.mde.spec.spec.SpecPackage#getCommand_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link org.mde.spec.spec.Command#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
 
 } // Command

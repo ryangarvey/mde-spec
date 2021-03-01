@@ -13,7 +13,6 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.mde.spec.spec.ClickCommand;
 import org.mde.spec.spec.Command;
-import org.mde.spec.spec.ElementInScreen;
 import org.mde.spec.spec.ElementType;
 import org.mde.spec.spec.Model;
 import org.mde.spec.spec.OpenCommand;
@@ -112,13 +111,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   private EClass sleepCommandEClass = null;
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  private EClass elementInScreenEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -258,6 +250,17 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   @Override
+  public EAttribute getCommand_Name()
+  {
+    return (EAttribute)commandEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getOpenCommand()
   {
     return openCommandEClass;
@@ -269,9 +272,20 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   @Override
+  public EAttribute getOpenCommand_Val()
+  {
+    return (EAttribute)openCommandEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getOpenCommand_Var()
   {
-    return (EReference)openCommandEClass.getEStructuralFeatures().get(0);
+    return (EReference)openCommandEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -291,20 +305,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   @Override
-  public EAttribute getClickCommand_Cmd()
-  {
-    return (EAttribute)clickCommandEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getClickCommand_Selector()
   {
-    return (EReference)clickCommandEClass.getEStructuralFeatures().get(1);
+    return (EReference)clickCommandEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -315,7 +318,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
   @Override
   public EAttribute getClickCommand_Point()
   {
-    return (EAttribute)clickCommandEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)clickCommandEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -357,9 +360,20 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   @Override
+  public EAttribute getSelector_Type()
+  {
+    return (EAttribute)selectorEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getSelector_Var()
   {
-    return (EReference)selectorEClass.getEStructuralFeatures().get(0);
+    return (EReference)selectorEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -369,17 +383,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    */
   @Override
   public EAttribute getSelector_Str()
-  {
-    return (EAttribute)selectorEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getSelector_Type()
   {
     return (EAttribute)selectorEClass.getEStructuralFeatures().get(2);
   }
@@ -401,9 +404,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   @Override
-  public EAttribute getStoreCommand_Name()
+  public EReference getStoreCommand_Var()
   {
-    return (EAttribute)storeCommandEClass.getEStructuralFeatures().get(0);
+    return (EReference)storeCommandEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -412,7 +415,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   @Override
-  public EAttribute getStoreCommand_Value()
+  public EAttribute getStoreCommand_Val()
   {
     return (EAttribute)storeCommandEClass.getEStructuralFeatures().get(1);
   }
@@ -445,9 +448,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   @Override
-  public EAttribute getRememberCommand_Var()
+  public EReference getRememberCommand_Var()
   {
-    return (EAttribute)rememberCommandEClass.getEStructuralFeatures().get(1);
+    return (EReference)rememberCommandEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -566,28 +569,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   @Override
-  public EClass getElementInScreen()
-  {
-    return elementInScreenEClass;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getElementInScreen_Element()
-  {
-    return (EAttribute)elementInScreenEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getVariable()
   {
     return variableEClass;
@@ -652,12 +633,13 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     commandEClass = createEClass(COMMAND);
     createEAttribute(commandEClass, COMMAND__COMMENT);
     createEAttribute(commandEClass, COMMAND__CUSTOM);
+    createEAttribute(commandEClass, COMMAND__NAME);
 
     openCommandEClass = createEClass(OPEN_COMMAND);
+    createEAttribute(openCommandEClass, OPEN_COMMAND__VAL);
     createEReference(openCommandEClass, OPEN_COMMAND__VAR);
 
     clickCommandEClass = createEClass(CLICK_COMMAND);
-    createEAttribute(clickCommandEClass, CLICK_COMMAND__CMD);
     createEReference(clickCommandEClass, CLICK_COMMAND__SELECTOR);
     createEAttribute(clickCommandEClass, CLICK_COMMAND__POINT);
 
@@ -665,17 +647,17 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     createEReference(selectCommandEClass, SELECT_COMMAND__VALUE);
 
     selectorEClass = createEClass(SELECTOR);
+    createEAttribute(selectorEClass, SELECTOR__TYPE);
     createEReference(selectorEClass, SELECTOR__VAR);
     createEAttribute(selectorEClass, SELECTOR__STR);
-    createEAttribute(selectorEClass, SELECTOR__TYPE);
 
     storeCommandEClass = createEClass(STORE_COMMAND);
-    createEAttribute(storeCommandEClass, STORE_COMMAND__NAME);
-    createEAttribute(storeCommandEClass, STORE_COMMAND__VALUE);
+    createEReference(storeCommandEClass, STORE_COMMAND__VAR);
+    createEAttribute(storeCommandEClass, STORE_COMMAND__VAL);
 
     rememberCommandEClass = createEClass(REMEMBER_COMMAND);
     createEAttribute(rememberCommandEClass, REMEMBER_COMMAND__PROP);
-    createEAttribute(rememberCommandEClass, REMEMBER_COMMAND__VAR);
+    createEReference(rememberCommandEClass, REMEMBER_COMMAND__VAR);
 
     propertyCommandEClass = createEClass(PROPERTY_COMMAND);
     createEAttribute(propertyCommandEClass, PROPERTY_COMMAND__PROP);
@@ -689,9 +671,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
     sleepCommandEClass = createEClass(SLEEP_COMMAND);
     createEAttribute(sleepCommandEClass, SLEEP_COMMAND__TIME);
-
-    elementInScreenEClass = createEClass(ELEMENT_IN_SCREEN);
-    createEAttribute(elementInScreenEClass, ELEMENT_IN_SCREEN__ELEMENT);
 
     variableEClass = createEClass(VARIABLE);
     createEAttribute(variableEClass, VARIABLE__NAME);
@@ -745,12 +724,13 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCommand_Comment(), ecorePackage.getEString(), "comment", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_Custom(), ecorePackage.getEString(), "custom", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getCommand_Name(), ecorePackage.getEString(), "name", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(openCommandEClass, OpenCommand.class, "OpenCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getOpenCommand_Val(), ecorePackage.getEString(), "val", null, 0, 1, OpenCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getOpenCommand_Var(), this.getVariable(), null, "var", null, 0, 1, OpenCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(clickCommandEClass, ClickCommand.class, "ClickCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getClickCommand_Cmd(), ecorePackage.getEString(), "cmd", null, 0, 1, ClickCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getClickCommand_Selector(), this.getSelector(), null, "selector", null, 0, 1, ClickCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getClickCommand_Point(), ecorePackage.getEString(), "point", null, 0, 1, ClickCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -758,17 +738,17 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     initEReference(getSelectCommand_Value(), this.getSelector(), null, "value", null, 0, 1, SelectCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(selectorEClass, Selector.class, "Selector", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getSelector_Type(), this.getElementType(), "type", null, 0, 1, Selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getSelector_Var(), this.getVariable(), null, "var", null, 0, 1, Selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getSelector_Str(), ecorePackage.getEString(), "str", null, 0, 1, Selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getSelector_Type(), this.getElementType(), "type", null, 0, 1, Selector.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(storeCommandEClass, StoreCommand.class, "StoreCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getStoreCommand_Name(), ecorePackage.getEString(), "name", null, 0, 1, StoreCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getStoreCommand_Value(), ecorePackage.getEString(), "value", null, 0, 1, StoreCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getStoreCommand_Var(), this.getVariable(), null, "var", null, 0, 1, StoreCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStoreCommand_Val(), ecorePackage.getEString(), "val", null, 0, 1, StoreCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(rememberCommandEClass, RememberCommand.class, "RememberCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getRememberCommand_Prop(), ecorePackage.getEString(), "prop", null, 0, 1, RememberCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getRememberCommand_Var(), ecorePackage.getEString(), "var", null, 0, 1, RememberCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getRememberCommand_Var(), this.getVariable(), null, "var", null, 0, 1, RememberCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyCommandEClass, PropertyCommand.class, "PropertyCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPropertyCommand_Prop(), ecorePackage.getEString(), "prop", null, 0, 1, PropertyCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -782,9 +762,6 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
 
     initEClass(sleepCommandEClass, SleepCommand.class, "SleepCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getSleepCommand_Time(), ecorePackage.getEInt(), "time", null, 0, 1, SleepCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-    initEClass(elementInScreenEClass, ElementInScreen.class, "ElementInScreen", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getElementInScreen_Element(), ecorePackage.getEString(), "element", null, 0, 1, ElementInScreen.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(variableEClass, Variable.class, "Variable", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getVariable_Name(), ecorePackage.getEString(), "name", null, 0, 1, Variable.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

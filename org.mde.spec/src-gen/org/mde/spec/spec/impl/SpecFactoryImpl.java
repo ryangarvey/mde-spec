@@ -77,7 +77,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
       case SpecPackage.PROPERTY_COMMAND: return createPropertyCommand();
       case SpecPackage.TYPE_COMMAND: return createTypeCommand();
       case SpecPackage.SLEEP_COMMAND: return createSleepCommand();
-      case SpecPackage.ELEMENT_IN_SCREEN: return createElementInScreen();
       case SpecPackage.VARIABLE: return createVariable();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -248,18 +247,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     SleepCommandImpl sleepCommand = new SleepCommandImpl();
     return sleepCommand;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ElementInScreen createElementInScreen()
-  {
-    ElementInScreenImpl elementInScreen = new ElementInScreenImpl();
-    return elementInScreen;
   }
 
   /**

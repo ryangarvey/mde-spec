@@ -131,11 +131,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createSleepCommandAdapter();
       }
       @Override
-      public Adapter caseElementInScreen(ElementInScreen object)
-      {
-        return createElementInScreenAdapter();
-      }
-      @Override
       public Adapter caseVariable(Variable object)
       {
         return createVariableAdapter();
@@ -323,21 +318,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSleepCommandAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.ElementInScreen <em>Element In Screen</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.mde.spec.spec.ElementInScreen
-   * @generated
-   */
-  public Adapter createElementInScreenAdapter()
   {
     return null;
   }

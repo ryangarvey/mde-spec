@@ -46,25 +46,25 @@ public interface RememberCommand extends Command
   void setProp(String value);
 
   /**
-   * Returns the value of the '<em><b>Var</b></em>' attribute.
+   * Returns the value of the '<em><b>Var</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var</em>' attribute.
-   * @see #setVar(String)
+   * @return the value of the '<em>Var</em>' containment reference.
+   * @see #setVar(Variable)
    * @see org.mde.spec.spec.SpecPackage#getRememberCommand_Var()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getVar();
+  Variable getVar();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.RememberCommand#getVar <em>Var</em>}' attribute.
+   * Sets the value of the '{@link org.mde.spec.spec.RememberCommand#getVar <em>Var</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var</em>' attribute.
+   * @param value the new value of the '<em>Var</em>' containment reference.
    * @see #getVar()
    * @generated
    */
-  void setVar(String value);
+  void setVar(Variable value);
 
 } // RememberCommand

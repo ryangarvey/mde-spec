@@ -4,13 +4,16 @@
 package org.mde.spec.spec.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.RememberCommand;
 import org.mde.spec.spec.SpecPackage;
+import org.mde.spec.spec.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -49,24 +52,14 @@ public class RememberCommandImpl extends CommandImpl implements RememberCommand
   protected String prop = PROP_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getVar() <em>Var</em>}' attribute.
+   * The cached value of the '{@link #getVar() <em>Var</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getVar()
    * @generated
    * @ordered
    */
-  protected static final String VAR_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getVar() <em>Var</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getVar()
-   * @generated
-   * @ordered
-   */
-  protected String var = VAR_EDEFAULT;
+  protected Variable var;
 
   /**
    * <!-- begin-user-doc -->
@@ -120,7 +113,7 @@ public class RememberCommandImpl extends CommandImpl implements RememberCommand
    * @generated
    */
   @Override
-  public String getVar()
+  public Variable getVar()
   {
     return var;
   }
@@ -130,13 +123,54 @@ public class RememberCommandImpl extends CommandImpl implements RememberCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setVar(String newVar)
+  public NotificationChain basicSetVar(Variable newVar, NotificationChain msgs)
   {
-    String oldVar = var;
+    Variable oldVar = var;
     var = newVar;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.REMEMBER_COMMAND__VAR, oldVar, var));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.REMEMBER_COMMAND__VAR, oldVar, newVar);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setVar(Variable newVar)
+  {
+    if (newVar != var)
+    {
+      NotificationChain msgs = null;
+      if (var != null)
+        msgs = ((InternalEObject)var).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.REMEMBER_COMMAND__VAR, null, msgs);
+      if (newVar != null)
+        msgs = ((InternalEObject)newVar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.REMEMBER_COMMAND__VAR, null, msgs);
+      msgs = basicSetVar(newVar, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.REMEMBER_COMMAND__VAR, newVar, newVar));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case SpecPackage.REMEMBER_COMMAND__VAR:
+        return basicSetVar(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -171,7 +205,7 @@ public class RememberCommandImpl extends CommandImpl implements RememberCommand
         setProp((String)newValue);
         return;
       case SpecPackage.REMEMBER_COMMAND__VAR:
-        setVar((String)newValue);
+        setVar((Variable)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -191,7 +225,7 @@ public class RememberCommandImpl extends CommandImpl implements RememberCommand
         setProp(PROP_EDEFAULT);
         return;
       case SpecPackage.REMEMBER_COMMAND__VAR:
-        setVar(VAR_EDEFAULT);
+        setVar((Variable)null);
         return;
     }
     super.eUnset(featureID);
@@ -210,7 +244,7 @@ public class RememberCommandImpl extends CommandImpl implements RememberCommand
       case SpecPackage.REMEMBER_COMMAND__PROP:
         return PROP_EDEFAULT == null ? prop != null : !PROP_EDEFAULT.equals(prop);
       case SpecPackage.REMEMBER_COMMAND__VAR:
-        return VAR_EDEFAULT == null ? var != null : !VAR_EDEFAULT.equals(var);
+        return var != null;
     }
     return super.eIsSet(featureID);
   }
@@ -228,8 +262,6 @@ public class RememberCommandImpl extends CommandImpl implements RememberCommand
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (prop: ");
     result.append(prop);
-    result.append(", var: ");
-    result.append(var);
     result.append(')');
     return result.toString();
   }

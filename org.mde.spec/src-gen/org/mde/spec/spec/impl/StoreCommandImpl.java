@@ -4,13 +4,16 @@
 package org.mde.spec.spec.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.SpecPackage;
 import org.mde.spec.spec.StoreCommand;
+import org.mde.spec.spec.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,8 +23,8 @@ import org.mde.spec.spec.StoreCommand;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.StoreCommandImpl#getName <em>Name</em>}</li>
- *   <li>{@link org.mde.spec.spec.impl.StoreCommandImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.StoreCommandImpl#getVar <em>Var</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.StoreCommandImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @generated
@@ -29,44 +32,34 @@ import org.mde.spec.spec.StoreCommand;
 public class StoreCommandImpl extends CommandImpl implements StoreCommand
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getVar() <em>Var</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getVar()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected Variable var;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected static final String VAL_EDEFAULT = null;
 
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getValue()
-   * @generated
-   * @ordered
-   */
-  protected String value = VALUE_EDEFAULT;
+  protected String val = VAL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -95,9 +88,9 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
    * @generated
    */
   @Override
-  public String getName()
+  public Variable getVar()
   {
-    return name;
+    return var;
   }
 
   /**
@@ -105,13 +98,16 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setName(String newName)
+  public NotificationChain basicSetVar(Variable newVar, NotificationChain msgs)
   {
-    String oldName = name;
-    name = newName;
+    Variable oldVar = var;
+    var = newVar;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.STORE_COMMAND__NAME, oldName, name));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.STORE_COMMAND__VAR, oldVar, newVar);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -120,9 +116,20 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
    * @generated
    */
   @Override
-  public String getValue()
+  public void setVar(Variable newVar)
   {
-    return value;
+    if (newVar != var)
+    {
+      NotificationChain msgs = null;
+      if (var != null)
+        msgs = ((InternalEObject)var).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.STORE_COMMAND__VAR, null, msgs);
+      if (newVar != null)
+        msgs = ((InternalEObject)newVar).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.STORE_COMMAND__VAR, null, msgs);
+      msgs = basicSetVar(newVar, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.STORE_COMMAND__VAR, newVar, newVar));
   }
 
   /**
@@ -131,12 +138,39 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
    * @generated
    */
   @Override
-  public void setValue(String newValue)
+  public String getVal()
   {
-    String oldValue = value;
-    value = newValue;
+    return val;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setVal(String newVal)
+  {
+    String oldVal = val;
+    val = newVal;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.STORE_COMMAND__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.STORE_COMMAND__VAL, oldVal, val));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case SpecPackage.STORE_COMMAND__VAR:
+        return basicSetVar(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
   }
 
   /**
@@ -149,10 +183,10 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
   {
     switch (featureID)
     {
-      case SpecPackage.STORE_COMMAND__NAME:
-        return getName();
-      case SpecPackage.STORE_COMMAND__VALUE:
-        return getValue();
+      case SpecPackage.STORE_COMMAND__VAR:
+        return getVar();
+      case SpecPackage.STORE_COMMAND__VAL:
+        return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -167,11 +201,11 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
   {
     switch (featureID)
     {
-      case SpecPackage.STORE_COMMAND__NAME:
-        setName((String)newValue);
+      case SpecPackage.STORE_COMMAND__VAR:
+        setVar((Variable)newValue);
         return;
-      case SpecPackage.STORE_COMMAND__VALUE:
-        setValue((String)newValue);
+      case SpecPackage.STORE_COMMAND__VAL:
+        setVal((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -187,11 +221,11 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
   {
     switch (featureID)
     {
-      case SpecPackage.STORE_COMMAND__NAME:
-        setName(NAME_EDEFAULT);
+      case SpecPackage.STORE_COMMAND__VAR:
+        setVar((Variable)null);
         return;
-      case SpecPackage.STORE_COMMAND__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case SpecPackage.STORE_COMMAND__VAL:
+        setVal(VAL_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -207,10 +241,10 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
   {
     switch (featureID)
     {
-      case SpecPackage.STORE_COMMAND__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case SpecPackage.STORE_COMMAND__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case SpecPackage.STORE_COMMAND__VAR:
+        return var != null;
+      case SpecPackage.STORE_COMMAND__VAL:
+        return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
     }
     return super.eIsSet(featureID);
   }
@@ -226,10 +260,8 @@ public class StoreCommandImpl extends CommandImpl implements StoreCommand
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", value: ");
-    result.append(value);
+    result.append(" (val: ");
+    result.append(val);
     result.append(')');
     return result.toString();
   }

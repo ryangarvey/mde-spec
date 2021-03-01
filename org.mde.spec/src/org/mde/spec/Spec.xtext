@@ -19,33 +19,20 @@ Command:
 ;
 
 OpenCommand:
-	{OpenCommand} "Open" STRING
-  | "Open" var=Variable
+	{OpenCommand} name="Open" (val=STRING | var=Variable)
 ;
 
-//VariableOrValue:
-//	var=[Variable]
-//  | val=STRING
-//  | element=ElementInScreen
-//;
-
 ClickCommand:
-	cmd="Click"
-  | "Click" "on" selector=Selector
-  | "Click" "at" point=Point
+	name="Click" ("on" selector=Selector | "at" point=Point)?
 ;
 
 SelectCommand:
-	"Within" value=Selector
-  | "Select" value=Selector
-  | "Select" "visible" value=Selector
+	name="Within" value=Selector
+  | name="Select" ("visible")? value=Selector
 ;
 
 Selector:
-	var=[Variable]
-  |	str=STRING   
-  | type=ElementType var=[Variable]
-  | type=ElementType str=STRING
+  (type=ElementType)? ("$"var=[Variable] | str=STRING)
 ;
 
 enum ElementType:
@@ -57,16 +44,15 @@ enum ElementType:
 ;
 
 StoreCommand:
-	"Store" name=ID "as" value=STRING
+	name="Store" var=Variable "as" val=STRING
 ;
 
 RememberCommand:
-	"Remember" prop=Property "as" var=ID
+	name="Remember" prop=Property "as" var=Variable
 ;
 
 PropertyCommand:
-	"Property" prop=Property cond=Condition val=STRING
-  | "Property" prop=Property cond=Condition var=[Variable]
+	name="Property" prop=Property cond=Condition (val=STRING | "$"var=[Variable])
 ;
 
 Property:
@@ -81,20 +67,15 @@ Condition:
 ;
 	
 TypeCommand:
-	"Type" str=STRING
-  | "Type" var=[Variable]
+	name="Type" (str=STRING | var=[Variable])
 ;
 
 SleepCommand:
-	"Sleep" "for" time=INT ("second" | "seconds")
+	name="Sleep" "for" time=INT ("second" | "seconds")
 ;
 
 Point:
 	"{" INT "," INT "}"
-;
-
-ElementInScreen:
-	element=ID
 ;
 
 terminal CUSTOM_COMMAND:

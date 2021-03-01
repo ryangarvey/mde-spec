@@ -24,15 +24,35 @@ import org.mde.spec.spec.Variable;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getVar <em>Var</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getStr <em>Str</em>}</li>
- *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class SelectorImpl extends MinimalEObjectImpl.Container implements Selector
 {
+  /**
+   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected static final ElementType TYPE_EDEFAULT = ElementType.BUTTON;
+
+  /**
+   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getType()
+   * @generated
+   * @ordered
+   */
+  protected ElementType type = TYPE_EDEFAULT;
+
   /**
    * The cached value of the '{@link #getVar() <em>Var</em>}' reference.
    * <!-- begin-user-doc -->
@@ -64,26 +84,6 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   protected String str = STR_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected static final ElementType TYPE_EDEFAULT = ElementType.BUTTON;
-
-  /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getType()
-   * @generated
-   * @ordered
-   */
-  protected ElementType type = TYPE_EDEFAULT;
-
-  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -102,6 +102,31 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.SELECTOR;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ElementType getType()
+  {
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setType(ElementType newType)
+  {
+    ElementType oldType = type;
+    type = newType == null ? TYPE_EDEFAULT : newType;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__TYPE, oldType, type));
   }
 
   /**
@@ -180,42 +205,17 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public ElementType getType()
-  {
-    return type;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setType(ElementType newType)
-  {
-    ElementType oldType = type;
-    type = newType == null ? TYPE_EDEFAULT : newType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__TYPE, oldType, type));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
     {
+      case SpecPackage.SELECTOR__TYPE:
+        return getType();
       case SpecPackage.SELECTOR__VAR:
         if (resolve) return getVar();
         return basicGetVar();
       case SpecPackage.SELECTOR__STR:
         return getStr();
-      case SpecPackage.SELECTOR__TYPE:
-        return getType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -230,14 +230,14 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
+      case SpecPackage.SELECTOR__TYPE:
+        setType((ElementType)newValue);
+        return;
       case SpecPackage.SELECTOR__VAR:
         setVar((Variable)newValue);
         return;
       case SpecPackage.SELECTOR__STR:
         setStr((String)newValue);
-        return;
-      case SpecPackage.SELECTOR__TYPE:
-        setType((ElementType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -253,14 +253,14 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
+      case SpecPackage.SELECTOR__TYPE:
+        setType(TYPE_EDEFAULT);
+        return;
       case SpecPackage.SELECTOR__VAR:
         setVar((Variable)null);
         return;
       case SpecPackage.SELECTOR__STR:
         setStr(STR_EDEFAULT);
-        return;
-      case SpecPackage.SELECTOR__TYPE:
-        setType(TYPE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -276,12 +276,12 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
   {
     switch (featureID)
     {
+      case SpecPackage.SELECTOR__TYPE:
+        return type != TYPE_EDEFAULT;
       case SpecPackage.SELECTOR__VAR:
         return var != null;
       case SpecPackage.SELECTOR__STR:
         return STR_EDEFAULT == null ? str != null : !STR_EDEFAULT.equals(str);
-      case SpecPackage.SELECTOR__TYPE:
-        return type != TYPE_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -297,10 +297,10 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (str: ");
-    result.append(str);
-    result.append(", type: ");
+    result.append(" (type: ");
     result.append(type);
+    result.append(", str: ");
+    result.append(str);
     result.append(')');
     return result.toString();
   }

@@ -13,7 +13,6 @@ package org.mde.spec.spec;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.ClickCommand#getCmd <em>Cmd</em>}</li>
  *   <li>{@link org.mde.spec.spec.ClickCommand#getSelector <em>Selector</em>}</li>
  *   <li>{@link org.mde.spec.spec.ClickCommand#getPoint <em>Point</em>}</li>
  * </ul>
@@ -24,28 +23,6 @@ package org.mde.spec.spec;
  */
 public interface ClickCommand extends Command
 {
-  /**
-   * Returns the value of the '<em><b>Cmd</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Cmd</em>' attribute.
-   * @see #setCmd(String)
-   * @see org.mde.spec.spec.SpecPackage#getClickCommand_Cmd()
-   * @model
-   * @generated
-   */
-  String getCmd();
-
-  /**
-   * Sets the value of the '{@link org.mde.spec.spec.ClickCommand#getCmd <em>Cmd</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Cmd</em>' attribute.
-   * @see #getCmd()
-   * @generated
-   */
-  void setCmd(String value);
-
   /**
    * Returns the value of the '<em><b>Selector</b></em>' containment reference.
    * <!-- begin-user-doc -->
