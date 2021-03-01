@@ -1,9 +1,0 @@
-grammar org.mde.spec.Spec with org.eclipse.xtext.common.Terminals
-
-generate spec "http://www.mde.org/spec/Spec"
-
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';

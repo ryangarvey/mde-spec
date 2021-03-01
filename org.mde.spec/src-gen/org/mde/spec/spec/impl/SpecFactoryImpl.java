@@ -70,15 +70,13 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
       case SpecPackage.COMMAND: return createCommand();
       case SpecPackage.OPEN_COMMAND: return createOpenCommand();
       case SpecPackage.CLICK_COMMAND: return createClickCommand();
-      case SpecPackage.COMMENT_COMMAND: return createCommentCommand();
       case SpecPackage.SELECT_COMMAND: return createSelectCommand();
+      case SpecPackage.SELECTOR: return createSelector();
+      case SpecPackage.STORE_COMMAND: return createStoreCommand();
       case SpecPackage.REMEMBER_COMMAND: return createRememberCommand();
       case SpecPackage.PROPERTY_COMMAND: return createPropertyCommand();
       case SpecPackage.TYPE_COMMAND: return createTypeCommand();
       case SpecPackage.SLEEP_COMMAND: return createSleepCommand();
-      case SpecPackage.CUSTOM_COMMAND: return createCustomCommand();
-      case SpecPackage.SELECTOR: return createSelector();
-      case SpecPackage.VALUE: return createValue();
       case SpecPackage.VARIABLE: return createVariable();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -173,10 +171,10 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
    * @generated
    */
   @Override
-  public CommentCommand createCommentCommand()
+  public SelectCommand createSelectCommand()
   {
-    CommentCommandImpl commentCommand = new CommentCommandImpl();
-    return commentCommand;
+    SelectCommandImpl selectCommand = new SelectCommandImpl();
+    return selectCommand;
   }
 
   /**
@@ -185,10 +183,22 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
    * @generated
    */
   @Override
-  public SelectCommand createSelectCommand()
+  public Selector createSelector()
   {
-    SelectCommandImpl selectCommand = new SelectCommandImpl();
-    return selectCommand;
+    SelectorImpl selector = new SelectorImpl();
+    return selector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StoreCommand createStoreCommand()
+  {
+    StoreCommandImpl storeCommand = new StoreCommandImpl();
+    return storeCommand;
   }
 
   /**
@@ -237,42 +247,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     SleepCommandImpl sleepCommand = new SleepCommandImpl();
     return sleepCommand;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public CustomCommand createCustomCommand()
-  {
-    CustomCommandImpl customCommand = new CustomCommandImpl();
-    return customCommand;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Selector createSelector()
-  {
-    SelectorImpl selector = new SelectorImpl();
-    return selector;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Value createValue()
-  {
-    ValueImpl value = new ValueImpl();
-    return value;
   }
 
   /**

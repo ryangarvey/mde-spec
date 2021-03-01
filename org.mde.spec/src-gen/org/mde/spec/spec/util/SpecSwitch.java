@@ -103,19 +103,26 @@ public class SpecSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SpecPackage.COMMENT_COMMAND:
-      {
-        CommentCommand commentCommand = (CommentCommand)theEObject;
-        T result = caseCommentCommand(commentCommand);
-        if (result == null) result = caseCommand(commentCommand);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SpecPackage.SELECT_COMMAND:
       {
         SelectCommand selectCommand = (SelectCommand)theEObject;
         T result = caseSelectCommand(selectCommand);
         if (result == null) result = caseCommand(selectCommand);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SpecPackage.SELECTOR:
+      {
+        Selector selector = (Selector)theEObject;
+        T result = caseSelector(selector);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SpecPackage.STORE_COMMAND:
+      {
+        StoreCommand storeCommand = (StoreCommand)theEObject;
+        T result = caseStoreCommand(storeCommand);
+        if (result == null) result = caseCommand(storeCommand);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -148,28 +155,6 @@ public class SpecSwitch<T> extends Switch<T>
         SleepCommand sleepCommand = (SleepCommand)theEObject;
         T result = caseSleepCommand(sleepCommand);
         if (result == null) result = caseCommand(sleepCommand);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SpecPackage.CUSTOM_COMMAND:
-      {
-        CustomCommand customCommand = (CustomCommand)theEObject;
-        T result = caseCustomCommand(customCommand);
-        if (result == null) result = caseCommand(customCommand);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SpecPackage.SELECTOR:
-      {
-        Selector selector = (Selector)theEObject;
-        T result = caseSelector(selector);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SpecPackage.VALUE:
-      {
-        Value value = (Value)theEObject;
-        T result = caseValue(value);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -249,22 +234,6 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Comment Command</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Comment Command</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCommentCommand(CommentCommand object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Select Command</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -276,6 +245,38 @@ public class SpecSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSelectCommand(SelectCommand object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Selector</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Selector</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseSelector(Selector object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Store Command</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Store Command</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStoreCommand(StoreCommand object)
   {
     return null;
   }
@@ -340,54 +341,6 @@ public class SpecSwitch<T> extends Switch<T>
    * @generated
    */
   public T caseSleepCommand(SleepCommand object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Custom Command</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Custom Command</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCustomCommand(CustomCommand object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Selector</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Selector</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSelector(Selector object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Value</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Value</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseValue(Value object)
   {
     return null;
   }

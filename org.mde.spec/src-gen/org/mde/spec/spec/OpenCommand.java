@@ -13,7 +13,8 @@ package org.mde.spec.spec;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.OpenCommand#getValue <em>Value</em>}</li>
+ *   <li>{@link org.mde.spec.spec.OpenCommand#getVal <em>Val</em>}</li>
+ *   <li>{@link org.mde.spec.spec.OpenCommand#getVar <em>Var</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getOpenCommand()
@@ -23,25 +24,47 @@ package org.mde.spec.spec;
 public interface OpenCommand extends Command
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' containment reference.
+   * Returns the value of the '<em><b>Val</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' containment reference.
-   * @see #setValue(Value)
-   * @see org.mde.spec.spec.SpecPackage#getOpenCommand_Value()
+   * @return the value of the '<em>Val</em>' attribute.
+   * @see #setVal(String)
+   * @see org.mde.spec.spec.SpecPackage#getOpenCommand_Val()
+   * @model
+   * @generated
+   */
+  String getVal();
+
+  /**
+   * Sets the value of the '{@link org.mde.spec.spec.OpenCommand#getVal <em>Val</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Val</em>' attribute.
+   * @see #getVal()
+   * @generated
+   */
+  void setVal(String value);
+
+  /**
+   * Returns the value of the '<em><b>Var</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Var</em>' containment reference.
+   * @see #setVar(Variable)
+   * @see org.mde.spec.spec.SpecPackage#getOpenCommand_Var()
    * @model containment="true"
    * @generated
    */
-  Value getValue();
+  Variable getVar();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.OpenCommand#getValue <em>Value</em>}' containment reference.
+   * Sets the value of the '{@link org.mde.spec.spec.OpenCommand#getVar <em>Var</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' containment reference.
-   * @see #getValue()
+   * @param value the new value of the '<em>Var</em>' containment reference.
+   * @see #getVar()
    * @generated
    */
-  void setValue(Value value);
+  void setVar(Variable value);
 
 } // OpenCommand

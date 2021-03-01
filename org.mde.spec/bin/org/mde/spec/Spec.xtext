@@ -8,54 +8,31 @@ Model:
 Command:
 	OpenCommand
   | ClickCommand
-  | CommentCommand
+  | StoreCommand
   | SelectCommand
   | RememberCommand
   | PropertyCommand
   | TypeCommand
   | SleepCommand
-  | CustomCommand
+  | comment=SL_COMMENT
+  | custom=CUSTOM_COMMAND
 ;
 
 OpenCommand:
-	"Open" value=Value
+	{OpenCommand} name="Open" (val=STRING | var=Variable)
 ;
 
 ClickCommand:
-	cmd="Click"
-  | "Click" "on" selector=Selector
-  | "Click" "at" point=Point
-;
-
-
-CommentCommand:
-	"#" str=STRING
+	name="Click" ("on" selector=Selector | "at" point=Point)?
 ;
 
 SelectCommand:
-	"Within" value=Selector
-  | "Select" value=Selector
-  | "Select" "visible" value=Selector
+	name="Within" value=Selector
+  | name="Select" ("visible")? value=Selector
 ;
 
-RememberCommand:
-	"Remember" prop=Property "as" var=Variable
-;
-
-PropertyCommand:
-	"Property" prop=Property cond=Condition val=Value
-;
-	
-TypeCommand:
-	"Type" val=Value
-;
-
-SleepCommand:
-	"Sleep" "for" time=INT ("second" | "seconds")
-;
-
-CustomCommand:
-	"!" command=STRING
+Selector:
+  (type=ElementType)? ("$"var=[Variable] | str=STRING)
 ;
 
 enum ElementType:
@@ -66,37 +43,50 @@ enum ElementType:
   | textarea="textarea"
 ;
 
-Selector:
-    val=STRING                
-  | type=ElementType val=STRING
-  | var=Variable                
-  | type=ElementType var=Variable
+StoreCommand:
+	name="Store" var=Variable "as" val=STRING
+;
+
+RememberCommand:
+	name="Remember" prop=Property "as" var=Variable
+;
+
+PropertyCommand:
+	name="Property" prop=Property cond=Condition (val=STRING | "$"var=[Variable])
 ;
 
 Property:
-	PropertyType
-;
-
-PropertyType:
     "text"
   | "class"
   | "value"
-;
-
-Value:
-	val=Variable
-  | str=STRING
 ;
 
 Condition:
 	"should" "be"
   | "should" "not" "be"
 ;
+	
+TypeCommand:
+	name="Type" (str=STRING | var=[Variable])
+;
+
+SleepCommand:
+	name="Sleep" "for" time=INT ("second" | "seconds")
+;
 
 Point:
 	"{" INT "," INT "}"
 ;
 
+terminal CUSTOM_COMMAND:
+	'!' !('\n'|'\r')* ('\r'? '\n')?
+;
+
+@Override
+terminal SL_COMMENT:
+    '#' !('\n'|'\r')* ('\r'? '\n')?
+;
+
 Variable:
-	"$" name=STRING // fix this
+	"$" name=ID
 ;

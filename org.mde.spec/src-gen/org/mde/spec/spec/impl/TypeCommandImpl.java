@@ -4,7 +4,6 @@
 package org.mde.spec.spec.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -13,7 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.SpecPackage;
 import org.mde.spec.spec.TypeCommand;
-import org.mde.spec.spec.Value;
+import org.mde.spec.spec.Variable;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +22,8 @@ import org.mde.spec.spec.Value;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.TypeCommandImpl#getVal <em>Val</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.TypeCommandImpl#getStr <em>Str</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.TypeCommandImpl#getVar <em>Var</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,14 +31,34 @@ import org.mde.spec.spec.Value;
 public class TypeCommandImpl extends CommandImpl implements TypeCommand
 {
   /**
-   * The cached value of the '{@link #getVal() <em>Val</em>}' containment reference.
+   * The default value of the '{@link #getStr() <em>Str</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVal()
+   * @see #getStr()
    * @generated
    * @ordered
    */
-  protected Value val;
+  protected static final String STR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getStr() <em>Str</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getStr()
+   * @generated
+   * @ordered
+   */
+  protected String str = STR_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getVar() <em>Var</em>}' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getVar()
+   * @generated
+   * @ordered
+   */
+  protected Variable var;
 
   /**
    * <!-- begin-user-doc -->
@@ -67,9 +87,9 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * @generated
    */
   @Override
-  public Value getVal()
+  public String getStr()
   {
-    return val;
+    return str;
   }
 
   /**
@@ -77,16 +97,13 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetVal(Value newVal, NotificationChain msgs)
+  @Override
+  public void setStr(String newStr)
   {
-    Value oldVal = val;
-    val = newVal;
+    String oldStr = str;
+    str = newStr;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.TYPE_COMMAND__VAL, oldVal, newVal);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.TYPE_COMMAND__STR, oldStr, str));
   }
 
   /**
@@ -95,20 +112,29 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * @generated
    */
   @Override
-  public void setVal(Value newVal)
+  public Variable getVar()
   {
-    if (newVal != val)
+    if (var != null && var.eIsProxy())
     {
-      NotificationChain msgs = null;
-      if (val != null)
-        msgs = ((InternalEObject)val).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.TYPE_COMMAND__VAL, null, msgs);
-      if (newVal != null)
-        msgs = ((InternalEObject)newVal).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.TYPE_COMMAND__VAL, null, msgs);
-      msgs = basicSetVal(newVal, msgs);
-      if (msgs != null) msgs.dispatch();
+      InternalEObject oldVar = (InternalEObject)var;
+      var = (Variable)eResolveProxy(oldVar);
+      if (var != oldVar)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, SpecPackage.TYPE_COMMAND__VAR, oldVar, var));
+      }
     }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.TYPE_COMMAND__VAL, newVal, newVal));
+    return var;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Variable basicGetVar()
+  {
+    return var;
   }
 
   /**
@@ -117,14 +143,12 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  public void setVar(Variable newVar)
   {
-    switch (featureID)
-    {
-      case SpecPackage.TYPE_COMMAND__VAL:
-        return basicSetVal(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+    Variable oldVar = var;
+    var = newVar;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.TYPE_COMMAND__VAR, oldVar, var));
   }
 
   /**
@@ -137,8 +161,11 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
   {
     switch (featureID)
     {
-      case SpecPackage.TYPE_COMMAND__VAL:
-        return getVal();
+      case SpecPackage.TYPE_COMMAND__STR:
+        return getStr();
+      case SpecPackage.TYPE_COMMAND__VAR:
+        if (resolve) return getVar();
+        return basicGetVar();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -153,8 +180,11 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
   {
     switch (featureID)
     {
-      case SpecPackage.TYPE_COMMAND__VAL:
-        setVal((Value)newValue);
+      case SpecPackage.TYPE_COMMAND__STR:
+        setStr((String)newValue);
+        return;
+      case SpecPackage.TYPE_COMMAND__VAR:
+        setVar((Variable)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -170,8 +200,11 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
   {
     switch (featureID)
     {
-      case SpecPackage.TYPE_COMMAND__VAL:
-        setVal((Value)null);
+      case SpecPackage.TYPE_COMMAND__STR:
+        setStr(STR_EDEFAULT);
+        return;
+      case SpecPackage.TYPE_COMMAND__VAR:
+        setVar((Variable)null);
         return;
     }
     super.eUnset(featureID);
@@ -187,10 +220,29 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
   {
     switch (featureID)
     {
-      case SpecPackage.TYPE_COMMAND__VAL:
-        return val != null;
+      case SpecPackage.TYPE_COMMAND__STR:
+        return STR_EDEFAULT == null ? str != null : !STR_EDEFAULT.equals(str);
+      case SpecPackage.TYPE_COMMAND__VAR:
+        return var != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (str: ");
+    result.append(str);
+    result.append(')');
+    return result.toString();
   }
 
 } //TypeCommandImpl

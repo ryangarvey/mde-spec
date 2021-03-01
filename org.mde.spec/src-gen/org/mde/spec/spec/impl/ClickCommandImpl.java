@@ -23,7 +23,6 @@ import org.mde.spec.spec.SpecPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.ClickCommandImpl#getCmd <em>Cmd</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.ClickCommandImpl#getSelector <em>Selector</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.ClickCommandImpl#getPoint <em>Point</em>}</li>
  * </ul>
@@ -32,26 +31,6 @@ import org.mde.spec.spec.SpecPackage;
  */
 public class ClickCommandImpl extends CommandImpl implements ClickCommand
 {
-  /**
-   * The default value of the '{@link #getCmd() <em>Cmd</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCmd()
-   * @generated
-   * @ordered
-   */
-  protected static final String CMD_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getCmd() <em>Cmd</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getCmd()
-   * @generated
-   * @ordered
-   */
-  protected String cmd = CMD_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getSelector() <em>Selector</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -101,31 +80,6 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.CLICK_COMMAND;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getCmd()
-  {
-    return cmd;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setCmd(String newCmd)
-  {
-    String oldCmd = cmd;
-    cmd = newCmd;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.CLICK_COMMAND__CMD, oldCmd, cmd));
   }
 
   /**
@@ -229,8 +183,6 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
   {
     switch (featureID)
     {
-      case SpecPackage.CLICK_COMMAND__CMD:
-        return getCmd();
       case SpecPackage.CLICK_COMMAND__SELECTOR:
         return getSelector();
       case SpecPackage.CLICK_COMMAND__POINT:
@@ -249,9 +201,6 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
   {
     switch (featureID)
     {
-      case SpecPackage.CLICK_COMMAND__CMD:
-        setCmd((String)newValue);
-        return;
       case SpecPackage.CLICK_COMMAND__SELECTOR:
         setSelector((Selector)newValue);
         return;
@@ -272,9 +221,6 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
   {
     switch (featureID)
     {
-      case SpecPackage.CLICK_COMMAND__CMD:
-        setCmd(CMD_EDEFAULT);
-        return;
       case SpecPackage.CLICK_COMMAND__SELECTOR:
         setSelector((Selector)null);
         return;
@@ -295,8 +241,6 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
   {
     switch (featureID)
     {
-      case SpecPackage.CLICK_COMMAND__CMD:
-        return CMD_EDEFAULT == null ? cmd != null : !CMD_EDEFAULT.equals(cmd);
       case SpecPackage.CLICK_COMMAND__SELECTOR:
         return selector != null;
       case SpecPackage.CLICK_COMMAND__POINT:
@@ -316,9 +260,7 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (cmd: ");
-    result.append(cmd);
-    result.append(", point: ");
+    result.append(" (point: ");
     result.append(point);
     result.append(')');
     return result.toString();

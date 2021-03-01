@@ -21,11 +21,13 @@ import org.mde.spec.services.SpecGrammarAccess;
 public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected SpecGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_SelectCommand_VisibleKeyword_1_1_q;
 	protected AbstractElementAlias match_SleepCommand_SecondKeyword_3_0_or_SecondsKeyword_3_1;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (SpecGrammarAccess) access;
+		match_SelectCommand_VisibleKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getSelectCommandAccess().getVisibleKeyword_1_1());
 		match_SleepCommand_SecondKeyword_3_0_or_SecondsKeyword_3_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getSleepCommandAccess().getSecondKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getSleepCommandAccess().getSecondsKeyword_3_1()));
 	}
 	
@@ -41,12 +43,25 @@ public class SpecSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_SleepCommand_SecondKeyword_3_0_or_SecondsKeyword_3_1.equals(syntax))
+			if (match_SelectCommand_VisibleKeyword_1_1_q.equals(syntax))
+				emit_SelectCommand_VisibleKeyword_1_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_SleepCommand_SecondKeyword_3_0_or_SecondsKeyword_3_1.equals(syntax))
 				emit_SleepCommand_SecondKeyword_3_0_or_SecondsKeyword_3_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     'visible'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name='Select' (ambiguity) value=Selector
+	 */
+	protected void emit_SelectCommand_VisibleKeyword_1_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     'second' | 'seconds'

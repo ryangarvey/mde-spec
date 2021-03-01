@@ -97,13 +97,40 @@ public interface SpecPackage extends EPackage
   int COMMAND = 1;
 
   /**
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__COMMENT = 0;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__CUSTOM = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COMMAND__NAME = 2;
+
+  /**
    * The number of structural features of the '<em>Command</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COMMAND_FEATURE_COUNT = 0;
+  int COMMAND_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.mde.spec.spec.impl.OpenCommandImpl <em>Open Command</em>}' class.
@@ -116,13 +143,49 @@ public interface SpecPackage extends EPackage
   int OPEN_COMMAND = 2;
 
   /**
-   * The feature id for the '<em><b>Value</b></em>' containment reference.
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int OPEN_COMMAND__VALUE = COMMAND_FEATURE_COUNT + 0;
+  int OPEN_COMMAND__COMMENT = COMMAND__COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPEN_COMMAND__CUSTOM = COMMAND__CUSTOM;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPEN_COMMAND__NAME = COMMAND__NAME;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPEN_COMMAND__VAL = COMMAND_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Var</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OPEN_COMMAND__VAR = COMMAND_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Open Command</em>' class.
@@ -131,7 +194,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int OPEN_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+  int OPEN_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.mde.spec.spec.impl.ClickCommandImpl <em>Click Command</em>}' class.
@@ -144,13 +207,31 @@ public interface SpecPackage extends EPackage
   int CLICK_COMMAND = 3;
 
   /**
-   * The feature id for the '<em><b>Cmd</b></em>' attribute.
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CLICK_COMMAND__CMD = COMMAND_FEATURE_COUNT + 0;
+  int CLICK_COMMAND__COMMENT = COMMAND__COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLICK_COMMAND__CUSTOM = COMMAND__CUSTOM;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CLICK_COMMAND__NAME = COMMAND__NAME;
 
   /**
    * The feature id for the '<em><b>Selector</b></em>' containment reference.
@@ -159,7 +240,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLICK_COMMAND__SELECTOR = COMMAND_FEATURE_COUNT + 1;
+  int CLICK_COMMAND__SELECTOR = COMMAND_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Point</b></em>' attribute.
@@ -168,7 +249,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLICK_COMMAND__POINT = COMMAND_FEATURE_COUNT + 2;
+  int CLICK_COMMAND__POINT = COMMAND_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Click Command</em>' class.
@@ -177,35 +258,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int CLICK_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 3;
-
-  /**
-   * The meta object id for the '{@link org.mde.spec.spec.impl.CommentCommandImpl <em>Comment Command</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.mde.spec.spec.impl.CommentCommandImpl
-   * @see org.mde.spec.spec.impl.SpecPackageImpl#getCommentCommand()
-   * @generated
-   */
-  int COMMENT_COMMAND = 4;
-
-  /**
-   * The feature id for the '<em><b>Str</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMMENT_COMMAND__STR = COMMAND_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Comment Command</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int COMMENT_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+  int CLICK_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.mde.spec.spec.impl.SelectCommandImpl <em>Select Command</em>}' class.
@@ -215,7 +268,34 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getSelectCommand()
    * @generated
    */
-  int SELECT_COMMAND = 5;
+  int SELECT_COMMAND = 4;
+
+  /**
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_COMMAND__COMMENT = COMMAND__COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_COMMAND__CUSTOM = COMMAND__CUSTOM;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECT_COMMAND__NAME = COMMAND__NAME;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' containment reference.
@@ -236,6 +316,116 @@ public interface SpecPackage extends EPackage
   int SELECT_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.mde.spec.spec.impl.SelectorImpl <em>Selector</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.mde.spec.spec.impl.SelectorImpl
+   * @see org.mde.spec.spec.impl.SpecPackageImpl#getSelector()
+   * @generated
+   */
+  int SELECTOR = 5;
+
+  /**
+   * The feature id for the '<em><b>Type</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECTOR__TYPE = 0;
+
+  /**
+   * The feature id for the '<em><b>Var</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECTOR__VAR = 1;
+
+  /**
+   * The feature id for the '<em><b>Str</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECTOR__STR = 2;
+
+  /**
+   * The number of structural features of the '<em>Selector</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SELECTOR_FEATURE_COUNT = 3;
+
+  /**
+   * The meta object id for the '{@link org.mde.spec.spec.impl.StoreCommandImpl <em>Store Command</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.mde.spec.spec.impl.StoreCommandImpl
+   * @see org.mde.spec.spec.impl.SpecPackageImpl#getStoreCommand()
+   * @generated
+   */
+  int STORE_COMMAND = 6;
+
+  /**
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STORE_COMMAND__COMMENT = COMMAND__COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STORE_COMMAND__CUSTOM = COMMAND__CUSTOM;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STORE_COMMAND__NAME = COMMAND__NAME;
+
+  /**
+   * The feature id for the '<em><b>Var</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STORE_COMMAND__VAR = COMMAND_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Val</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STORE_COMMAND__VAL = COMMAND_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Store Command</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STORE_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
+
+  /**
    * The meta object id for the '{@link org.mde.spec.spec.impl.RememberCommandImpl <em>Remember Command</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -243,7 +433,34 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getRememberCommand()
    * @generated
    */
-  int REMEMBER_COMMAND = 6;
+  int REMEMBER_COMMAND = 7;
+
+  /**
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REMEMBER_COMMAND__COMMENT = COMMAND__COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REMEMBER_COMMAND__CUSTOM = COMMAND__CUSTOM;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REMEMBER_COMMAND__NAME = COMMAND__NAME;
 
   /**
    * The feature id for the '<em><b>Prop</b></em>' attribute.
@@ -280,7 +497,34 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getPropertyCommand()
    * @generated
    */
-  int PROPERTY_COMMAND = 7;
+  int PROPERTY_COMMAND = 8;
+
+  /**
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_COMMAND__COMMENT = COMMAND__COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_COMMAND__CUSTOM = COMMAND__CUSTOM;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_COMMAND__NAME = COMMAND__NAME;
 
   /**
    * The feature id for the '<em><b>Prop</b></em>' attribute.
@@ -301,7 +545,7 @@ public interface SpecPackage extends EPackage
   int PROPERTY_COMMAND__COND = COMMAND_FEATURE_COUNT + 1;
 
   /**
-   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * The feature id for the '<em><b>Val</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -310,13 +554,22 @@ public interface SpecPackage extends EPackage
   int PROPERTY_COMMAND__VAL = COMMAND_FEATURE_COUNT + 2;
 
   /**
+   * The feature id for the '<em><b>Var</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY_COMMAND__VAR = COMMAND_FEATURE_COUNT + 3;
+
+  /**
    * The number of structural features of the '<em>Property Command</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 3;
+  int PROPERTY_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link org.mde.spec.spec.impl.TypeCommandImpl <em>Type Command</em>}' class.
@@ -326,16 +579,52 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getTypeCommand()
    * @generated
    */
-  int TYPE_COMMAND = 8;
+  int TYPE_COMMAND = 9;
 
   /**
-   * The feature id for the '<em><b>Val</b></em>' containment reference.
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int TYPE_COMMAND__VAL = COMMAND_FEATURE_COUNT + 0;
+  int TYPE_COMMAND__COMMENT = COMMAND__COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_COMMAND__CUSTOM = COMMAND__CUSTOM;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_COMMAND__NAME = COMMAND__NAME;
+
+  /**
+   * The feature id for the '<em><b>Str</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_COMMAND__STR = COMMAND_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Var</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int TYPE_COMMAND__VAR = COMMAND_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Type Command</em>' class.
@@ -344,7 +633,7 @@ public interface SpecPackage extends EPackage
    * @generated
    * @ordered
    */
-  int TYPE_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+  int TYPE_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 2;
 
   /**
    * The meta object id for the '{@link org.mde.spec.spec.impl.SleepCommandImpl <em>Sleep Command</em>}' class.
@@ -354,7 +643,34 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getSleepCommand()
    * @generated
    */
-  int SLEEP_COMMAND = 9;
+  int SLEEP_COMMAND = 10;
+
+  /**
+   * The feature id for the '<em><b>Comment</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SLEEP_COMMAND__COMMENT = COMMAND__COMMENT;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SLEEP_COMMAND__CUSTOM = COMMAND__CUSTOM;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SLEEP_COMMAND__NAME = COMMAND__NAME;
 
   /**
    * The feature id for the '<em><b>Time</b></em>' attribute.
@@ -375,117 +691,6 @@ public interface SpecPackage extends EPackage
   int SLEEP_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
   /**
-   * The meta object id for the '{@link org.mde.spec.spec.impl.CustomCommandImpl <em>Custom Command</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.mde.spec.spec.impl.CustomCommandImpl
-   * @see org.mde.spec.spec.impl.SpecPackageImpl#getCustomCommand()
-   * @generated
-   */
-  int CUSTOM_COMMAND = 10;
-
-  /**
-   * The feature id for the '<em><b>Command</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_COMMAND__COMMAND = COMMAND_FEATURE_COUNT + 0;
-
-  /**
-   * The number of structural features of the '<em>Custom Command</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int CUSTOM_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
-
-  /**
-   * The meta object id for the '{@link org.mde.spec.spec.impl.SelectorImpl <em>Selector</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.mde.spec.spec.impl.SelectorImpl
-   * @see org.mde.spec.spec.impl.SpecPackageImpl#getSelector()
-   * @generated
-   */
-  int SELECTOR = 11;
-
-  /**
-   * The feature id for the '<em><b>Val</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECTOR__VAL = 0;
-
-  /**
-   * The feature id for the '<em><b>Type</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECTOR__TYPE = 1;
-
-  /**
-   * The feature id for the '<em><b>Var</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECTOR__VAR = 2;
-
-  /**
-   * The number of structural features of the '<em>Selector</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int SELECTOR_FEATURE_COUNT = 3;
-
-  /**
-   * The meta object id for the '{@link org.mde.spec.spec.impl.ValueImpl <em>Value</em>}' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see org.mde.spec.spec.impl.ValueImpl
-   * @see org.mde.spec.spec.impl.SpecPackageImpl#getValue()
-   * @generated
-   */
-  int VALUE = 12;
-
-  /**
-   * The feature id for the '<em><b>Val</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE__VAL = 0;
-
-  /**
-   * The feature id for the '<em><b>Str</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE__STR = 1;
-
-  /**
-   * The number of structural features of the '<em>Value</em>' class.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int VALUE_FEATURE_COUNT = 2;
-
-  /**
    * The meta object id for the '{@link org.mde.spec.spec.impl.VariableImpl <em>Variable</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -493,7 +698,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getVariable()
    * @generated
    */
-  int VARIABLE = 13;
+  int VARIABLE = 11;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -521,7 +726,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getElementType()
    * @generated
    */
-  int ELEMENT_TYPE = 14;
+  int ELEMENT_TYPE = 12;
 
 
   /**
@@ -556,6 +761,39 @@ public interface SpecPackage extends EPackage
   EClass getCommand();
 
   /**
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.Command#getComment <em>Comment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Comment</em>'.
+   * @see org.mde.spec.spec.Command#getComment()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_Comment();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.Command#getCustom <em>Custom</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Custom</em>'.
+   * @see org.mde.spec.spec.Command#getCustom()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_Custom();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.Command#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.mde.spec.spec.Command#getName()
+   * @see #getCommand()
+   * @generated
+   */
+  EAttribute getCommand_Name();
+
+  /**
    * Returns the meta object for class '{@link org.mde.spec.spec.OpenCommand <em>Open Command</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -566,15 +804,26 @@ public interface SpecPackage extends EPackage
   EClass getOpenCommand();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.mde.spec.spec.OpenCommand#getValue <em>Value</em>}'.
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.OpenCommand#getVal <em>Val</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Value</em>'.
-   * @see org.mde.spec.spec.OpenCommand#getValue()
+   * @return the meta object for the attribute '<em>Val</em>'.
+   * @see org.mde.spec.spec.OpenCommand#getVal()
    * @see #getOpenCommand()
    * @generated
    */
-  EReference getOpenCommand_Value();
+  EAttribute getOpenCommand_Val();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.mde.spec.spec.OpenCommand#getVar <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Var</em>'.
+   * @see org.mde.spec.spec.OpenCommand#getVar()
+   * @see #getOpenCommand()
+   * @generated
+   */
+  EReference getOpenCommand_Var();
 
   /**
    * Returns the meta object for class '{@link org.mde.spec.spec.ClickCommand <em>Click Command</em>}'.
@@ -585,17 +834,6 @@ public interface SpecPackage extends EPackage
    * @generated
    */
   EClass getClickCommand();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.mde.spec.spec.ClickCommand#getCmd <em>Cmd</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Cmd</em>'.
-   * @see org.mde.spec.spec.ClickCommand#getCmd()
-   * @see #getClickCommand()
-   * @generated
-   */
-  EAttribute getClickCommand_Cmd();
 
   /**
    * Returns the meta object for the containment reference '{@link org.mde.spec.spec.ClickCommand#getSelector <em>Selector</em>}'.
@@ -620,27 +858,6 @@ public interface SpecPackage extends EPackage
   EAttribute getClickCommand_Point();
 
   /**
-   * Returns the meta object for class '{@link org.mde.spec.spec.CommentCommand <em>Comment Command</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Comment Command</em>'.
-   * @see org.mde.spec.spec.CommentCommand
-   * @generated
-   */
-  EClass getCommentCommand();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.mde.spec.spec.CommentCommand#getStr <em>Str</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Str</em>'.
-   * @see org.mde.spec.spec.CommentCommand#getStr()
-   * @see #getCommentCommand()
-   * @generated
-   */
-  EAttribute getCommentCommand_Str();
-
-  /**
    * Returns the meta object for class '{@link org.mde.spec.spec.SelectCommand <em>Select Command</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -660,6 +877,81 @@ public interface SpecPackage extends EPackage
    * @generated
    */
   EReference getSelectCommand_Value();
+
+  /**
+   * Returns the meta object for class '{@link org.mde.spec.spec.Selector <em>Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Selector</em>'.
+   * @see org.mde.spec.spec.Selector
+   * @generated
+   */
+  EClass getSelector();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.Selector#getType <em>Type</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Type</em>'.
+   * @see org.mde.spec.spec.Selector#getType()
+   * @see #getSelector()
+   * @generated
+   */
+  EAttribute getSelector_Type();
+
+  /**
+   * Returns the meta object for the reference '{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Var</em>'.
+   * @see org.mde.spec.spec.Selector#getVar()
+   * @see #getSelector()
+   * @generated
+   */
+  EReference getSelector_Var();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.Selector#getStr <em>Str</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Str</em>'.
+   * @see org.mde.spec.spec.Selector#getStr()
+   * @see #getSelector()
+   * @generated
+   */
+  EAttribute getSelector_Str();
+
+  /**
+   * Returns the meta object for class '{@link org.mde.spec.spec.StoreCommand <em>Store Command</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Store Command</em>'.
+   * @see org.mde.spec.spec.StoreCommand
+   * @generated
+   */
+  EClass getStoreCommand();
+
+  /**
+   * Returns the meta object for the containment reference '{@link org.mde.spec.spec.StoreCommand#getVar <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Var</em>'.
+   * @see org.mde.spec.spec.StoreCommand#getVar()
+   * @see #getStoreCommand()
+   * @generated
+   */
+  EReference getStoreCommand_Var();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.StoreCommand#getVal <em>Val</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Val</em>'.
+   * @see org.mde.spec.spec.StoreCommand#getVal()
+   * @see #getStoreCommand()
+   * @generated
+   */
+  EAttribute getStoreCommand_Val();
 
   /**
    * Returns the meta object for class '{@link org.mde.spec.spec.RememberCommand <em>Remember Command</em>}'.
@@ -726,15 +1018,26 @@ public interface SpecPackage extends EPackage
   EAttribute getPropertyCommand_Cond();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.mde.spec.spec.PropertyCommand#getVal <em>Val</em>}'.
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.PropertyCommand#getVal <em>Val</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Val</em>'.
+   * @return the meta object for the attribute '<em>Val</em>'.
    * @see org.mde.spec.spec.PropertyCommand#getVal()
    * @see #getPropertyCommand()
    * @generated
    */
-  EReference getPropertyCommand_Val();
+  EAttribute getPropertyCommand_Val();
+
+  /**
+   * Returns the meta object for the reference '{@link org.mde.spec.spec.PropertyCommand#getVar <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Var</em>'.
+   * @see org.mde.spec.spec.PropertyCommand#getVar()
+   * @see #getPropertyCommand()
+   * @generated
+   */
+  EReference getPropertyCommand_Var();
 
   /**
    * Returns the meta object for class '{@link org.mde.spec.spec.TypeCommand <em>Type Command</em>}'.
@@ -747,15 +1050,26 @@ public interface SpecPackage extends EPackage
   EClass getTypeCommand();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.mde.spec.spec.TypeCommand#getVal <em>Val</em>}'.
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.TypeCommand#getStr <em>Str</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Val</em>'.
-   * @see org.mde.spec.spec.TypeCommand#getVal()
+   * @return the meta object for the attribute '<em>Str</em>'.
+   * @see org.mde.spec.spec.TypeCommand#getStr()
    * @see #getTypeCommand()
    * @generated
    */
-  EReference getTypeCommand_Val();
+  EAttribute getTypeCommand_Str();
+
+  /**
+   * Returns the meta object for the reference '{@link org.mde.spec.spec.TypeCommand#getVar <em>Var</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Var</em>'.
+   * @see org.mde.spec.spec.TypeCommand#getVar()
+   * @see #getTypeCommand()
+   * @generated
+   */
+  EReference getTypeCommand_Var();
 
   /**
    * Returns the meta object for class '{@link org.mde.spec.spec.SleepCommand <em>Sleep Command</em>}'.
@@ -777,102 +1091,6 @@ public interface SpecPackage extends EPackage
    * @generated
    */
   EAttribute getSleepCommand_Time();
-
-  /**
-   * Returns the meta object for class '{@link org.mde.spec.spec.CustomCommand <em>Custom Command</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Custom Command</em>'.
-   * @see org.mde.spec.spec.CustomCommand
-   * @generated
-   */
-  EClass getCustomCommand();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.mde.spec.spec.CustomCommand#getCommand <em>Command</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Command</em>'.
-   * @see org.mde.spec.spec.CustomCommand#getCommand()
-   * @see #getCustomCommand()
-   * @generated
-   */
-  EAttribute getCustomCommand_Command();
-
-  /**
-   * Returns the meta object for class '{@link org.mde.spec.spec.Selector <em>Selector</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Selector</em>'.
-   * @see org.mde.spec.spec.Selector
-   * @generated
-   */
-  EClass getSelector();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.mde.spec.spec.Selector#getVal <em>Val</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Val</em>'.
-   * @see org.mde.spec.spec.Selector#getVal()
-   * @see #getSelector()
-   * @generated
-   */
-  EAttribute getSelector_Val();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.mde.spec.spec.Selector#getType <em>Type</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Type</em>'.
-   * @see org.mde.spec.spec.Selector#getType()
-   * @see #getSelector()
-   * @generated
-   */
-  EAttribute getSelector_Type();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Var</em>'.
-   * @see org.mde.spec.spec.Selector#getVar()
-   * @see #getSelector()
-   * @generated
-   */
-  EReference getSelector_Var();
-
-  /**
-   * Returns the meta object for class '{@link org.mde.spec.spec.Value <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Value</em>'.
-   * @see org.mde.spec.spec.Value
-   * @generated
-   */
-  EClass getValue();
-
-  /**
-   * Returns the meta object for the containment reference '{@link org.mde.spec.spec.Value#getVal <em>Val</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Val</em>'.
-   * @see org.mde.spec.spec.Value#getVal()
-   * @see #getValue()
-   * @generated
-   */
-  EReference getValue_Val();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.mde.spec.spec.Value#getStr <em>Str</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Str</em>'.
-   * @see org.mde.spec.spec.Value#getStr()
-   * @see #getValue()
-   * @generated
-   */
-  EAttribute getValue_Str();
 
   /**
    * Returns the meta object for class '{@link org.mde.spec.spec.Variable <em>Variable</em>}'.
@@ -957,6 +1175,30 @@ public interface SpecPackage extends EPackage
     EClass COMMAND = eINSTANCE.getCommand();
 
     /**
+     * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__COMMENT = eINSTANCE.getCommand_Comment();
+
+    /**
+     * The meta object literal for the '<em><b>Custom</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__CUSTOM = eINSTANCE.getCommand_Custom();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COMMAND__NAME = eINSTANCE.getCommand_Name();
+
+    /**
      * The meta object literal for the '{@link org.mde.spec.spec.impl.OpenCommandImpl <em>Open Command</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -967,12 +1209,20 @@ public interface SpecPackage extends EPackage
     EClass OPEN_COMMAND = eINSTANCE.getOpenCommand();
 
     /**
-     * The meta object literal for the '<em><b>Value</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference OPEN_COMMAND__VALUE = eINSTANCE.getOpenCommand_Value();
+    EAttribute OPEN_COMMAND__VAL = eINSTANCE.getOpenCommand_Val();
+
+    /**
+     * The meta object literal for the '<em><b>Var</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OPEN_COMMAND__VAR = eINSTANCE.getOpenCommand_Var();
 
     /**
      * The meta object literal for the '{@link org.mde.spec.spec.impl.ClickCommandImpl <em>Click Command</em>}' class.
@@ -983,14 +1233,6 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EClass CLICK_COMMAND = eINSTANCE.getClickCommand();
-
-    /**
-     * The meta object literal for the '<em><b>Cmd</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CLICK_COMMAND__CMD = eINSTANCE.getClickCommand_Cmd();
 
     /**
      * The meta object literal for the '<em><b>Selector</b></em>' containment reference feature.
@@ -1009,24 +1251,6 @@ public interface SpecPackage extends EPackage
     EAttribute CLICK_COMMAND__POINT = eINSTANCE.getClickCommand_Point();
 
     /**
-     * The meta object literal for the '{@link org.mde.spec.spec.impl.CommentCommandImpl <em>Comment Command</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.mde.spec.spec.impl.CommentCommandImpl
-     * @see org.mde.spec.spec.impl.SpecPackageImpl#getCommentCommand()
-     * @generated
-     */
-    EClass COMMENT_COMMAND = eINSTANCE.getCommentCommand();
-
-    /**
-     * The meta object literal for the '<em><b>Str</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute COMMENT_COMMAND__STR = eINSTANCE.getCommentCommand_Str();
-
-    /**
      * The meta object literal for the '{@link org.mde.spec.spec.impl.SelectCommandImpl <em>Select Command</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1043,6 +1267,66 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EReference SELECT_COMMAND__VALUE = eINSTANCE.getSelectCommand_Value();
+
+    /**
+     * The meta object literal for the '{@link org.mde.spec.spec.impl.SelectorImpl <em>Selector</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.mde.spec.spec.impl.SelectorImpl
+     * @see org.mde.spec.spec.impl.SpecPackageImpl#getSelector()
+     * @generated
+     */
+    EClass SELECTOR = eINSTANCE.getSelector();
+
+    /**
+     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SELECTOR__TYPE = eINSTANCE.getSelector_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Var</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SELECTOR__VAR = eINSTANCE.getSelector_Var();
+
+    /**
+     * The meta object literal for the '<em><b>Str</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SELECTOR__STR = eINSTANCE.getSelector_Str();
+
+    /**
+     * The meta object literal for the '{@link org.mde.spec.spec.impl.StoreCommandImpl <em>Store Command</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.mde.spec.spec.impl.StoreCommandImpl
+     * @see org.mde.spec.spec.impl.SpecPackageImpl#getStoreCommand()
+     * @generated
+     */
+    EClass STORE_COMMAND = eINSTANCE.getStoreCommand();
+
+    /**
+     * The meta object literal for the '<em><b>Var</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference STORE_COMMAND__VAR = eINSTANCE.getStoreCommand_Var();
+
+    /**
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STORE_COMMAND__VAL = eINSTANCE.getStoreCommand_Val();
 
     /**
      * The meta object literal for the '{@link org.mde.spec.spec.impl.RememberCommandImpl <em>Remember Command</em>}' class.
@@ -1097,12 +1381,20 @@ public interface SpecPackage extends EPackage
     EAttribute PROPERTY_COMMAND__COND = eINSTANCE.getPropertyCommand_Cond();
 
     /**
-     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference PROPERTY_COMMAND__VAL = eINSTANCE.getPropertyCommand_Val();
+    EAttribute PROPERTY_COMMAND__VAL = eINSTANCE.getPropertyCommand_Val();
+
+    /**
+     * The meta object literal for the '<em><b>Var</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PROPERTY_COMMAND__VAR = eINSTANCE.getPropertyCommand_Var();
 
     /**
      * The meta object literal for the '{@link org.mde.spec.spec.impl.TypeCommandImpl <em>Type Command</em>}' class.
@@ -1115,12 +1407,20 @@ public interface SpecPackage extends EPackage
     EClass TYPE_COMMAND = eINSTANCE.getTypeCommand();
 
     /**
-     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Str</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference TYPE_COMMAND__VAL = eINSTANCE.getTypeCommand_Val();
+    EAttribute TYPE_COMMAND__STR = eINSTANCE.getTypeCommand_Str();
+
+    /**
+     * The meta object literal for the '<em><b>Var</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference TYPE_COMMAND__VAR = eINSTANCE.getTypeCommand_Var();
 
     /**
      * The meta object literal for the '{@link org.mde.spec.spec.impl.SleepCommandImpl <em>Sleep Command</em>}' class.
@@ -1139,84 +1439,6 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EAttribute SLEEP_COMMAND__TIME = eINSTANCE.getSleepCommand_Time();
-
-    /**
-     * The meta object literal for the '{@link org.mde.spec.spec.impl.CustomCommandImpl <em>Custom Command</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.mde.spec.spec.impl.CustomCommandImpl
-     * @see org.mde.spec.spec.impl.SpecPackageImpl#getCustomCommand()
-     * @generated
-     */
-    EClass CUSTOM_COMMAND = eINSTANCE.getCustomCommand();
-
-    /**
-     * The meta object literal for the '<em><b>Command</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute CUSTOM_COMMAND__COMMAND = eINSTANCE.getCustomCommand_Command();
-
-    /**
-     * The meta object literal for the '{@link org.mde.spec.spec.impl.SelectorImpl <em>Selector</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.mde.spec.spec.impl.SelectorImpl
-     * @see org.mde.spec.spec.impl.SpecPackageImpl#getSelector()
-     * @generated
-     */
-    EClass SELECTOR = eINSTANCE.getSelector();
-
-    /**
-     * The meta object literal for the '<em><b>Val</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SELECTOR__VAL = eINSTANCE.getSelector_Val();
-
-    /**
-     * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute SELECTOR__TYPE = eINSTANCE.getSelector_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Var</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference SELECTOR__VAR = eINSTANCE.getSelector_Var();
-
-    /**
-     * The meta object literal for the '{@link org.mde.spec.spec.impl.ValueImpl <em>Value</em>}' class.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @see org.mde.spec.spec.impl.ValueImpl
-     * @see org.mde.spec.spec.impl.SpecPackageImpl#getValue()
-     * @generated
-     */
-    EClass VALUE = eINSTANCE.getValue();
-
-    /**
-     * The meta object literal for the '<em><b>Val</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference VALUE__VAL = eINSTANCE.getValue_Val();
-
-    /**
-     * The meta object literal for the '<em><b>Str</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VALUE__STR = eINSTANCE.getValue_Str();
 
     /**
      * The meta object literal for the '{@link org.mde.spec.spec.impl.VariableImpl <em>Variable</em>}' class.

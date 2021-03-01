@@ -60,15 +60,6 @@ public interface SpecFactory extends EFactory
   ClickCommand createClickCommand();
 
   /**
-   * Returns a new object of class '<em>Comment Command</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Comment Command</em>'.
-   * @generated
-   */
-  CommentCommand createCommentCommand();
-
-  /**
    * Returns a new object of class '<em>Select Command</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -76,6 +67,24 @@ public interface SpecFactory extends EFactory
    * @generated
    */
   SelectCommand createSelectCommand();
+
+  /**
+   * Returns a new object of class '<em>Selector</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Selector</em>'.
+   * @generated
+   */
+  Selector createSelector();
+
+  /**
+   * Returns a new object of class '<em>Store Command</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Store Command</em>'.
+   * @generated
+   */
+  StoreCommand createStoreCommand();
 
   /**
    * Returns a new object of class '<em>Remember Command</em>'.
@@ -112,33 +121,6 @@ public interface SpecFactory extends EFactory
    * @generated
    */
   SleepCommand createSleepCommand();
-
-  /**
-   * Returns a new object of class '<em>Custom Command</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Custom Command</em>'.
-   * @generated
-   */
-  CustomCommand createCustomCommand();
-
-  /**
-   * Returns a new object of class '<em>Selector</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Selector</em>'.
-   * @generated
-   */
-  Selector createSelector();
-
-  /**
-   * Returns a new object of class '<em>Value</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Value</em>'.
-   * @generated
-   */
-  Value createValue();
 
   /**
    * Returns a new object of class '<em>Variable</em>'.

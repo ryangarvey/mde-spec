@@ -6,8 +6,10 @@ package org.mde.spec.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
+import org.eclipse.xtext.CrossReference;
 import org.eclipse.xtext.EnumLiteralDeclaration;
 import org.eclipse.xtext.EnumRule;
 import org.eclipse.xtext.Grammar;
@@ -45,28 +47,32 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cOpenCommandParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cClickCommandParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cCommentCommandParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cStoreCommandParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cSelectCommandParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cRememberCommandParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cPropertyCommandParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		private final RuleCall cTypeCommandParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
 		private final RuleCall cSleepCommandParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final RuleCall cCustomCommandParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final Assignment cCommentAssignment_8 = (Assignment)cAlternatives.eContents().get(8);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_8_0 = (RuleCall)cCommentAssignment_8.eContents().get(0);
+		private final Assignment cCustomAssignment_9 = (Assignment)cAlternatives.eContents().get(9);
+		private final RuleCall cCustomCUSTOM_COMMANDTerminalRuleCall_9_0 = (RuleCall)cCustomAssignment_9.eContents().get(0);
 		
 		//Command:
 		//	OpenCommand
 		//	| ClickCommand
-		//	| CommentCommand
+		//	| StoreCommand
 		//	| SelectCommand
 		//	| RememberCommand
 		//	| PropertyCommand
 		//	| TypeCommand
 		//	| SleepCommand
-		//	| CustomCommand;
+		//	| comment=SL_COMMENT
+		//	| custom=CUSTOM_COMMAND;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//OpenCommand | ClickCommand | CommentCommand | SelectCommand | RememberCommand | PropertyCommand | TypeCommand |
-		//SleepCommand | CustomCommand
+		//OpenCommand | ClickCommand | StoreCommand | SelectCommand | RememberCommand | PropertyCommand | TypeCommand |
+		//SleepCommand | comment=SL_COMMENT | custom=CUSTOM_COMMAND
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//OpenCommand
@@ -75,8 +81,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//ClickCommand
 		public RuleCall getClickCommandParserRuleCall_1() { return cClickCommandParserRuleCall_1; }
 		
-		//CommentCommand
-		public RuleCall getCommentCommandParserRuleCall_2() { return cCommentCommandParserRuleCall_2; }
+		//StoreCommand
+		public RuleCall getStoreCommandParserRuleCall_2() { return cStoreCommandParserRuleCall_2; }
 		
 		//SelectCommand
 		public RuleCall getSelectCommandParserRuleCall_3() { return cSelectCommandParserRuleCall_3; }
@@ -93,147 +99,147 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//SleepCommand
 		public RuleCall getSleepCommandParserRuleCall_7() { return cSleepCommandParserRuleCall_7; }
 		
-		//CustomCommand
-		public RuleCall getCustomCommandParserRuleCall_8() { return cCustomCommandParserRuleCall_8; }
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_8() { return cCommentAssignment_8; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_8_0() { return cCommentSL_COMMENTTerminalRuleCall_8_0; }
+		
+		//custom=CUSTOM_COMMAND
+		public Assignment getCustomAssignment_9() { return cCustomAssignment_9; }
+		
+		//CUSTOM_COMMAND
+		public RuleCall getCustomCUSTOM_COMMANDTerminalRuleCall_9_0() { return cCustomCUSTOM_COMMANDTerminalRuleCall_9_0; }
 	}
 	public class OpenCommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.OpenCommand");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cOpenKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValueValueParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		private final Action cOpenCommandAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cNameOpenKeyword_1_0 = (Keyword)cNameAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Assignment cValAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
+		private final RuleCall cValSTRINGTerminalRuleCall_2_0_0 = (RuleCall)cValAssignment_2_0.eContents().get(0);
+		private final Assignment cVarAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
+		private final RuleCall cVarVariableParserRuleCall_2_1_0 = (RuleCall)cVarAssignment_2_1.eContents().get(0);
 		
 		//OpenCommand:
-		//	"Open" value=Value;
+		//	{OpenCommand} name="Open" (val=STRING | var=Variable);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"Open" value=Value
+		//{OpenCommand} name="Open" (val=STRING | var=Variable)
 		public Group getGroup() { return cGroup; }
 		
+		//{OpenCommand}
+		public Action getOpenCommandAction_0() { return cOpenCommandAction_0; }
+		
+		//name="Open"
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
 		//"Open"
-		public Keyword getOpenKeyword_0() { return cOpenKeyword_0; }
+		public Keyword getNameOpenKeyword_1_0() { return cNameOpenKeyword_1_0; }
 		
-		//value=Value
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		//(val=STRING | var=Variable)
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
-		//Value
-		public RuleCall getValueValueParserRuleCall_1_0() { return cValueValueParserRuleCall_1_0; }
+		//val=STRING
+		public Assignment getValAssignment_2_0() { return cValAssignment_2_0; }
+		
+		//STRING
+		public RuleCall getValSTRINGTerminalRuleCall_2_0_0() { return cValSTRINGTerminalRuleCall_2_0_0; }
+		
+		//var=Variable
+		public Assignment getVarAssignment_2_1() { return cVarAssignment_2_1; }
+		
+		//Variable
+		public RuleCall getVarVariableParserRuleCall_2_1_0() { return cVarVariableParserRuleCall_2_1_0; }
 	}
 	public class ClickCommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.ClickCommand");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cCmdAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final Keyword cCmdClickKeyword_0_0 = (Keyword)cCmdAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cClickKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Keyword cOnKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
-		private final Assignment cSelectorAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
-		private final RuleCall cSelectorSelectorParserRuleCall_1_2_0 = (RuleCall)cSelectorAssignment_1_2.eContents().get(0);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Keyword cClickKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Keyword cAtKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Assignment cPointAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final RuleCall cPointPointParserRuleCall_2_2_0 = (RuleCall)cPointAssignment_2_2.eContents().get(0);
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cNameClickKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cOnKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Assignment cSelectorAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final RuleCall cSelectorSelectorParserRuleCall_1_0_1_0 = (RuleCall)cSelectorAssignment_1_0_1.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cAlternatives_1.eContents().get(1);
+		private final Keyword cAtKeyword_1_1_0 = (Keyword)cGroup_1_1.eContents().get(0);
+		private final Assignment cPointAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
+		private final RuleCall cPointPointParserRuleCall_1_1_1_0 = (RuleCall)cPointAssignment_1_1_1.eContents().get(0);
 		
 		//ClickCommand:
-		//	cmd="Click"
-		//	| "Click" "on" selector=Selector
-		//	| "Click" "at" point=Point;
+		//	name="Click" ("on" selector=Selector | "at" point=Point)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//cmd="Click" | "Click" "on" selector=Selector | "Click" "at" point=Point
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//cmd="Click"
-		public Assignment getCmdAssignment_0() { return cCmdAssignment_0; }
-		
-		//"Click"
-		public Keyword getCmdClickKeyword_0_0() { return cCmdClickKeyword_0_0; }
-		
-		//"Click" "on" selector=Selector
-		public Group getGroup_1() { return cGroup_1; }
-		
-		//"Click"
-		public Keyword getClickKeyword_1_0() { return cClickKeyword_1_0; }
-		
-		//"on"
-		public Keyword getOnKeyword_1_1() { return cOnKeyword_1_1; }
-		
-		//selector=Selector
-		public Assignment getSelectorAssignment_1_2() { return cSelectorAssignment_1_2; }
-		
-		//Selector
-		public RuleCall getSelectorSelectorParserRuleCall_1_2_0() { return cSelectorSelectorParserRuleCall_1_2_0; }
-		
-		//"Click" "at" point=Point
-		public Group getGroup_2() { return cGroup_2; }
-		
-		//"Click"
-		public Keyword getClickKeyword_2_0() { return cClickKeyword_2_0; }
-		
-		//"at"
-		public Keyword getAtKeyword_2_1() { return cAtKeyword_2_1; }
-		
-		//point=Point
-		public Assignment getPointAssignment_2_2() { return cPointAssignment_2_2; }
-		
-		//Point
-		public RuleCall getPointPointParserRuleCall_2_2_0() { return cPointPointParserRuleCall_2_2_0; }
-	}
-	public class CommentCommandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.CommentCommand");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cNumberSignKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cStrAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cStrSTRINGTerminalRuleCall_1_0 = (RuleCall)cStrAssignment_1.eContents().get(0);
-		
-		//CommentCommand:
-		//	"#" str=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"#" str=STRING
+		//name="Click" ("on" selector=Selector | "at" point=Point)?
 		public Group getGroup() { return cGroup; }
 		
-		//"#"
-		public Keyword getNumberSignKeyword_0() { return cNumberSignKeyword_0; }
+		//name="Click"
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
 		
-		//str=STRING
-		public Assignment getStrAssignment_1() { return cStrAssignment_1; }
+		//"Click"
+		public Keyword getNameClickKeyword_0_0() { return cNameClickKeyword_0_0; }
 		
-		//STRING
-		public RuleCall getStrSTRINGTerminalRuleCall_1_0() { return cStrSTRINGTerminalRuleCall_1_0; }
+		//("on" selector=Selector | "at" point=Point)?
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//"on" selector=Selector
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//"on"
+		public Keyword getOnKeyword_1_0_0() { return cOnKeyword_1_0_0; }
+		
+		//selector=Selector
+		public Assignment getSelectorAssignment_1_0_1() { return cSelectorAssignment_1_0_1; }
+		
+		//Selector
+		public RuleCall getSelectorSelectorParserRuleCall_1_0_1_0() { return cSelectorSelectorParserRuleCall_1_0_1_0; }
+		
+		//"at" point=Point
+		public Group getGroup_1_1() { return cGroup_1_1; }
+		
+		//"at"
+		public Keyword getAtKeyword_1_1_0() { return cAtKeyword_1_1_0; }
+		
+		//point=Point
+		public Assignment getPointAssignment_1_1_1() { return cPointAssignment_1_1_1; }
+		
+		//Point
+		public RuleCall getPointPointParserRuleCall_1_1_1_0() { return cPointPointParserRuleCall_1_1_1_0; }
 	}
 	public class SelectCommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.SelectCommand");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
-		private final Keyword cWithinKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_0 = (Assignment)cGroup_0.eContents().get(0);
+		private final Keyword cNameWithinKeyword_0_0_0 = (Keyword)cNameAssignment_0_0.eContents().get(0);
 		private final Assignment cValueAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
 		private final RuleCall cValueSelectorParserRuleCall_0_1_0 = (RuleCall)cValueAssignment_0_1.eContents().get(0);
 		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Keyword cSelectKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cValueAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cValueSelectorParserRuleCall_1_1_0 = (RuleCall)cValueAssignment_1_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
-		private final Keyword cSelectKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
-		private final Keyword cVisibleKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
-		private final Assignment cValueAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
-		private final RuleCall cValueSelectorParserRuleCall_2_2_0 = (RuleCall)cValueAssignment_2_2.eContents().get(0);
+		private final Assignment cNameAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
+		private final Keyword cNameSelectKeyword_1_0_0 = (Keyword)cNameAssignment_1_0.eContents().get(0);
+		private final Keyword cVisibleKeyword_1_1 = (Keyword)cGroup_1.eContents().get(1);
+		private final Assignment cValueAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final RuleCall cValueSelectorParserRuleCall_1_2_0 = (RuleCall)cValueAssignment_1_2.eContents().get(0);
 		
 		//SelectCommand:
-		//	"Within" value=Selector
-		//	| "Select" value=Selector
-		//	| "Select" "visible" value=Selector;
+		//	name="Within" value=Selector
+		//	| name="Select" "visible"? value=Selector;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"Within" value=Selector | "Select" value=Selector | "Select" "visible" value=Selector
+		//name="Within" value=Selector | name="Select" "visible"? value=Selector
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//"Within" value=Selector
+		//name="Within" value=Selector
 		public Group getGroup_0() { return cGroup_0; }
 		
+		//name="Within"
+		public Assignment getNameAssignment_0_0() { return cNameAssignment_0_0; }
+		
 		//"Within"
-		public Keyword getWithinKeyword_0_0() { return cWithinKeyword_0_0; }
+		public Keyword getNameWithinKeyword_0_0_0() { return cNameWithinKeyword_0_0_0; }
 		
 		//value=Selector
 		public Assignment getValueAssignment_0_1() { return cValueAssignment_0_1; }
@@ -241,37 +247,119 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//Selector
 		public RuleCall getValueSelectorParserRuleCall_0_1_0() { return cValueSelectorParserRuleCall_0_1_0; }
 		
-		//"Select" value=Selector
+		//name="Select" "visible"? value=Selector
 		public Group getGroup_1() { return cGroup_1; }
 		
-		//"Select"
-		public Keyword getSelectKeyword_1_0() { return cSelectKeyword_1_0; }
-		
-		//value=Selector
-		public Assignment getValueAssignment_1_1() { return cValueAssignment_1_1; }
-		
-		//Selector
-		public RuleCall getValueSelectorParserRuleCall_1_1_0() { return cValueSelectorParserRuleCall_1_1_0; }
-		
-		//"Select" "visible" value=Selector
-		public Group getGroup_2() { return cGroup_2; }
+		//name="Select"
+		public Assignment getNameAssignment_1_0() { return cNameAssignment_1_0; }
 		
 		//"Select"
-		public Keyword getSelectKeyword_2_0() { return cSelectKeyword_2_0; }
+		public Keyword getNameSelectKeyword_1_0_0() { return cNameSelectKeyword_1_0_0; }
 		
-		//"visible"
-		public Keyword getVisibleKeyword_2_1() { return cVisibleKeyword_2_1; }
+		//"visible"?
+		public Keyword getVisibleKeyword_1_1() { return cVisibleKeyword_1_1; }
 		
 		//value=Selector
-		public Assignment getValueAssignment_2_2() { return cValueAssignment_2_2; }
+		public Assignment getValueAssignment_1_2() { return cValueAssignment_1_2; }
 		
 		//Selector
-		public RuleCall getValueSelectorParserRuleCall_2_2_0() { return cValueSelectorParserRuleCall_2_2_0; }
+		public RuleCall getValueSelectorParserRuleCall_1_2_0() { return cValueSelectorParserRuleCall_1_2_0; }
+	}
+	public class SelectorElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.Selector");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTypeElementTypeEnumRuleCall_0_0 = (RuleCall)cTypeAssignment_0.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Group cGroup_1_0 = (Group)cAlternatives_1.eContents().get(0);
+		private final Keyword cDollarSignKeyword_1_0_0 = (Keyword)cGroup_1_0.eContents().get(0);
+		private final Assignment cVarAssignment_1_0_1 = (Assignment)cGroup_1_0.eContents().get(1);
+		private final CrossReference cVarVariableCrossReference_1_0_1_0 = (CrossReference)cVarAssignment_1_0_1.eContents().get(0);
+		private final RuleCall cVarVariableIDTerminalRuleCall_1_0_1_0_1 = (RuleCall)cVarVariableCrossReference_1_0_1_0.eContents().get(1);
+		private final Assignment cStrAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final RuleCall cStrSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cStrAssignment_1_1.eContents().get(0);
+		
+		//Selector:
+		//	type=ElementType? ("$" var=[Variable] | str=STRING);
+		@Override public ParserRule getRule() { return rule; }
+		
+		//type=ElementType? ("$" var=[Variable] | str=STRING)
+		public Group getGroup() { return cGroup; }
+		
+		//type=ElementType?
+		public Assignment getTypeAssignment_0() { return cTypeAssignment_0; }
+		
+		//ElementType
+		public RuleCall getTypeElementTypeEnumRuleCall_0_0() { return cTypeElementTypeEnumRuleCall_0_0; }
+		
+		//("$" var=[Variable] | str=STRING)
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//"$" var=[Variable]
+		public Group getGroup_1_0() { return cGroup_1_0; }
+		
+		//"$"
+		public Keyword getDollarSignKeyword_1_0_0() { return cDollarSignKeyword_1_0_0; }
+		
+		//var=[Variable]
+		public Assignment getVarAssignment_1_0_1() { return cVarAssignment_1_0_1; }
+		
+		//[Variable]
+		public CrossReference getVarVariableCrossReference_1_0_1_0() { return cVarVariableCrossReference_1_0_1_0; }
+		
+		//ID
+		public RuleCall getVarVariableIDTerminalRuleCall_1_0_1_0_1() { return cVarVariableIDTerminalRuleCall_1_0_1_0_1; }
+		
+		//str=STRING
+		public Assignment getStrAssignment_1_1() { return cStrAssignment_1_1; }
+		
+		//STRING
+		public RuleCall getStrSTRINGTerminalRuleCall_1_1_0() { return cStrSTRINGTerminalRuleCall_1_1_0; }
+	}
+	public class StoreCommandElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.StoreCommand");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cNameStoreKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
+		private final Assignment cVarAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cVarVariableParserRuleCall_1_0 = (RuleCall)cVarAssignment_1.eContents().get(0);
+		private final Keyword cAsKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cValAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cValSTRINGTerminalRuleCall_3_0 = (RuleCall)cValAssignment_3.eContents().get(0);
+		
+		//StoreCommand:
+		//	name="Store" var=Variable "as" val=STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name="Store" var=Variable "as" val=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//name="Store"
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//"Store"
+		public Keyword getNameStoreKeyword_0_0() { return cNameStoreKeyword_0_0; }
+		
+		//var=Variable
+		public Assignment getVarAssignment_1() { return cVarAssignment_1; }
+		
+		//Variable
+		public RuleCall getVarVariableParserRuleCall_1_0() { return cVarVariableParserRuleCall_1_0; }
+		
+		//"as"
+		public Keyword getAsKeyword_2() { return cAsKeyword_2; }
+		
+		//val=STRING
+		public Assignment getValAssignment_3() { return cValAssignment_3; }
+		
+		//STRING
+		public RuleCall getValSTRINGTerminalRuleCall_3_0() { return cValSTRINGTerminalRuleCall_3_0; }
 	}
 	public class RememberCommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.RememberCommand");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cRememberKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cNameRememberKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
 		private final Assignment cPropAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cPropPropertyParserRuleCall_1_0 = (RuleCall)cPropAssignment_1.eContents().get(0);
 		private final Keyword cAsKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -279,14 +367,17 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cVarVariableParserRuleCall_3_0 = (RuleCall)cVarAssignment_3.eContents().get(0);
 		
 		//RememberCommand:
-		//	"Remember" prop=Property "as" var=Variable;
+		//	name="Remember" prop=Property "as" var=Variable;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"Remember" prop=Property "as" var=Variable
+		//name="Remember" prop=Property "as" var=Variable
 		public Group getGroup() { return cGroup; }
 		
+		//name="Remember"
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
 		//"Remember"
-		public Keyword getRememberKeyword_0() { return cRememberKeyword_0; }
+		public Keyword getNameRememberKeyword_0_0() { return cNameRememberKeyword_0_0; }
 		
 		//prop=Property
 		public Assignment getPropAssignment_1() { return cPropAssignment_1; }
@@ -306,23 +397,33 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public class PropertyCommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.PropertyCommand");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPropertyKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cNamePropertyKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
 		private final Assignment cPropAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cPropPropertyParserRuleCall_1_0 = (RuleCall)cPropAssignment_1.eContents().get(0);
 		private final Assignment cCondAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCondConditionParserRuleCall_2_0 = (RuleCall)cCondAssignment_2.eContents().get(0);
-		private final Assignment cValAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValValueParserRuleCall_3_0 = (RuleCall)cValAssignment_3.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Assignment cValAssignment_3_0 = (Assignment)cAlternatives_3.eContents().get(0);
+		private final RuleCall cValSTRINGTerminalRuleCall_3_0_0 = (RuleCall)cValAssignment_3_0.eContents().get(0);
+		private final Group cGroup_3_1 = (Group)cAlternatives_3.eContents().get(1);
+		private final Keyword cDollarSignKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Assignment cVarAssignment_3_1_1 = (Assignment)cGroup_3_1.eContents().get(1);
+		private final CrossReference cVarVariableCrossReference_3_1_1_0 = (CrossReference)cVarAssignment_3_1_1.eContents().get(0);
+		private final RuleCall cVarVariableIDTerminalRuleCall_3_1_1_0_1 = (RuleCall)cVarVariableCrossReference_3_1_1_0.eContents().get(1);
 		
-		//PropertyCommand:
-		//	"Property" prop=Property cond=Condition val=Value;
+		//PropertyCommand hidden():
+		//	name="Property" prop=Property cond=Condition (val=STRING | "$" var=[Variable]);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"Property" prop=Property cond=Condition val=Value
+		//name="Property" prop=Property cond=Condition (val=STRING | "$" var=[Variable])
 		public Group getGroup() { return cGroup; }
 		
+		//name="Property"
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
 		//"Property"
-		public Keyword getPropertyKeyword_0() { return cPropertyKeyword_0; }
+		public Keyword getNamePropertyKeyword_0_0() { return cNamePropertyKeyword_0_0; }
 		
 		//prop=Property
 		public Assignment getPropAssignment_1() { return cPropAssignment_1; }
@@ -336,186 +437,38 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//Condition
 		public RuleCall getCondConditionParserRuleCall_2_0() { return cCondConditionParserRuleCall_2_0; }
 		
-		//val=Value
-		public Assignment getValAssignment_3() { return cValAssignment_3; }
-		
-		//Value
-		public RuleCall getValValueParserRuleCall_3_0() { return cValValueParserRuleCall_3_0; }
-	}
-	public class TypeCommandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.TypeCommand");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cTypeKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cValAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValValueParserRuleCall_1_0 = (RuleCall)cValAssignment_1.eContents().get(0);
-		
-		//TypeCommand:
-		//	"Type" val=Value;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"Type" val=Value
-		public Group getGroup() { return cGroup; }
-		
-		//"Type"
-		public Keyword getTypeKeyword_0() { return cTypeKeyword_0; }
-		
-		//val=Value
-		public Assignment getValAssignment_1() { return cValAssignment_1; }
-		
-		//Value
-		public RuleCall getValValueParserRuleCall_1_0() { return cValValueParserRuleCall_1_0; }
-	}
-	public class SleepCommandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.SleepCommand");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSleepKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Keyword cForKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTimeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTimeINTTerminalRuleCall_2_0 = (RuleCall)cTimeAssignment_2.eContents().get(0);
-		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
-		private final Keyword cSecondKeyword_3_0 = (Keyword)cAlternatives_3.eContents().get(0);
-		private final Keyword cSecondsKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
-		
-		//SleepCommand:
-		//	"Sleep" "for" time=INT ("second" | "seconds");
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"Sleep" "for" time=INT ("second" | "seconds")
-		public Group getGroup() { return cGroup; }
-		
-		//"Sleep"
-		public Keyword getSleepKeyword_0() { return cSleepKeyword_0; }
-		
-		//"for"
-		public Keyword getForKeyword_1() { return cForKeyword_1; }
-		
-		//time=INT
-		public Assignment getTimeAssignment_2() { return cTimeAssignment_2; }
-		
-		//INT
-		public RuleCall getTimeINTTerminalRuleCall_2_0() { return cTimeINTTerminalRuleCall_2_0; }
-		
-		//("second" | "seconds")
+		//(val=STRING | "$" var=[Variable])
 		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
-		//"second"
-		public Keyword getSecondKeyword_3_0() { return cSecondKeyword_3_0; }
-		
-		//"seconds"
-		public Keyword getSecondsKeyword_3_1() { return cSecondsKeyword_3_1; }
-	}
-	public class CustomCommandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.CustomCommand");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cExclamationMarkKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cCommandAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cCommandSTRINGTerminalRuleCall_1_0 = (RuleCall)cCommandAssignment_1.eContents().get(0);
-		
-		//CustomCommand:
-		//	"!" command=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"!" command=STRING
-		public Group getGroup() { return cGroup; }
-		
-		//"!"
-		public Keyword getExclamationMarkKeyword_0() { return cExclamationMarkKeyword_0; }
-		
-		//command=STRING
-		public Assignment getCommandAssignment_1() { return cCommandAssignment_1; }
-		
-		//STRING
-		public RuleCall getCommandSTRINGTerminalRuleCall_1_0() { return cCommandSTRINGTerminalRuleCall_1_0; }
-	}
-	public class SelectorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.Selector");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cValAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cValSTRINGTerminalRuleCall_0_0 = (RuleCall)cValAssignment_0.eContents().get(0);
-		private final Group cGroup_1 = (Group)cAlternatives.eContents().get(1);
-		private final Assignment cTypeAssignment_1_0 = (Assignment)cGroup_1.eContents().get(0);
-		private final RuleCall cTypeElementTypeEnumRuleCall_1_0_0 = (RuleCall)cTypeAssignment_1_0.eContents().get(0);
-		private final Assignment cValAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cValSTRINGTerminalRuleCall_1_1_0 = (RuleCall)cValAssignment_1_1.eContents().get(0);
-		private final Assignment cVarAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final RuleCall cVarVariableParserRuleCall_2_0 = (RuleCall)cVarAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cAlternatives.eContents().get(3);
-		private final Assignment cTypeAssignment_3_0 = (Assignment)cGroup_3.eContents().get(0);
-		private final RuleCall cTypeElementTypeEnumRuleCall_3_0_0 = (RuleCall)cTypeAssignment_3_0.eContents().get(0);
-		private final Assignment cVarAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cVarVariableParserRuleCall_3_1_0 = (RuleCall)cVarAssignment_3_1.eContents().get(0);
-		
-		//Selector:
-		//	val=STRING
-		//	| type=ElementType val=STRING
-		//	| var=Variable
-		//	| type=ElementType var=Variable;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//val=STRING | type=ElementType val=STRING | var=Variable | type=ElementType var=Variable
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
 		//val=STRING
-		public Assignment getValAssignment_0() { return cValAssignment_0; }
+		public Assignment getValAssignment_3_0() { return cValAssignment_3_0; }
 		
 		//STRING
-		public RuleCall getValSTRINGTerminalRuleCall_0_0() { return cValSTRINGTerminalRuleCall_0_0; }
+		public RuleCall getValSTRINGTerminalRuleCall_3_0_0() { return cValSTRINGTerminalRuleCall_3_0_0; }
 		
-		//type=ElementType val=STRING
-		public Group getGroup_1() { return cGroup_1; }
+		//"$" var=[Variable]
+		public Group getGroup_3_1() { return cGroup_3_1; }
 		
-		//type=ElementType
-		public Assignment getTypeAssignment_1_0() { return cTypeAssignment_1_0; }
+		//"$"
+		public Keyword getDollarSignKeyword_3_1_0() { return cDollarSignKeyword_3_1_0; }
 		
-		//ElementType
-		public RuleCall getTypeElementTypeEnumRuleCall_1_0_0() { return cTypeElementTypeEnumRuleCall_1_0_0; }
+		//var=[Variable]
+		public Assignment getVarAssignment_3_1_1() { return cVarAssignment_3_1_1; }
 		
-		//val=STRING
-		public Assignment getValAssignment_1_1() { return cValAssignment_1_1; }
+		//[Variable]
+		public CrossReference getVarVariableCrossReference_3_1_1_0() { return cVarVariableCrossReference_3_1_1_0; }
 		
-		//STRING
-		public RuleCall getValSTRINGTerminalRuleCall_1_1_0() { return cValSTRINGTerminalRuleCall_1_1_0; }
-		
-		//var=Variable
-		public Assignment getVarAssignment_2() { return cVarAssignment_2; }
-		
-		//Variable
-		public RuleCall getVarVariableParserRuleCall_2_0() { return cVarVariableParserRuleCall_2_0; }
-		
-		//type=ElementType var=Variable
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//type=ElementType
-		public Assignment getTypeAssignment_3_0() { return cTypeAssignment_3_0; }
-		
-		//ElementType
-		public RuleCall getTypeElementTypeEnumRuleCall_3_0_0() { return cTypeElementTypeEnumRuleCall_3_0_0; }
-		
-		//var=Variable
-		public Assignment getVarAssignment_3_1() { return cVarAssignment_3_1; }
-		
-		//Variable
-		public RuleCall getVarVariableParserRuleCall_3_1_0() { return cVarVariableParserRuleCall_3_1_0; }
+		//ID
+		public RuleCall getVarVariableIDTerminalRuleCall_3_1_1_0_1() { return cVarVariableIDTerminalRuleCall_3_1_1_0_1; }
 	}
 	public class PropertyElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.Property");
-		private final RuleCall cPropertyTypeParserRuleCall = (RuleCall)rule.eContents().get(1);
-		
-		//Property:
-		//	PropertyType;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//PropertyType
-		public RuleCall getPropertyTypeParserRuleCall() { return cPropertyTypeParserRuleCall; }
-	}
-	public class PropertyTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.PropertyType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cTextKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cClassKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cValueKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		
-		//PropertyType:
+		//Property:
 		//	"text"
 		//	| "class"
 		//	| "value";
@@ -532,34 +485,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//"value"
 		public Keyword getValueKeyword_2() { return cValueKeyword_2; }
-	}
-	public class ValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.Value");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cValAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cValVariableParserRuleCall_0_0 = (RuleCall)cValAssignment_0.eContents().get(0);
-		private final Assignment cStrAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
-		private final RuleCall cStrSTRINGTerminalRuleCall_1_0 = (RuleCall)cStrAssignment_1.eContents().get(0);
-		
-		//Value:
-		//	val=Variable
-		//	| str=STRING;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//val=Variable | str=STRING
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//val=Variable
-		public Assignment getValAssignment_0() { return cValAssignment_0; }
-		
-		//Variable
-		public RuleCall getValVariableParserRuleCall_0_0() { return cValVariableParserRuleCall_0_0; }
-		
-		//str=STRING
-		public Assignment getStrAssignment_1() { return cStrAssignment_1; }
-		
-		//STRING
-		public RuleCall getStrSTRINGTerminalRuleCall_1_0() { return cStrSTRINGTerminalRuleCall_1_0; }
 	}
 	public class ConditionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.Condition");
@@ -601,6 +526,92 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"be"
 		public Keyword getBeKeyword_1_2() { return cBeKeyword_1_2; }
 	}
+	public class TypeCommandElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.TypeCommand");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cNameTypeKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Assignment cStrAssignment_1_0 = (Assignment)cAlternatives_1.eContents().get(0);
+		private final RuleCall cStrSTRINGTerminalRuleCall_1_0_0 = (RuleCall)cStrAssignment_1_0.eContents().get(0);
+		private final Assignment cVarAssignment_1_1 = (Assignment)cAlternatives_1.eContents().get(1);
+		private final CrossReference cVarVariableCrossReference_1_1_0 = (CrossReference)cVarAssignment_1_1.eContents().get(0);
+		private final RuleCall cVarVariableIDTerminalRuleCall_1_1_0_1 = (RuleCall)cVarVariableCrossReference_1_1_0.eContents().get(1);
+		
+		//TypeCommand:
+		//	name="Type" (str=STRING | var=[Variable]);
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name="Type" (str=STRING | var=[Variable])
+		public Group getGroup() { return cGroup; }
+		
+		//name="Type"
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//"Type"
+		public Keyword getNameTypeKeyword_0_0() { return cNameTypeKeyword_0_0; }
+		
+		//(str=STRING | var=[Variable])
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//str=STRING
+		public Assignment getStrAssignment_1_0() { return cStrAssignment_1_0; }
+		
+		//STRING
+		public RuleCall getStrSTRINGTerminalRuleCall_1_0_0() { return cStrSTRINGTerminalRuleCall_1_0_0; }
+		
+		//var=[Variable]
+		public Assignment getVarAssignment_1_1() { return cVarAssignment_1_1; }
+		
+		//[Variable]
+		public CrossReference getVarVariableCrossReference_1_1_0() { return cVarVariableCrossReference_1_1_0; }
+		
+		//ID
+		public RuleCall getVarVariableIDTerminalRuleCall_1_1_0_1() { return cVarVariableIDTerminalRuleCall_1_1_0_1; }
+	}
+	public class SleepCommandElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.SleepCommand");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cNameSleepKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
+		private final Keyword cForKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cTimeAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTimeINTTerminalRuleCall_2_0 = (RuleCall)cTimeAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Keyword cSecondKeyword_3_0 = (Keyword)cAlternatives_3.eContents().get(0);
+		private final Keyword cSecondsKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
+		
+		//SleepCommand:
+		//	name="Sleep" "for" time=INT ("second" | "seconds");
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name="Sleep" "for" time=INT ("second" | "seconds")
+		public Group getGroup() { return cGroup; }
+		
+		//name="Sleep"
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//"Sleep"
+		public Keyword getNameSleepKeyword_0_0() { return cNameSleepKeyword_0_0; }
+		
+		//"for"
+		public Keyword getForKeyword_1() { return cForKeyword_1; }
+		
+		//time=INT
+		public Assignment getTimeAssignment_2() { return cTimeAssignment_2; }
+		
+		//INT
+		public RuleCall getTimeINTTerminalRuleCall_2_0() { return cTimeINTTerminalRuleCall_2_0; }
+		
+		//("second" | "seconds")
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
+		//"second"
+		public Keyword getSecondKeyword_3_0() { return cSecondKeyword_3_0; }
+		
+		//"seconds"
+		public Keyword getSecondsKeyword_3_1() { return cSecondsKeyword_3_1; }
+	}
 	public class PointElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.Point");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -637,24 +648,23 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDollarSignKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameSTRINGTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
 		//Variable:
-		//	"$" name=STRING // fix this
-		//;
+		//	"$" name=ID;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//"$" name=STRING
+		//"$" name=ID
 		public Group getGroup() { return cGroup; }
 		
 		//"$"
 		public Keyword getDollarSignKeyword_0() { return cDollarSignKeyword_0; }
 		
-		//name=STRING
+		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
-		//STRING
-		public RuleCall getNameSTRINGTerminalRuleCall_1_0() { return cNameSTRINGTerminalRuleCall_1_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 	}
 	
 	public class ElementTypeElements extends AbstractEnumRuleElementFinder {
@@ -713,20 +723,19 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private final CommandElements pCommand;
 	private final OpenCommandElements pOpenCommand;
 	private final ClickCommandElements pClickCommand;
-	private final CommentCommandElements pCommentCommand;
 	private final SelectCommandElements pSelectCommand;
+	private final SelectorElements pSelector;
+	private final ElementTypeElements eElementType;
+	private final StoreCommandElements pStoreCommand;
 	private final RememberCommandElements pRememberCommand;
 	private final PropertyCommandElements pPropertyCommand;
+	private final PropertyElements pProperty;
+	private final ConditionElements pCondition;
 	private final TypeCommandElements pTypeCommand;
 	private final SleepCommandElements pSleepCommand;
-	private final CustomCommandElements pCustomCommand;
-	private final ElementTypeElements eElementType;
-	private final SelectorElements pSelector;
-	private final PropertyElements pProperty;
-	private final PropertyTypeElements pPropertyType;
-	private final ValueElements pValue;
-	private final ConditionElements pCondition;
 	private final PointElements pPoint;
+	private final TerminalRule tCUSTOM_COMMAND;
+	private final TerminalRule tSL_COMMENT;
 	private final VariableElements pVariable;
 	
 	private final Grammar grammar;
@@ -742,20 +751,19 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		this.pCommand = new CommandElements();
 		this.pOpenCommand = new OpenCommandElements();
 		this.pClickCommand = new ClickCommandElements();
-		this.pCommentCommand = new CommentCommandElements();
 		this.pSelectCommand = new SelectCommandElements();
+		this.pSelector = new SelectorElements();
+		this.eElementType = new ElementTypeElements();
+		this.pStoreCommand = new StoreCommandElements();
 		this.pRememberCommand = new RememberCommandElements();
 		this.pPropertyCommand = new PropertyCommandElements();
+		this.pProperty = new PropertyElements();
+		this.pCondition = new ConditionElements();
 		this.pTypeCommand = new TypeCommandElements();
 		this.pSleepCommand = new SleepCommandElements();
-		this.pCustomCommand = new CustomCommandElements();
-		this.eElementType = new ElementTypeElements();
-		this.pSelector = new SelectorElements();
-		this.pProperty = new PropertyElements();
-		this.pPropertyType = new PropertyTypeElements();
-		this.pValue = new ValueElements();
-		this.pCondition = new ConditionElements();
 		this.pPoint = new PointElements();
+		this.tCUSTOM_COMMAND = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.CUSTOM_COMMAND");
+		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.SL_COMMENT");
 		this.pVariable = new VariableElements();
 	}
 	
@@ -799,13 +807,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//Command:
 	//	OpenCommand
 	//	| ClickCommand
-	//	| CommentCommand
+	//	| StoreCommand
 	//	| SelectCommand
 	//	| RememberCommand
 	//	| PropertyCommand
 	//	| TypeCommand
 	//	| SleepCommand
-	//	| CustomCommand;
+	//	| comment=SL_COMMENT
+	//	| custom=CUSTOM_COMMAND;
 	public CommandElements getCommandAccess() {
 		return pCommand;
 	}
@@ -815,7 +824,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//OpenCommand:
-	//	"Open" value=Value;
+	//	{OpenCommand} name="Open" (val=STRING | var=Variable);
 	public OpenCommandElements getOpenCommandAccess() {
 		return pOpenCommand;
 	}
@@ -825,9 +834,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ClickCommand:
-	//	cmd="Click"
-	//	| "Click" "on" selector=Selector
-	//	| "Click" "at" point=Point;
+	//	name="Click" ("on" selector=Selector | "at" point=Point)?;
 	public ClickCommandElements getClickCommandAccess() {
 		return pClickCommand;
 	}
@@ -836,20 +843,9 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getClickCommandAccess().getRule();
 	}
 	
-	//CommentCommand:
-	//	"#" str=STRING;
-	public CommentCommandElements getCommentCommandAccess() {
-		return pCommentCommand;
-	}
-	
-	public ParserRule getCommentCommandRule() {
-		return getCommentCommandAccess().getRule();
-	}
-	
 	//SelectCommand:
-	//	"Within" value=Selector
-	//	| "Select" value=Selector
-	//	| "Select" "visible" value=Selector;
+	//	name="Within" value=Selector
+	//	| name="Select" "visible"? value=Selector;
 	public SelectCommandElements getSelectCommandAccess() {
 		return pSelectCommand;
 	}
@@ -858,54 +854,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getSelectCommandAccess().getRule();
 	}
 	
-	//RememberCommand:
-	//	"Remember" prop=Property "as" var=Variable;
-	public RememberCommandElements getRememberCommandAccess() {
-		return pRememberCommand;
+	//Selector:
+	//	type=ElementType? ("$" var=[Variable] | str=STRING);
+	public SelectorElements getSelectorAccess() {
+		return pSelector;
 	}
 	
-	public ParserRule getRememberCommandRule() {
-		return getRememberCommandAccess().getRule();
-	}
-	
-	//PropertyCommand:
-	//	"Property" prop=Property cond=Condition val=Value;
-	public PropertyCommandElements getPropertyCommandAccess() {
-		return pPropertyCommand;
-	}
-	
-	public ParserRule getPropertyCommandRule() {
-		return getPropertyCommandAccess().getRule();
-	}
-	
-	//TypeCommand:
-	//	"Type" val=Value;
-	public TypeCommandElements getTypeCommandAccess() {
-		return pTypeCommand;
-	}
-	
-	public ParserRule getTypeCommandRule() {
-		return getTypeCommandAccess().getRule();
-	}
-	
-	//SleepCommand:
-	//	"Sleep" "for" time=INT ("second" | "seconds");
-	public SleepCommandElements getSleepCommandAccess() {
-		return pSleepCommand;
-	}
-	
-	public ParserRule getSleepCommandRule() {
-		return getSleepCommandAccess().getRule();
-	}
-	
-	//CustomCommand:
-	//	"!" command=STRING;
-	public CustomCommandElements getCustomCommandAccess() {
-		return pCustomCommand;
-	}
-	
-	public ParserRule getCustomCommandRule() {
-		return getCustomCommandAccess().getRule();
+	public ParserRule getSelectorRule() {
+		return getSelectorAccess().getRule();
 	}
 	
 	//enum ElementType:
@@ -918,50 +874,46 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getElementTypeAccess().getRule();
 	}
 	
-	//Selector:
-	//	val=STRING
-	//	| type=ElementType val=STRING
-	//	| var=Variable
-	//	| type=ElementType var=Variable;
-	public SelectorElements getSelectorAccess() {
-		return pSelector;
+	//StoreCommand:
+	//	name="Store" var=Variable "as" val=STRING;
+	public StoreCommandElements getStoreCommandAccess() {
+		return pStoreCommand;
 	}
 	
-	public ParserRule getSelectorRule() {
-		return getSelectorAccess().getRule();
+	public ParserRule getStoreCommandRule() {
+		return getStoreCommandAccess().getRule();
+	}
+	
+	//RememberCommand:
+	//	name="Remember" prop=Property "as" var=Variable;
+	public RememberCommandElements getRememberCommandAccess() {
+		return pRememberCommand;
+	}
+	
+	public ParserRule getRememberCommandRule() {
+		return getRememberCommandAccess().getRule();
+	}
+	
+	//PropertyCommand hidden():
+	//	name="Property" prop=Property cond=Condition (val=STRING | "$" var=[Variable]);
+	public PropertyCommandElements getPropertyCommandAccess() {
+		return pPropertyCommand;
+	}
+	
+	public ParserRule getPropertyCommandRule() {
+		return getPropertyCommandAccess().getRule();
 	}
 	
 	//Property:
-	//	PropertyType;
+	//	"text"
+	//	| "class"
+	//	| "value";
 	public PropertyElements getPropertyAccess() {
 		return pProperty;
 	}
 	
 	public ParserRule getPropertyRule() {
 		return getPropertyAccess().getRule();
-	}
-	
-	//PropertyType:
-	//	"text"
-	//	| "class"
-	//	| "value";
-	public PropertyTypeElements getPropertyTypeAccess() {
-		return pPropertyType;
-	}
-	
-	public ParserRule getPropertyTypeRule() {
-		return getPropertyTypeAccess().getRule();
-	}
-	
-	//Value:
-	//	val=Variable
-	//	| str=STRING;
-	public ValueElements getValueAccess() {
-		return pValue;
-	}
-	
-	public ParserRule getValueRule() {
-		return getValueAccess().getRule();
 	}
 	
 	//Condition:
@@ -975,6 +927,26 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getConditionAccess().getRule();
 	}
 	
+	//TypeCommand:
+	//	name="Type" (str=STRING | var=[Variable]);
+	public TypeCommandElements getTypeCommandAccess() {
+		return pTypeCommand;
+	}
+	
+	public ParserRule getTypeCommandRule() {
+		return getTypeCommandAccess().getRule();
+	}
+	
+	//SleepCommand:
+	//	name="Sleep" "for" time=INT ("second" | "seconds");
+	public SleepCommandElements getSleepCommandAccess() {
+		return pSleepCommand;
+	}
+	
+	public ParserRule getSleepCommandRule() {
+		return getSleepCommandAccess().getRule();
+	}
+	
 	//Point:
 	//	"{" INT "," INT "}";
 	public PointElements getPointAccess() {
@@ -985,9 +957,21 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getPointAccess().getRule();
 	}
 	
+	//terminal CUSTOM_COMMAND:
+	//	'!' !('\n' | '\r')* ('\r'? '\n')?;
+	public TerminalRule getCUSTOM_COMMANDRule() {
+		return tCUSTOM_COMMAND;
+	}
+	
+	//@Override
+	//terminal SL_COMMENT:
+	//	'#' !('\n' | '\r')* ('\r'? '\n')?;
+	public TerminalRule getSL_COMMENTRule() {
+		return tSL_COMMENT;
+	}
+	
 	//Variable:
-	//	"$" name=STRING // fix this
-	//;
+	//	"$" name=ID;
 	public VariableElements getVariableAccess() {
 		return pVariable;
 	}
@@ -1018,12 +1002,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	'/*'->'*/';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
-	}
-	
-	//terminal SL_COMMENT:
-	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
-	public TerminalRule getSL_COMMENTRule() {
-		return gaTerminals.getSL_COMMENTRule();
 	}
 	
 	//terminal WS:

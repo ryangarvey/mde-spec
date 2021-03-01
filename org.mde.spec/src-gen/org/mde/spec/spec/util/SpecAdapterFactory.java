@@ -96,14 +96,19 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createClickCommandAdapter();
       }
       @Override
-      public Adapter caseCommentCommand(CommentCommand object)
-      {
-        return createCommentCommandAdapter();
-      }
-      @Override
       public Adapter caseSelectCommand(SelectCommand object)
       {
         return createSelectCommandAdapter();
+      }
+      @Override
+      public Adapter caseSelector(Selector object)
+      {
+        return createSelectorAdapter();
+      }
+      @Override
+      public Adapter caseStoreCommand(StoreCommand object)
+      {
+        return createStoreCommandAdapter();
       }
       @Override
       public Adapter caseRememberCommand(RememberCommand object)
@@ -124,21 +129,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
       public Adapter caseSleepCommand(SleepCommand object)
       {
         return createSleepCommandAdapter();
-      }
-      @Override
-      public Adapter caseCustomCommand(CustomCommand object)
-      {
-        return createCustomCommandAdapter();
-      }
-      @Override
-      public Adapter caseSelector(Selector object)
-      {
-        return createSelectorAdapter();
-      }
-      @Override
-      public Adapter caseValue(Value object)
-      {
-        return createValueAdapter();
       }
       @Override
       public Adapter caseVariable(Variable object)
@@ -228,21 +218,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.CommentCommand <em>Comment Command</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.mde.spec.spec.CommentCommand
-   * @generated
-   */
-  public Adapter createCommentCommandAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.mde.spec.spec.SelectCommand <em>Select Command</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -253,6 +228,36 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSelectCommandAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.Selector <em>Selector</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.mde.spec.spec.Selector
+   * @generated
+   */
+  public Adapter createSelectorAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.StoreCommand <em>Store Command</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.mde.spec.spec.StoreCommand
+   * @generated
+   */
+  public Adapter createStoreCommandAdapter()
   {
     return null;
   }
@@ -313,51 +318,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createSleepCommandAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.CustomCommand <em>Custom Command</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.mde.spec.spec.CustomCommand
-   * @generated
-   */
-  public Adapter createCustomCommandAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.Selector <em>Selector</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.mde.spec.spec.Selector
-   * @generated
-   */
-  public Adapter createSelectorAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.Value <em>Value</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.mde.spec.spec.Value
-   * @generated
-   */
-  public Adapter createValueAdapter()
   {
     return null;
   }
