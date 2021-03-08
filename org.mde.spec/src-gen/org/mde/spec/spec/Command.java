@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.Command#getComment <em>Comment</em>}</li>
  *   <li>{@link org.mde.spec.spec.Command#getCustom <em>Custom</em>}</li>
  *   <li>{@link org.mde.spec.spec.Command#getName <em>Name</em>}</li>
  * </ul>
@@ -25,28 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface Command extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Comment</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Comment</em>' attribute.
-   * @see #setComment(String)
-   * @see org.mde.spec.spec.SpecPackage#getCommand_Comment()
-   * @model
-   * @generated
-   */
-  String getComment();
-
-  /**
-   * Sets the value of the '{@link org.mde.spec.spec.Command#getComment <em>Comment</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Comment</em>' attribute.
-   * @see #getComment()
-   * @generated
-   */
-  void setComment(String value);
-
   /**
    * Returns the value of the '<em><b>Custom</b></em>' attribute.
    * <!-- begin-user-doc -->

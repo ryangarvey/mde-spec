@@ -25,4 +25,14 @@ class SpecQuickfixProvider extends DefaultQuickfixProvider {
 			xtextDocument.replace(issue.offset, 1, firstLetter.toLowerCase)
 		]
 	}
+	
+	@Fix(SpecValidator.INVALID_URL)
+	def appendHTTPS(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Fix URL', 'Add https://', 'upcase.png') [
+			context |
+			val xtextDocument = context.xtextDocument
+			val firstLetter = xtextDocument.get(issue.offset, 1)
+			xtextDocument.replace(issue.offset, 1, "https://" + firstLetter)
+		]
+	}
 }

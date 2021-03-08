@@ -118,22 +118,6 @@ public class SpecSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SpecPackage.STORE_COMMAND:
-      {
-        StoreCommand storeCommand = (StoreCommand)theEObject;
-        T result = caseStoreCommand(storeCommand);
-        if (result == null) result = caseCommand(storeCommand);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case SpecPackage.REMEMBER_COMMAND:
-      {
-        RememberCommand rememberCommand = (RememberCommand)theEObject;
-        T result = caseRememberCommand(rememberCommand);
-        if (result == null) result = caseCommand(rememberCommand);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
       case SpecPackage.PROPERTY_COMMAND:
       {
         PropertyCommand propertyCommand = (PropertyCommand)theEObject;
@@ -158,10 +142,18 @@ public class SpecSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case SpecPackage.VARIABLE:
+      case SpecPackage.POINT:
       {
-        Variable variable = (Variable)theEObject;
-        T result = caseVariable(variable);
+        Point point = (Point)theEObject;
+        T result = casePoint(point);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case SpecPackage.VAR_DECLARATION:
+      {
+        VarDeclaration varDeclaration = (VarDeclaration)theEObject;
+        T result = caseVarDeclaration(varDeclaration);
+        if (result == null) result = caseCommand(varDeclaration);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -266,38 +258,6 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Store Command</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Store Command</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStoreCommand(StoreCommand object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Remember Command</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Remember Command</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseRememberCommand(RememberCommand object)
-  {
-    return null;
-  }
-
-  /**
    * Returns the result of interpreting the object as an instance of '<em>Property Command</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -346,17 +306,33 @@ public class SpecSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Point</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Point</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseVariable(Variable object)
+  public T casePoint(Point object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Var Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Var Declaration</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVarDeclaration(VarDeclaration object)
   {
     return null;
   }

@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.SpecPackage;
 import org.mde.spec.spec.TypeCommand;
-import org.mde.spec.spec.Variable;
+import org.mde.spec.spec.VarDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -58,7 +58,7 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * @generated
    * @ordered
    */
-  protected Variable var;
+  protected VarDeclaration var;
 
   /**
    * <!-- begin-user-doc -->
@@ -112,12 +112,12 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * @generated
    */
   @Override
-  public Variable getVar()
+  public VarDeclaration getVar()
   {
     if (var != null && var.eIsProxy())
     {
       InternalEObject oldVar = (InternalEObject)var;
-      var = (Variable)eResolveProxy(oldVar);
+      var = (VarDeclaration)eResolveProxy(oldVar);
       if (var != oldVar)
       {
         if (eNotificationRequired())
@@ -132,7 +132,7 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable basicGetVar()
+  public VarDeclaration basicGetVar()
   {
     return var;
   }
@@ -143,9 +143,9 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
    * @generated
    */
   @Override
-  public void setVar(Variable newVar)
+  public void setVar(VarDeclaration newVar)
   {
-    Variable oldVar = var;
+    VarDeclaration oldVar = var;
     var = newVar;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.TYPE_COMMAND__VAR, oldVar, var));
@@ -184,7 +184,7 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
         setStr((String)newValue);
         return;
       case SpecPackage.TYPE_COMMAND__VAR:
-        setVar((Variable)newValue);
+        setVar((VarDeclaration)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -204,7 +204,7 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
         setStr(STR_EDEFAULT);
         return;
       case SpecPackage.TYPE_COMMAND__VAR:
-        setVar((Variable)null);
+        setVar((VarDeclaration)null);
         return;
     }
     super.eUnset(featureID);

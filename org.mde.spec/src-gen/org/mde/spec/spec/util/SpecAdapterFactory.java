@@ -106,16 +106,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createSelectorAdapter();
       }
       @Override
-      public Adapter caseStoreCommand(StoreCommand object)
-      {
-        return createStoreCommandAdapter();
-      }
-      @Override
-      public Adapter caseRememberCommand(RememberCommand object)
-      {
-        return createRememberCommandAdapter();
-      }
-      @Override
       public Adapter casePropertyCommand(PropertyCommand object)
       {
         return createPropertyCommandAdapter();
@@ -131,9 +121,14 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createSleepCommandAdapter();
       }
       @Override
-      public Adapter caseVariable(Variable object)
+      public Adapter casePoint(Point object)
       {
-        return createVariableAdapter();
+        return createPointAdapter();
+      }
+      @Override
+      public Adapter caseVarDeclaration(VarDeclaration object)
+      {
+        return createVarDeclarationAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -248,36 +243,6 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.StoreCommand <em>Store Command</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.mde.spec.spec.StoreCommand
-   * @generated
-   */
-  public Adapter createStoreCommandAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.RememberCommand <em>Remember Command</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.mde.spec.spec.RememberCommand
-   * @generated
-   */
-  public Adapter createRememberCommandAdapter()
-  {
-    return null;
-  }
-
-  /**
    * Creates a new adapter for an object of class '{@link org.mde.spec.spec.PropertyCommand <em>Property Command</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -323,16 +288,31 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.Variable <em>Variable</em>}'.
+   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.Point <em>Point</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.mde.spec.spec.Variable
+   * @see org.mde.spec.spec.Point
    * @generated
    */
-  public Adapter createVariableAdapter()
+  public Adapter createPointAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.VarDeclaration <em>Var Declaration</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.mde.spec.spec.VarDeclaration
+   * @generated
+   */
+  public Adapter createVarDeclarationAdapter()
   {
     return null;
   }

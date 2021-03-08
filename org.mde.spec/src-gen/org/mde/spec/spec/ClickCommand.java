@@ -46,25 +46,25 @@ public interface ClickCommand extends Command
   void setSelector(Selector value);
 
   /**
-   * Returns the value of the '<em><b>Point</b></em>' attribute.
+   * Returns the value of the '<em><b>Point</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Point</em>' attribute.
-   * @see #setPoint(String)
+   * @return the value of the '<em>Point</em>' containment reference.
+   * @see #setPoint(Point)
    * @see org.mde.spec.spec.SpecPackage#getClickCommand_Point()
-   * @model
+   * @model containment="true"
    * @generated
    */
-  String getPoint();
+  Point getPoint();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.ClickCommand#getPoint <em>Point</em>}' attribute.
+   * Sets the value of the '{@link org.mde.spec.spec.ClickCommand#getPoint <em>Point</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Point</em>' attribute.
+   * @param value the new value of the '<em>Point</em>' containment reference.
    * @see #getPoint()
    * @generated
    */
-  void setPoint(String value);
+  void setPoint(Point value);
 
 } // ClickCommand

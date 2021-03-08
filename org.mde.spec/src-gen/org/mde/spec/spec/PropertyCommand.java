@@ -27,47 +27,53 @@ public interface PropertyCommand extends Command
 {
   /**
    * Returns the value of the '<em><b>Prop</b></em>' attribute.
+   * The literals are from the enumeration {@link org.mde.spec.spec.Property}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Prop</em>' attribute.
-   * @see #setProp(String)
+   * @see org.mde.spec.spec.Property
+   * @see #setProp(Property)
    * @see org.mde.spec.spec.SpecPackage#getPropertyCommand_Prop()
    * @model
    * @generated
    */
-  String getProp();
+  Property getProp();
 
   /**
    * Sets the value of the '{@link org.mde.spec.spec.PropertyCommand#getProp <em>Prop</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Prop</em>' attribute.
+   * @see org.mde.spec.spec.Property
    * @see #getProp()
    * @generated
    */
-  void setProp(String value);
+  void setProp(Property value);
 
   /**
    * Returns the value of the '<em><b>Cond</b></em>' attribute.
+   * The literals are from the enumeration {@link org.mde.spec.spec.Condition}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Cond</em>' attribute.
-   * @see #setCond(String)
+   * @see org.mde.spec.spec.Condition
+   * @see #setCond(Condition)
    * @see org.mde.spec.spec.SpecPackage#getPropertyCommand_Cond()
    * @model
    * @generated
    */
-  String getCond();
+  Condition getCond();
 
   /**
    * Sets the value of the '{@link org.mde.spec.spec.PropertyCommand#getCond <em>Cond</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Cond</em>' attribute.
+   * @see org.mde.spec.spec.Condition
    * @see #getCond()
    * @generated
    */
-  void setCond(String value);
+  void setCond(Condition value);
 
   /**
    * Returns the value of the '<em><b>Val</b></em>' attribute.
@@ -96,12 +102,12 @@ public interface PropertyCommand extends Command
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Var</em>' reference.
-   * @see #setVar(Variable)
+   * @see #setVar(VarDeclaration)
    * @see org.mde.spec.spec.SpecPackage#getPropertyCommand_Var()
    * @model
    * @generated
    */
-  Variable getVar();
+  VarDeclaration getVar();
 
   /**
    * Sets the value of the '{@link org.mde.spec.spec.PropertyCommand#getVar <em>Var</em>}' reference.
@@ -111,6 +117,6 @@ public interface PropertyCommand extends Command
    * @see #getVar()
    * @generated
    */
-  void setVar(Variable value);
+  void setVar(VarDeclaration value);
 
 } // PropertyCommand

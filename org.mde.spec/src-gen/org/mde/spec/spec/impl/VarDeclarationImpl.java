@@ -8,52 +8,51 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.mde.spec.spec.SpecPackage;
-import org.mde.spec.spec.Variable;
+import org.mde.spec.spec.VarDeclaration;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Variable</b></em>'.
+ * An implementation of the model object '<em><b>Var Declaration</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.VariableImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.VarDeclarationImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class VariableImpl extends MinimalEObjectImpl.Container implements Variable
+public class VarDeclarationImpl extends CommandImpl implements VarDeclaration
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final String VALUE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getValue()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected String value = VALUE_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected VariableImpl()
+  protected VarDeclarationImpl()
   {
     super();
   }
@@ -66,7 +65,7 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
   @Override
   protected EClass eStaticClass()
   {
-    return SpecPackage.Literals.VARIABLE;
+    return SpecPackage.Literals.VAR_DECLARATION;
   }
 
   /**
@@ -75,9 +74,9 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
    * @generated
    */
   @Override
-  public String getName()
+  public String getValue()
   {
-    return name;
+    return value;
   }
 
   /**
@@ -86,12 +85,12 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setValue(String newValue)
   {
-    String oldName = name;
-    name = newName;
+    String oldValue = value;
+    value = newValue;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.VARIABLE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.VAR_DECLARATION__VALUE, oldValue, value));
   }
 
   /**
@@ -104,8 +103,8 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
   {
     switch (featureID)
     {
-      case SpecPackage.VARIABLE__NAME:
-        return getName();
+      case SpecPackage.VAR_DECLARATION__VALUE:
+        return getValue();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -120,8 +119,8 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
   {
     switch (featureID)
     {
-      case SpecPackage.VARIABLE__NAME:
-        setName((String)newValue);
+      case SpecPackage.VAR_DECLARATION__VALUE:
+        setValue((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -137,8 +136,8 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
   {
     switch (featureID)
     {
-      case SpecPackage.VARIABLE__NAME:
-        setName(NAME_EDEFAULT);
+      case SpecPackage.VAR_DECLARATION__VALUE:
+        setValue(VALUE_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -154,8 +153,8 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
   {
     switch (featureID)
     {
-      case SpecPackage.VARIABLE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SpecPackage.VAR_DECLARATION__VALUE:
+        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
     return super.eIsSet(featureID);
   }
@@ -171,10 +170,10 @@ public class VariableImpl extends MinimalEObjectImpl.Container implements Variab
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (value: ");
+    result.append(value);
     result.append(')');
     return result.toString();
   }
 
-} //VariableImpl
+} //VarDeclarationImpl

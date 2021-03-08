@@ -72,12 +72,11 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
       case SpecPackage.CLICK_COMMAND: return createClickCommand();
       case SpecPackage.SELECT_COMMAND: return createSelectCommand();
       case SpecPackage.SELECTOR: return createSelector();
-      case SpecPackage.STORE_COMMAND: return createStoreCommand();
-      case SpecPackage.REMEMBER_COMMAND: return createRememberCommand();
       case SpecPackage.PROPERTY_COMMAND: return createPropertyCommand();
       case SpecPackage.TYPE_COMMAND: return createTypeCommand();
       case SpecPackage.SLEEP_COMMAND: return createSleepCommand();
-      case SpecPackage.VARIABLE: return createVariable();
+      case SpecPackage.POINT: return createPoint();
+      case SpecPackage.VAR_DECLARATION: return createVarDeclaration();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -95,6 +94,10 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
     {
       case SpecPackage.ELEMENT_TYPE:
         return createElementTypeFromString(eDataType, initialValue);
+      case SpecPackage.PROPERTY:
+        return createPropertyFromString(eDataType, initialValue);
+      case SpecPackage.CONDITION:
+        return createConditionFromString(eDataType, initialValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -112,6 +115,10 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
     {
       case SpecPackage.ELEMENT_TYPE:
         return convertElementTypeToString(eDataType, instanceValue);
+      case SpecPackage.PROPERTY:
+        return convertPropertyToString(eDataType, instanceValue);
+      case SpecPackage.CONDITION:
+        return convertConditionToString(eDataType, instanceValue);
       default:
         throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
     }
@@ -195,30 +202,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
    * @generated
    */
   @Override
-  public StoreCommand createStoreCommand()
-  {
-    StoreCommandImpl storeCommand = new StoreCommandImpl();
-    return storeCommand;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public RememberCommand createRememberCommand()
-  {
-    RememberCommandImpl rememberCommand = new RememberCommandImpl();
-    return rememberCommand;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public PropertyCommand createPropertyCommand()
   {
     PropertyCommandImpl propertyCommand = new PropertyCommandImpl();
@@ -255,10 +238,22 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
    * @generated
    */
   @Override
-  public Variable createVariable()
+  public Point createPoint()
   {
-    VariableImpl variable = new VariableImpl();
-    return variable;
+    PointImpl point = new PointImpl();
+    return point;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public VarDeclaration createVarDeclaration()
+  {
+    VarDeclarationImpl varDeclaration = new VarDeclarationImpl();
+    return varDeclaration;
   }
 
   /**
@@ -279,6 +274,50 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
    * @generated
    */
   public String convertElementTypeToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Property createPropertyFromString(EDataType eDataType, String initialValue)
+  {
+    Property result = Property.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertPropertyToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Condition createConditionFromString(EDataType eDataType, String initialValue)
+  {
+    Condition result = Condition.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertConditionToString(EDataType eDataType, Object instanceValue)
   {
     return instanceValue == null ? null : instanceValue.toString();
   }

@@ -7,6 +7,11 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.mde.spec.spec.OpenCommand
+import org.mde.spec.spec.ClickCommand
+import org.mde.spec.spec.SpecPackage
+import org.mde.spec.spec.SelectCommand
+import org.mde.spec.spec.Selector
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +21,67 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class SpecGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+		fsa.generateFile(resource.URI.lastSegment + ".js", 
+			'''
+			const {Builder, By, until} = require('selenium-webdriver');
+			const test = require('selenium-webdriver/testing');
+				
+			describe('«resource.URI.lastSegment»', function() {
+			  let driver;
+				
+			  before(function() {
+			    return new Builder().forBrowser('chrome').build().then(d => {
+			      driver = d;
+			    });
+			  });
+			  
+			  it('example', function theTestFunction() {
+			      return '''+ resource.allContents
+				.map[ x | 
+					switch x {
+						case x instanceof OpenCommand: generateOpenCommand(x as OpenCommand)
+						case x instanceof ClickCommand: generateClickCommand(x as ClickCommand)
+						case x instanceof SelectCommand: generateSelectCommand(x as SelectCommand)
+						default: ''
+					}
+				]
+				.join("")
+			  
+			  +'''
+			  });
+			  	
+			    after(function() {
+			      return driver.quit();
+			    });
+			  });
+			''' 
+		)
+	}
+	
+	def String generateOpenCommand(OpenCommand oc) {
+		return '''
+			driver.get("« IF (oc.^val === null) »« oc.^var »« ELSE »« oc.^val »« ENDIF »")«'\n'»
+		'''
+	}
+	
+	def String generateClickCommand(ClickCommand cc) {
+		return '''
+			«IF (cc.eIsSet(SpecPackage.Literals.CLICK_COMMAND__POINT))»
+			.then(_ => actions.move_to_element_with_offset(driver.find_element_by_tag_name('body'), 0,0))
+			.then(_ => actions.move_by_offset(«cc.point.x», «cc.point.y»).click().perform())«'\n'»
+			«ELSE»
+			.then(_ => driver.findElement(By.name('« generateSelector(cc.selector) »')).click())«'\n'»
+			«ENDIF»
+		'''
+	}
+	
+	def String generateSelector(Selector s) {
+		return '''« IF (s.^val !== null) »« s.^var.value »« ELSE »« s.^val »« ENDIF »'''
+	}
+	
+	def String generateSelectCommand(SelectCommand sc) {
+		return '''
+		.then(_ => driver.findElement(By.name('« IF (sc.value.^var !== null) »« sc.value.^var »« ELSE »« sc.value.^val »« ENDIF »')))
+		'''
 	}
 }

@@ -50,12 +50,12 @@ public interface TypeCommand extends Command
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Var</em>' reference.
-   * @see #setVar(Variable)
+   * @see #setVar(VarDeclaration)
    * @see org.mde.spec.spec.SpecPackage#getTypeCommand_Var()
    * @model
    * @generated
    */
-  Variable getVar();
+  VarDeclaration getVar();
 
   /**
    * Sets the value of the '{@link org.mde.spec.spec.TypeCommand#getVar <em>Var</em>}' reference.
@@ -65,6 +65,6 @@ public interface TypeCommand extends Command
    * @see #getVar()
    * @generated
    */
-  void setVar(Variable value);
+  void setVar(VarDeclaration value);
 
 } // TypeCommand

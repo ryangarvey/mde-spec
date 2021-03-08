@@ -78,24 +78,6 @@ public interface SpecFactory extends EFactory
   Selector createSelector();
 
   /**
-   * Returns a new object of class '<em>Store Command</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Store Command</em>'.
-   * @generated
-   */
-  StoreCommand createStoreCommand();
-
-  /**
-   * Returns a new object of class '<em>Remember Command</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Remember Command</em>'.
-   * @generated
-   */
-  RememberCommand createRememberCommand();
-
-  /**
    * Returns a new object of class '<em>Property Command</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -123,13 +105,22 @@ public interface SpecFactory extends EFactory
   SleepCommand createSleepCommand();
 
   /**
-   * Returns a new object of class '<em>Variable</em>'.
+   * Returns a new object of class '<em>Point</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable</em>'.
+   * @return a new object of class '<em>Point</em>'.
    * @generated
    */
-  Variable createVariable();
+  Point createPoint();
+
+  /**
+   * Returns a new object of class '<em>Var Declaration</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Var Declaration</em>'.
+   * @generated
+   */
+  VarDeclaration createVarDeclaration();
 
   /**
    * Returns the package supported by this factory.
