@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
+import org.mde.spec.spec.Browser;
 import org.mde.spec.spec.ClickCommand;
 import org.mde.spec.spec.Command;
 import org.mde.spec.spec.Condition;
@@ -26,6 +27,7 @@ import org.mde.spec.spec.SleepCommand;
 import org.mde.spec.spec.SpecFactory;
 import org.mde.spec.spec.SpecPackage;
 import org.mde.spec.spec.TypeCommand;
+import org.mde.spec.spec.UsingCommand;
 import org.mde.spec.spec.VarDeclaration;
 
 /**
@@ -49,6 +51,13 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   private EClass commandEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass usingCommandEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -112,6 +121,13 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   private EClass varDeclarationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EEnum browserEEnum = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -250,6 +266,28 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
   public EAttribute getCommand_Name()
   {
     return (EAttribute)commandEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getUsingCommand()
+  {
+    return usingCommandEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getUsingCommand_Browser()
+  {
+    return (EAttribute)usingCommandEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -555,6 +593,17 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
    * @generated
    */
   @Override
+  public EEnum getBrowser()
+  {
+    return browserEEnum;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EEnum getElementType()
   {
     return elementTypeEEnum;
@@ -620,6 +669,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     createEAttribute(commandEClass, COMMAND__CUSTOM);
     createEAttribute(commandEClass, COMMAND__NAME);
 
+    usingCommandEClass = createEClass(USING_COMMAND);
+    createEAttribute(usingCommandEClass, USING_COMMAND__BROWSER);
+
     openCommandEClass = createEClass(OPEN_COMMAND);
     createEAttribute(openCommandEClass, OPEN_COMMAND__VAL);
     createEReference(openCommandEClass, OPEN_COMMAND__VAR);
@@ -657,6 +709,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     createEAttribute(varDeclarationEClass, VAR_DECLARATION__VALUE);
 
     // Create enums
+    browserEEnum = createEEnum(BROWSER);
     elementTypeEEnum = createEEnum(ELEMENT_TYPE);
     propertyEEnum = createEEnum(PROPERTY);
     conditionEEnum = createEEnum(CONDITION);
@@ -691,6 +744,7 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    usingCommandEClass.getESuperTypes().add(this.getCommand());
     openCommandEClass.getESuperTypes().add(this.getCommand());
     clickCommandEClass.getESuperTypes().add(this.getCommand());
     selectCommandEClass.getESuperTypes().add(this.getCommand());
@@ -706,6 +760,9 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     initEClass(commandEClass, Command.class, "Command", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getCommand_Custom(), ecorePackage.getEString(), "custom", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getCommand_Name(), ecorePackage.getEString(), "name", null, 0, 1, Command.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(usingCommandEClass, UsingCommand.class, "UsingCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getUsingCommand_Browser(), this.getBrowser(), "browser", null, 0, 1, UsingCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(openCommandEClass, OpenCommand.class, "OpenCommand", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getOpenCommand_Val(), ecorePackage.getEString(), "val", null, 0, 1, OpenCommand.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -744,6 +801,14 @@ public class SpecPackageImpl extends EPackageImpl implements SpecPackage
     initEAttribute(getVarDeclaration_Value(), ecorePackage.getEString(), "value", null, 0, 1, VarDeclaration.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Initialize enums and add enum literals
+    initEEnum(browserEEnum, Browser.class, "Browser");
+    addEEnumLiteral(browserEEnum, Browser.CHROME);
+    addEEnumLiteral(browserEEnum, Browser.FIREFOX);
+    addEEnumLiteral(browserEEnum, Browser.EXPLORER);
+    addEEnumLiteral(browserEEnum, Browser.EDGE);
+    addEEnumLiteral(browserEEnum, Browser.OPERA);
+    addEEnumLiteral(browserEEnum, Browser.SAFARI);
+
     initEEnum(elementTypeEEnum, ElementType.class, "ElementType");
     addEEnumLiteral(elementTypeEEnum, ElementType.BUTTON);
     addEEnumLiteral(elementTypeEEnum, ElementType.ELEMENT);

@@ -26,6 +26,7 @@ import org.mde.spec.spec.Selector;
 import org.mde.spec.spec.SleepCommand;
 import org.mde.spec.spec.SpecPackage;
 import org.mde.spec.spec.TypeCommand;
+import org.mde.spec.spec.UsingCommand;
 import org.mde.spec.spec.VarDeclaration;
 
 @SuppressWarnings("all")
@@ -72,6 +73,9 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case SpecPackage.TYPE_COMMAND:
 				sequence_TypeCommand(context, (TypeCommand) semanticObject); 
 				return; 
+			case SpecPackage.USING_COMMAND:
+				sequence_UsingCommand(context, (UsingCommand) semanticObject); 
+				return; 
 			case SpecPackage.VAR_DECLARATION:
 				sequence_VarDeclaration(context, (VarDeclaration) semanticObject); 
 				return; 
@@ -86,7 +90,7 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ClickCommand returns ClickCommand
 	 *
 	 * Constraint:
-	 *     (name='Click' (selector=Selector | point=Point)?)
+	 *     (name='Click' (selector=Selector | point=Point))
 	 */
 	protected void sequence_ClickCommand(ISerializationContext context, ClickCommand semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -221,6 +225,28 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_TypeCommand(ISerializationContext context, TypeCommand semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Command returns UsingCommand
+	 *     UsingCommand returns UsingCommand
+	 *
+	 * Constraint:
+	 *     (name='Using' browser=Browser)
+	 */
+	protected void sequence_UsingCommand(ISerializationContext context, UsingCommand semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.COMMAND__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.COMMAND__NAME));
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.USING_COMMAND__BROWSER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.USING_COMMAND__BROWSER));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getUsingCommandAccess().getNameUsingKeyword_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getUsingCommandAccess().getBrowserBrowserEnumRuleCall_1_0(), semanticObject.getBrowser());
+		feeder.finish();
 	}
 	
 	

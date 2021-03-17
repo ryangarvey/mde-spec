@@ -42,6 +42,15 @@ public interface SpecFactory extends EFactory
   Command createCommand();
 
   /**
+   * Returns a new object of class '<em>Using Command</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Using Command</em>'.
+   * @generated
+   */
+  UsingCommand createUsingCommand();
+
+  /**
    * Returns a new object of class '<em>Open Command</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -45,21 +45,23 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	public class CommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.Command");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cOpenCommandParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cClickCommandParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		private final RuleCall cSelectCommandParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cPropertyCommandParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cTypeCommandParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cSleepCommandParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
-		private final Group cGroup_6 = (Group)cAlternatives.eContents().get(6);
-		private final Action cCommandAction_6_0 = (Action)cGroup_6.eContents().get(0);
-		private final RuleCall cSL_COMMENTTerminalRuleCall_6_1 = (RuleCall)cGroup_6.eContents().get(1);
-		private final Assignment cCustomAssignment_7 = (Assignment)cAlternatives.eContents().get(7);
-		private final RuleCall cCustomCUSTOM_COMMANDTerminalRuleCall_7_0 = (RuleCall)cCustomAssignment_7.eContents().get(0);
-		private final RuleCall cVarDeclarationParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
+		private final RuleCall cUsingCommandParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cOpenCommandParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cClickCommandParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		private final RuleCall cSelectCommandParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cPropertyCommandParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cTypeCommandParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
+		private final RuleCall cSleepCommandParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
+		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
+		private final Action cCommandAction_7_0 = (Action)cGroup_7.eContents().get(0);
+		private final RuleCall cSL_COMMENTTerminalRuleCall_7_1 = (RuleCall)cGroup_7.eContents().get(1);
+		private final Assignment cCustomAssignment_8 = (Assignment)cAlternatives.eContents().get(8);
+		private final RuleCall cCustomCUSTOM_COMMANDTerminalRuleCall_8_0 = (RuleCall)cCustomAssignment_8.eContents().get(0);
+		private final RuleCall cVarDeclarationParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
 		//Command:
-		//	OpenCommand
+		//	UsingCommand
+		//	| OpenCommand
 		//	| ClickCommand
 		//	| SelectCommand
 		//	| PropertyCommand
@@ -70,45 +72,75 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//	| VarDeclaration;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//OpenCommand | ClickCommand | SelectCommand | PropertyCommand | TypeCommand | SleepCommand | {Command} SL_COMMENT |
-		//custom=CUSTOM_COMMAND | VarDeclaration
+		//UsingCommand | OpenCommand | ClickCommand | SelectCommand | PropertyCommand | TypeCommand | SleepCommand | {Command}
+		//SL_COMMENT | custom=CUSTOM_COMMAND | VarDeclaration
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
+		//UsingCommand
+		public RuleCall getUsingCommandParserRuleCall_0() { return cUsingCommandParserRuleCall_0; }
+		
 		//OpenCommand
-		public RuleCall getOpenCommandParserRuleCall_0() { return cOpenCommandParserRuleCall_0; }
+		public RuleCall getOpenCommandParserRuleCall_1() { return cOpenCommandParserRuleCall_1; }
 		
 		//ClickCommand
-		public RuleCall getClickCommandParserRuleCall_1() { return cClickCommandParserRuleCall_1; }
+		public RuleCall getClickCommandParserRuleCall_2() { return cClickCommandParserRuleCall_2; }
 		
 		//SelectCommand
-		public RuleCall getSelectCommandParserRuleCall_2() { return cSelectCommandParserRuleCall_2; }
+		public RuleCall getSelectCommandParserRuleCall_3() { return cSelectCommandParserRuleCall_3; }
 		
 		//PropertyCommand
-		public RuleCall getPropertyCommandParserRuleCall_3() { return cPropertyCommandParserRuleCall_3; }
+		public RuleCall getPropertyCommandParserRuleCall_4() { return cPropertyCommandParserRuleCall_4; }
 		
 		//TypeCommand
-		public RuleCall getTypeCommandParserRuleCall_4() { return cTypeCommandParserRuleCall_4; }
+		public RuleCall getTypeCommandParserRuleCall_5() { return cTypeCommandParserRuleCall_5; }
 		
 		//SleepCommand
-		public RuleCall getSleepCommandParserRuleCall_5() { return cSleepCommandParserRuleCall_5; }
+		public RuleCall getSleepCommandParserRuleCall_6() { return cSleepCommandParserRuleCall_6; }
 		
 		//{Command} SL_COMMENT
-		public Group getGroup_6() { return cGroup_6; }
+		public Group getGroup_7() { return cGroup_7; }
 		
 		//{Command}
-		public Action getCommandAction_6_0() { return cCommandAction_6_0; }
+		public Action getCommandAction_7_0() { return cCommandAction_7_0; }
 		
 		//SL_COMMENT
-		public RuleCall getSL_COMMENTTerminalRuleCall_6_1() { return cSL_COMMENTTerminalRuleCall_6_1; }
+		public RuleCall getSL_COMMENTTerminalRuleCall_7_1() { return cSL_COMMENTTerminalRuleCall_7_1; }
 		
 		//custom=CUSTOM_COMMAND
-		public Assignment getCustomAssignment_7() { return cCustomAssignment_7; }
+		public Assignment getCustomAssignment_8() { return cCustomAssignment_8; }
 		
 		//CUSTOM_COMMAND
-		public RuleCall getCustomCUSTOM_COMMANDTerminalRuleCall_7_0() { return cCustomCUSTOM_COMMANDTerminalRuleCall_7_0; }
+		public RuleCall getCustomCUSTOM_COMMANDTerminalRuleCall_8_0() { return cCustomCUSTOM_COMMANDTerminalRuleCall_8_0; }
 		
 		//VarDeclaration
-		public RuleCall getVarDeclarationParserRuleCall_8() { return cVarDeclarationParserRuleCall_8; }
+		public RuleCall getVarDeclarationParserRuleCall_9() { return cVarDeclarationParserRuleCall_9; }
+	}
+	public class UsingCommandElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.UsingCommand");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cNameAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final Keyword cNameUsingKeyword_0_0 = (Keyword)cNameAssignment_0.eContents().get(0);
+		private final Assignment cBrowserAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cBrowserBrowserEnumRuleCall_1_0 = (RuleCall)cBrowserAssignment_1.eContents().get(0);
+		
+		//UsingCommand:
+		//	name="Using" browser=Browser;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//name="Using" browser=Browser
+		public Group getGroup() { return cGroup; }
+		
+		//name="Using"
+		public Assignment getNameAssignment_0() { return cNameAssignment_0; }
+		
+		//"Using"
+		public Keyword getNameUsingKeyword_0_0() { return cNameUsingKeyword_0_0; }
+		
+		//browser=Browser
+		public Assignment getBrowserAssignment_1() { return cBrowserAssignment_1; }
+		
+		//Browser
+		public RuleCall getBrowserBrowserEnumRuleCall_1_0() { return cBrowserBrowserEnumRuleCall_1_0; }
 	}
 	public class OpenCommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.OpenCommand");
@@ -172,11 +204,12 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cPointAssignment_1_1_1 = (Assignment)cGroup_1_1.eContents().get(1);
 		private final RuleCall cPointPointParserRuleCall_1_1_1_0 = (RuleCall)cPointAssignment_1_1_1.eContents().get(0);
 		
-		//ClickCommand:
-		//	name="Click" ("on" selector=Selector | "at" point=Point)?;
+		//// TODO fix this so click works 
+		// ClickCommand:
+		//	name="Click" ("on" selector=Selector | "at" point=Point);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name="Click" ("on" selector=Selector | "at" point=Point)?
+		//name="Click" ("on" selector=Selector | "at" point=Point)
 		public Group getGroup() { return cGroup; }
 		
 		//name="Click"
@@ -185,7 +218,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"Click"
 		public Keyword getNameClickKeyword_0_0() { return cNameClickKeyword_0_0; }
 		
-		//("on" selector=Selector | "at" point=Point)?
+		//("on" selector=Selector | "at" point=Point)
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
 		//"on" selector=Selector
@@ -327,9 +360,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final CrossReference cVarVarDeclarationCrossReference_3_1_0 = (CrossReference)cVarAssignment_3_1.eContents().get(0);
 		private final RuleCall cVarVarDeclarationIDTerminalRuleCall_3_1_0_1 = (RuleCall)cVarVarDeclarationCrossReference_3_1_0.eContents().get(1);
 		
-		////RememberCommand:
-		////	name="Remember" prop=Property "as" var=Variable
-		////;
 		//PropertyCommand:
 		//	name="Property" prop=Property cond=Condition (val=STRING | var=[VarDeclaration]);
 		@Override public ParserRule getRule() { return rule; }
@@ -534,6 +564,70 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getValueSTRINGTerminalRuleCall_3_0() { return cValueSTRINGTerminalRuleCall_3_0; }
 	}
 	
+	public class BrowserElements extends AbstractEnumRuleElementFinder {
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.Browser");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final EnumLiteralDeclaration cChromeEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
+		private final Keyword cChromeChromeKeyword_0_0 = (Keyword)cChromeEnumLiteralDeclaration_0.eContents().get(0);
+		private final EnumLiteralDeclaration cFirefoxEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cFirefoxFirefoxKeyword_1_0 = (Keyword)cFirefoxEnumLiteralDeclaration_1.eContents().get(0);
+		private final EnumLiteralDeclaration cExplorerEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
+		private final Keyword cExplorerExplorerKeyword_2_0 = (Keyword)cExplorerEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cEdgeEnumLiteralDeclaration_3 = (EnumLiteralDeclaration)cAlternatives.eContents().get(3);
+		private final Keyword cEdgeEdgeKeyword_3_0 = (Keyword)cEdgeEnumLiteralDeclaration_3.eContents().get(0);
+		private final EnumLiteralDeclaration cOperaEnumLiteralDeclaration_4 = (EnumLiteralDeclaration)cAlternatives.eContents().get(4);
+		private final Keyword cOperaOperaKeyword_4_0 = (Keyword)cOperaEnumLiteralDeclaration_4.eContents().get(0);
+		private final EnumLiteralDeclaration cSafariEnumLiteralDeclaration_5 = (EnumLiteralDeclaration)cAlternatives.eContents().get(5);
+		private final Keyword cSafariSafariKeyword_5_0 = (Keyword)cSafariEnumLiteralDeclaration_5.eContents().get(0);
+		
+		//enum Browser:
+		//	chrome="Chrome"
+		//	| firefox="Firefox"
+		//	| explorer="Explorer"
+		//	| edge="Edge"
+		//	| opera="Opera"
+		//	| safari="Safari";
+		public EnumRule getRule() { return rule; }
+		
+		//chrome="Chrome" | firefox="Firefox" | explorer="Explorer" | edge="Edge" | opera="Opera" | safari="Safari"
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//chrome="Chrome"
+		public EnumLiteralDeclaration getChromeEnumLiteralDeclaration_0() { return cChromeEnumLiteralDeclaration_0; }
+		
+		//"Chrome"
+		public Keyword getChromeChromeKeyword_0_0() { return cChromeChromeKeyword_0_0; }
+		
+		//firefox="Firefox"
+		public EnumLiteralDeclaration getFirefoxEnumLiteralDeclaration_1() { return cFirefoxEnumLiteralDeclaration_1; }
+		
+		//"Firefox"
+		public Keyword getFirefoxFirefoxKeyword_1_0() { return cFirefoxFirefoxKeyword_1_0; }
+		
+		//explorer="Explorer"
+		public EnumLiteralDeclaration getExplorerEnumLiteralDeclaration_2() { return cExplorerEnumLiteralDeclaration_2; }
+		
+		//"Explorer"
+		public Keyword getExplorerExplorerKeyword_2_0() { return cExplorerExplorerKeyword_2_0; }
+		
+		//edge="Edge"
+		public EnumLiteralDeclaration getEdgeEnumLiteralDeclaration_3() { return cEdgeEnumLiteralDeclaration_3; }
+		
+		//"Edge"
+		public Keyword getEdgeEdgeKeyword_3_0() { return cEdgeEdgeKeyword_3_0; }
+		
+		//opera="Opera"
+		public EnumLiteralDeclaration getOperaEnumLiteralDeclaration_4() { return cOperaEnumLiteralDeclaration_4; }
+		
+		//"Opera"
+		public Keyword getOperaOperaKeyword_4_0() { return cOperaOperaKeyword_4_0; }
+		
+		//safari="Safari"
+		public EnumLiteralDeclaration getSafariEnumLiteralDeclaration_5() { return cSafariEnumLiteralDeclaration_5; }
+		
+		//"Safari"
+		public Keyword getSafariSafariKeyword_5_0() { return cSafariSafariKeyword_5_0; }
+	}
 	public class ElementTypeElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.ElementType");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
@@ -651,6 +745,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final ModelElements pModel;
 	private final CommandElements pCommand;
+	private final UsingCommandElements pUsingCommand;
+	private final BrowserElements eBrowser;
 	private final OpenCommandElements pOpenCommand;
 	private final ClickCommandElements pClickCommand;
 	private final SelectCommandElements pSelectCommand;
@@ -677,6 +773,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
 		this.pCommand = new CommandElements();
+		this.pUsingCommand = new UsingCommandElements();
+		this.eBrowser = new BrowserElements();
 		this.pOpenCommand = new OpenCommandElements();
 		this.pClickCommand = new ClickCommandElements();
 		this.pSelectCommand = new SelectCommandElements();
@@ -731,7 +829,8 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//Command:
-	//	OpenCommand
+	//	UsingCommand
+	//	| OpenCommand
 	//	| ClickCommand
 	//	| SelectCommand
 	//	| PropertyCommand
@@ -748,6 +847,31 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getCommandAccess().getRule();
 	}
 	
+	//UsingCommand:
+	//	name="Using" browser=Browser;
+	public UsingCommandElements getUsingCommandAccess() {
+		return pUsingCommand;
+	}
+	
+	public ParserRule getUsingCommandRule() {
+		return getUsingCommandAccess().getRule();
+	}
+	
+	//enum Browser:
+	//	chrome="Chrome"
+	//	| firefox="Firefox"
+	//	| explorer="Explorer"
+	//	| edge="Edge"
+	//	| opera="Opera"
+	//	| safari="Safari";
+	public BrowserElements getBrowserAccess() {
+		return eBrowser;
+	}
+	
+	public EnumRule getBrowserRule() {
+		return getBrowserAccess().getRule();
+	}
+	
 	//OpenCommand:
 	//	{OpenCommand} name="Open" (val=STRING | var=[VarDeclaration]);
 	public OpenCommandElements getOpenCommandAccess() {
@@ -758,8 +882,9 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getOpenCommandAccess().getRule();
 	}
 	
-	//ClickCommand:
-	//	name="Click" ("on" selector=Selector | "at" point=Point)?;
+	//// TODO fix this so click works 
+	// ClickCommand:
+	//	name="Click" ("on" selector=Selector | "at" point=Point);
 	public ClickCommandElements getClickCommandAccess() {
 		return pClickCommand;
 	}
@@ -799,9 +924,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		return getElementTypeAccess().getRule();
 	}
 	
-	////RememberCommand:
-	////	name="Remember" prop=Property "as" var=Variable
-	////;
 	//PropertyCommand:
 	//	name="Property" prop=Property cond=Condition (val=STRING | var=[VarDeclaration]);
 	public PropertyCommandElements getPropertyCommandAccess() {

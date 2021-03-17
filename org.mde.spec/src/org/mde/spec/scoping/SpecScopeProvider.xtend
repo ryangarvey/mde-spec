@@ -11,5 +11,5 @@ package org.mde.spec.scoping
  * on how and when to use it.
  */
 class SpecScopeProvider extends AbstractSpecScopeProvider {
-
+	
 }

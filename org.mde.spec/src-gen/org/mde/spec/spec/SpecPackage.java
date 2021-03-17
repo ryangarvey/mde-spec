@@ -124,6 +124,52 @@ public interface SpecPackage extends EPackage
   int COMMAND_FEATURE_COUNT = 2;
 
   /**
+   * The meta object id for the '{@link org.mde.spec.spec.impl.UsingCommandImpl <em>Using Command</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.mde.spec.spec.impl.UsingCommandImpl
+   * @see org.mde.spec.spec.impl.SpecPackageImpl#getUsingCommand()
+   * @generated
+   */
+  int USING_COMMAND = 2;
+
+  /**
+   * The feature id for the '<em><b>Custom</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int USING_COMMAND__CUSTOM = COMMAND__CUSTOM;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int USING_COMMAND__NAME = COMMAND__NAME;
+
+  /**
+   * The feature id for the '<em><b>Browser</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int USING_COMMAND__BROWSER = COMMAND_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Using Command</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int USING_COMMAND_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
+
+  /**
    * The meta object id for the '{@link org.mde.spec.spec.impl.OpenCommandImpl <em>Open Command</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -131,7 +177,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getOpenCommand()
    * @generated
    */
-  int OPEN_COMMAND = 2;
+  int OPEN_COMMAND = 3;
 
   /**
    * The feature id for the '<em><b>Custom</b></em>' attribute.
@@ -186,7 +232,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getClickCommand()
    * @generated
    */
-  int CLICK_COMMAND = 3;
+  int CLICK_COMMAND = 4;
 
   /**
    * The feature id for the '<em><b>Custom</b></em>' attribute.
@@ -241,7 +287,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getSelectCommand()
    * @generated
    */
-  int SELECT_COMMAND = 4;
+  int SELECT_COMMAND = 5;
 
   /**
    * The feature id for the '<em><b>Custom</b></em>' attribute.
@@ -287,7 +333,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getSelector()
    * @generated
    */
-  int SELECTOR = 5;
+  int SELECTOR = 6;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' attribute.
@@ -333,7 +379,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getPropertyCommand()
    * @generated
    */
-  int PROPERTY_COMMAND = 6;
+  int PROPERTY_COMMAND = 7;
 
   /**
    * The feature id for the '<em><b>Custom</b></em>' attribute.
@@ -406,7 +452,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getTypeCommand()
    * @generated
    */
-  int TYPE_COMMAND = 7;
+  int TYPE_COMMAND = 8;
 
   /**
    * The feature id for the '<em><b>Custom</b></em>' attribute.
@@ -461,7 +507,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getSleepCommand()
    * @generated
    */
-  int SLEEP_COMMAND = 8;
+  int SLEEP_COMMAND = 9;
 
   /**
    * The feature id for the '<em><b>Custom</b></em>' attribute.
@@ -507,7 +553,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getPoint()
    * @generated
    */
-  int POINT = 9;
+  int POINT = 10;
 
   /**
    * The feature id for the '<em><b>X</b></em>' attribute.
@@ -544,7 +590,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getVarDeclaration()
    * @generated
    */
-  int VAR_DECLARATION = 10;
+  int VAR_DECLARATION = 11;
 
   /**
    * The feature id for the '<em><b>Custom</b></em>' attribute.
@@ -583,6 +629,16 @@ public interface SpecPackage extends EPackage
   int VAR_DECLARATION_FEATURE_COUNT = COMMAND_FEATURE_COUNT + 1;
 
   /**
+   * The meta object id for the '{@link org.mde.spec.spec.Browser <em>Browser</em>}' enum.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.mde.spec.spec.Browser
+   * @see org.mde.spec.spec.impl.SpecPackageImpl#getBrowser()
+   * @generated
+   */
+  int BROWSER = 12;
+
+  /**
    * The meta object id for the '{@link org.mde.spec.spec.ElementType <em>Element Type</em>}' enum.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -590,7 +646,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getElementType()
    * @generated
    */
-  int ELEMENT_TYPE = 11;
+  int ELEMENT_TYPE = 13;
 
   /**
    * The meta object id for the '{@link org.mde.spec.spec.Property <em>Property</em>}' enum.
@@ -600,7 +656,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 12;
+  int PROPERTY = 14;
 
   /**
    * The meta object id for the '{@link org.mde.spec.spec.Condition <em>Condition</em>}' enum.
@@ -610,7 +666,7 @@ public interface SpecPackage extends EPackage
    * @see org.mde.spec.spec.impl.SpecPackageImpl#getCondition()
    * @generated
    */
-  int CONDITION = 13;
+  int CONDITION = 15;
 
 
   /**
@@ -665,6 +721,27 @@ public interface SpecPackage extends EPackage
    * @generated
    */
   EAttribute getCommand_Name();
+
+  /**
+   * Returns the meta object for class '{@link org.mde.spec.spec.UsingCommand <em>Using Command</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Using Command</em>'.
+   * @see org.mde.spec.spec.UsingCommand
+   * @generated
+   */
+  EClass getUsingCommand();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.mde.spec.spec.UsingCommand#getBrowser <em>Browser</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Browser</em>'.
+   * @see org.mde.spec.spec.UsingCommand#getBrowser()
+   * @see #getUsingCommand()
+   * @generated
+   */
+  EAttribute getUsingCommand_Browser();
 
   /**
    * Returns the meta object for class '{@link org.mde.spec.spec.OpenCommand <em>Open Command</em>}'.
@@ -955,6 +1032,16 @@ public interface SpecPackage extends EPackage
   EAttribute getVarDeclaration_Value();
 
   /**
+   * Returns the meta object for enum '{@link org.mde.spec.spec.Browser <em>Browser</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for enum '<em>Browser</em>'.
+   * @see org.mde.spec.spec.Browser
+   * @generated
+   */
+  EEnum getBrowser();
+
+  /**
    * Returns the meta object for enum '{@link org.mde.spec.spec.ElementType <em>Element Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1050,6 +1137,24 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EAttribute COMMAND__NAME = eINSTANCE.getCommand_Name();
+
+    /**
+     * The meta object literal for the '{@link org.mde.spec.spec.impl.UsingCommandImpl <em>Using Command</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.mde.spec.spec.impl.UsingCommandImpl
+     * @see org.mde.spec.spec.impl.SpecPackageImpl#getUsingCommand()
+     * @generated
+     */
+    EClass USING_COMMAND = eINSTANCE.getUsingCommand();
+
+    /**
+     * The meta object literal for the '<em><b>Browser</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute USING_COMMAND__BROWSER = eINSTANCE.getUsingCommand_Browser();
 
     /**
      * The meta object literal for the '{@link org.mde.spec.spec.impl.OpenCommandImpl <em>Open Command</em>}' class.
@@ -1284,6 +1389,16 @@ public interface SpecPackage extends EPackage
      * @generated
      */
     EAttribute VAR_DECLARATION__VALUE = eINSTANCE.getVarDeclaration_Value();
+
+    /**
+     * The meta object literal for the '{@link org.mde.spec.spec.Browser <em>Browser</em>}' enum.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.mde.spec.spec.Browser
+     * @see org.mde.spec.spec.impl.SpecPackageImpl#getBrowser()
+     * @generated
+     */
+    EEnum BROWSER = eINSTANCE.getBrowser();
 
     /**
      * The meta object literal for the '{@link org.mde.spec.spec.ElementType <em>Element Type</em>}' enum.

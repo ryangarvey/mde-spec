@@ -114,56 +114,65 @@ ruleCommand returns [EObject current=null]
 }:
 	(
 		{
-			newCompositeNode(grammarAccess.getCommandAccess().getOpenCommandParserRuleCall_0());
+			newCompositeNode(grammarAccess.getCommandAccess().getUsingCommandParserRuleCall_0());
 		}
-		this_OpenCommand_0=ruleOpenCommand
+		this_UsingCommand_0=ruleUsingCommand
 		{
-			$current = $this_OpenCommand_0.current;
+			$current = $this_UsingCommand_0.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getCommandAccess().getClickCommandParserRuleCall_1());
+			newCompositeNode(grammarAccess.getCommandAccess().getOpenCommandParserRuleCall_1());
 		}
-		this_ClickCommand_1=ruleClickCommand
+		this_OpenCommand_1=ruleOpenCommand
 		{
-			$current = $this_ClickCommand_1.current;
+			$current = $this_OpenCommand_1.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getCommandAccess().getSelectCommandParserRuleCall_2());
+			newCompositeNode(grammarAccess.getCommandAccess().getClickCommandParserRuleCall_2());
 		}
-		this_SelectCommand_2=ruleSelectCommand
+		this_ClickCommand_2=ruleClickCommand
 		{
-			$current = $this_SelectCommand_2.current;
+			$current = $this_ClickCommand_2.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getCommandAccess().getPropertyCommandParserRuleCall_3());
+			newCompositeNode(grammarAccess.getCommandAccess().getSelectCommandParserRuleCall_3());
 		}
-		this_PropertyCommand_3=rulePropertyCommand
+		this_SelectCommand_3=ruleSelectCommand
 		{
-			$current = $this_PropertyCommand_3.current;
+			$current = $this_SelectCommand_3.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getCommandAccess().getTypeCommandParserRuleCall_4());
+			newCompositeNode(grammarAccess.getCommandAccess().getPropertyCommandParserRuleCall_4());
 		}
-		this_TypeCommand_4=ruleTypeCommand
+		this_PropertyCommand_4=rulePropertyCommand
 		{
-			$current = $this_TypeCommand_4.current;
+			$current = $this_PropertyCommand_4.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
 		{
-			newCompositeNode(grammarAccess.getCommandAccess().getSleepCommandParserRuleCall_5());
+			newCompositeNode(grammarAccess.getCommandAccess().getTypeCommandParserRuleCall_5());
 		}
-		this_SleepCommand_5=ruleSleepCommand
+		this_TypeCommand_5=ruleTypeCommand
 		{
-			$current = $this_SleepCommand_5.current;
+			$current = $this_TypeCommand_5.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getCommandAccess().getSleepCommandParserRuleCall_6());
+		}
+		this_SleepCommand_6=ruleSleepCommand
+		{
+			$current = $this_SleepCommand_6.current;
 			afterParserOrEnumRuleCall();
 		}
 		    |
@@ -171,21 +180,21 @@ ruleCommand returns [EObject current=null]
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getCommandAccess().getCommandAction_6_0(),
+						grammarAccess.getCommandAccess().getCommandAction_7_0(),
 						$current);
 				}
 			)
-			this_SL_COMMENT_7=RULE_SL_COMMENT
+			this_SL_COMMENT_8=RULE_SL_COMMENT
 			{
-				newLeafNode(this_SL_COMMENT_7, grammarAccess.getCommandAccess().getSL_COMMENTTerminalRuleCall_6_1());
+				newLeafNode(this_SL_COMMENT_8, grammarAccess.getCommandAccess().getSL_COMMENTTerminalRuleCall_7_1());
 			}
 		)
 		    |
 		(
 			(
-				lv_custom_8_0=RULE_CUSTOM_COMMAND
+				lv_custom_9_0=RULE_CUSTOM_COMMAND
 				{
-					newLeafNode(lv_custom_8_0, grammarAccess.getCommandAccess().getCustomCUSTOM_COMMANDTerminalRuleCall_7_0());
+					newLeafNode(lv_custom_9_0, grammarAccess.getCommandAccess().getCustomCUSTOM_COMMANDTerminalRuleCall_8_0());
 				}
 				{
 					if ($current==null) {
@@ -194,20 +203,72 @@ ruleCommand returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"custom",
-						lv_custom_8_0,
+						lv_custom_9_0,
 						"org.mde.spec.Spec.CUSTOM_COMMAND");
 				}
 			)
 		)
 		    |
 		{
-			newCompositeNode(grammarAccess.getCommandAccess().getVarDeclarationParserRuleCall_8());
+			newCompositeNode(grammarAccess.getCommandAccess().getVarDeclarationParserRuleCall_9());
 		}
-		this_VarDeclaration_9=ruleVarDeclaration
+		this_VarDeclaration_10=ruleVarDeclaration
 		{
-			$current = $this_VarDeclaration_9.current;
+			$current = $this_VarDeclaration_10.current;
 			afterParserOrEnumRuleCall();
 		}
+	)
+;
+
+// Entry rule entryRuleUsingCommand
+entryRuleUsingCommand returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getUsingCommandRule()); }
+	iv_ruleUsingCommand=ruleUsingCommand
+	{ $current=$iv_ruleUsingCommand.current; }
+	EOF;
+
+// Rule UsingCommand
+ruleUsingCommand returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				lv_name_0_0='Using'
+				{
+					newLeafNode(lv_name_0_0, grammarAccess.getUsingCommandAccess().getNameUsingKeyword_0_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getUsingCommandRule());
+					}
+					setWithLastConsumed($current, "name", lv_name_0_0, "Using");
+				}
+			)
+		)
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getUsingCommandAccess().getBrowserBrowserEnumRuleCall_1_0());
+				}
+				lv_browser_1_0=ruleBrowser
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getUsingCommandRule());
+					}
+					set(
+						$current,
+						"browser",
+						lv_browser_1_0,
+						"org.mde.spec.Spec.Browser");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
 	)
 ;
 
@@ -367,7 +428,7 @@ ruleClickCommand returns [EObject current=null]
 					)
 				)
 			)
-		)?
+		)
 	)
 ;
 
@@ -903,6 +964,65 @@ ruleVarDeclaration returns [EObject current=null]
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
+		)
+	)
+;
+
+// Rule Browser
+ruleBrowser returns [Enumerator current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			enumLiteral_0='Chrome'
+			{
+				$current = grammarAccess.getBrowserAccess().getChromeEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_0, grammarAccess.getBrowserAccess().getChromeEnumLiteralDeclaration_0());
+			}
+		)
+		    |
+		(
+			enumLiteral_1='Firefox'
+			{
+				$current = grammarAccess.getBrowserAccess().getFirefoxEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getBrowserAccess().getFirefoxEnumLiteralDeclaration_1());
+			}
+		)
+		    |
+		(
+			enumLiteral_2='Explorer'
+			{
+				$current = grammarAccess.getBrowserAccess().getExplorerEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_2, grammarAccess.getBrowserAccess().getExplorerEnumLiteralDeclaration_2());
+			}
+		)
+		    |
+		(
+			enumLiteral_3='Edge'
+			{
+				$current = grammarAccess.getBrowserAccess().getEdgeEnumLiteralDeclaration_3().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_3, grammarAccess.getBrowserAccess().getEdgeEnumLiteralDeclaration_3());
+			}
+		)
+		    |
+		(
+			enumLiteral_4='Opera'
+			{
+				$current = grammarAccess.getBrowserAccess().getOperaEnumLiteralDeclaration_4().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_4, grammarAccess.getBrowserAccess().getOperaEnumLiteralDeclaration_4());
+			}
+		)
+		    |
+		(
+			enumLiteral_5='Safari'
+			{
+				$current = grammarAccess.getBrowserAccess().getSafariEnumLiteralDeclaration_5().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_5, grammarAccess.getBrowserAccess().getSafariEnumLiteralDeclaration_5());
+			}
 		)
 	)
 ;

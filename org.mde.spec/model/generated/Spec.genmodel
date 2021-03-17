@@ -6,6 +6,14 @@
     copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="Spec" basePackage="org.mde.spec" disposableProviderFactory="true"
       fileExtensions="spec" ecorePackage="Spec.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Spec.ecore#//Browser">
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/chrome"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/firefox"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/explorer"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/edge"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/opera"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/safari"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Spec.ecore#//ElementType">
       <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//ElementType/button"/>
       <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//ElementType/element"/>
@@ -28,6 +36,9 @@
     <genClasses ecoreClass="Spec.ecore#//Command">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Command/custom"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Command/name"/>
+    </genClasses>
+    <genClasses ecoreClass="Spec.ecore#//UsingCommand">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//UsingCommand/browser"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//OpenCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//OpenCommand/val"/>

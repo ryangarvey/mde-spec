@@ -6,6 +6,9 @@ package org.mde.spec.validation
 import org.eclipse.xtext.validation.Check
 import org.mde.spec.spec.SpecPackage
 import org.mde.spec.spec.VarDeclaration
+import org.mde.spec.spec.Model
+import org.mde.spec.spec.Command
+import org.mde.spec.spec.UsingCommand
 
 /**
  * This class contains custom validation rules. 
@@ -16,18 +19,32 @@ class SpecValidator extends AbstractSpecValidator {
 	
 	public static val INVALID_NAME = "Invalid variable name"
 	public static val INVALID_URL = "Invalid URL definition"
+	public static val TOO_MANY_USING_COMMANDS = "Invalid number of Using commands"
 	
 	@Check(FAST)
 	def void checkNameStartsWithLowerCase(VarDeclaration v) {
 		if (Character::isUpperCase(v.getName().charAt(0))) {
-			info("A variable name should be in camelCase", SpecPackage.Literals.VAR_DECLARATION__VALUE, INVALID_NAME);
+			info("A variable name should be in camelCase.", SpecPackage.Literals.VAR_DECLARATION__VALUE, INVALID_NAME);
 		}
 	}
 	
 	@Check(FAST)
-	def void checkUrlIsWellDefined(VarDeclaration vd){
+	def void checkUrlIsWellDefined(VarDeclaration vd) {
 		if (vd.name.contains("url") && !vd.value.contains("https://")) {
 			error("A URL variable should be a fully qualified URL", SpecPackage.Literals.VAR_DECLARATION__VALUE, INVALID_URL);
+		}
+	}
+	
+	@Check(NORMAL)
+	def void checkOnlyOneUsingCommand(Model uc) {
+		var usingCommandCounter = 0;
+		for (Command c : uc.commands) {
+			if (usingCommandCounter > 1) 
+				error("Only one using command can be used per file.", SpecPackage.Literals.MODEL__COMMANDS , TOO_MANY_USING_COMMANDS)
+			
+			if (c instanceof UsingCommand) {
+				usingCommandCounter += 1
+			}
 		}
 	}
 }

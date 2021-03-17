@@ -39,10 +39,12 @@ public class SpecParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPropertyCommandAccess().getAlternatives_3(), "rule__PropertyCommand__Alternatives_3");
 			builder.put(grammarAccess.getTypeCommandAccess().getAlternatives_1(), "rule__TypeCommand__Alternatives_1");
 			builder.put(grammarAccess.getSleepCommandAccess().getAlternatives_3(), "rule__SleepCommand__Alternatives_3");
+			builder.put(grammarAccess.getBrowserAccess().getAlternatives(), "rule__Browser__Alternatives");
 			builder.put(grammarAccess.getElementTypeAccess().getAlternatives(), "rule__ElementType__Alternatives");
 			builder.put(grammarAccess.getPropertyAccess().getAlternatives(), "rule__Property__Alternatives");
 			builder.put(grammarAccess.getConditionAccess().getAlternatives(), "rule__Condition__Alternatives");
-			builder.put(grammarAccess.getCommandAccess().getGroup_6(), "rule__Command__Group_6__0");
+			builder.put(grammarAccess.getCommandAccess().getGroup_7(), "rule__Command__Group_7__0");
+			builder.put(grammarAccess.getUsingCommandAccess().getGroup(), "rule__UsingCommand__Group__0");
 			builder.put(grammarAccess.getOpenCommandAccess().getGroup(), "rule__OpenCommand__Group__0");
 			builder.put(grammarAccess.getClickCommandAccess().getGroup(), "rule__ClickCommand__Group__0");
 			builder.put(grammarAccess.getClickCommandAccess().getGroup_1_0(), "rule__ClickCommand__Group_1_0__0");
@@ -56,7 +58,9 @@ public class SpecParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getPointAccess().getGroup(), "rule__Point__Group__0");
 			builder.put(grammarAccess.getVarDeclarationAccess().getGroup(), "rule__VarDeclaration__Group__0");
 			builder.put(grammarAccess.getModelAccess().getCommandsAssignment(), "rule__Model__CommandsAssignment");
-			builder.put(grammarAccess.getCommandAccess().getCustomAssignment_7(), "rule__Command__CustomAssignment_7");
+			builder.put(grammarAccess.getCommandAccess().getCustomAssignment_8(), "rule__Command__CustomAssignment_8");
+			builder.put(grammarAccess.getUsingCommandAccess().getNameAssignment_0(), "rule__UsingCommand__NameAssignment_0");
+			builder.put(grammarAccess.getUsingCommandAccess().getBrowserAssignment_1(), "rule__UsingCommand__BrowserAssignment_1");
 			builder.put(grammarAccess.getOpenCommandAccess().getNameAssignment_1(), "rule__OpenCommand__NameAssignment_1");
 			builder.put(grammarAccess.getOpenCommandAccess().getValAssignment_2_0(), "rule__OpenCommand__ValAssignment_2_0");
 			builder.put(grammarAccess.getOpenCommandAccess().getVarAssignment_2_1(), "rule__OpenCommand__VarAssignment_2_1");

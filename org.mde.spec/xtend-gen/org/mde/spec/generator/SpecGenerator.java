@@ -3,6 +3,7 @@
  */
 package org.mde.spec.generator;
 
+import com.google.common.collect.Iterators;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtend2.lib.StringConcatenation;
@@ -12,10 +13,16 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.mde.spec.spec.ClickCommand;
+import org.mde.spec.spec.Condition;
 import org.mde.spec.spec.OpenCommand;
+import org.mde.spec.spec.Property;
+import org.mde.spec.spec.PropertyCommand;
 import org.mde.spec.spec.SelectCommand;
 import org.mde.spec.spec.Selector;
+import org.mde.spec.spec.SleepCommand;
 import org.mde.spec.spec.SpecPackage;
+import org.mde.spec.spec.TypeCommand;
+import org.mde.spec.spec.UsingCommand;
 import org.mde.spec.spec.VarDeclaration;
 
 /**
@@ -47,16 +54,16 @@ public class SpecGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("  ");
-    _builder.append("before(function() {");
+    _builder.append("before(async function() {");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("return new Builder().forBrowser(\'chrome\').build().then(d => {");
-    _builder.newLine();
-    _builder.append("      ");
+    _builder.append("const d = await new Builder().forBrowser(\'");
+    String _lowerCase = IteratorExtensions.<UsingCommand>head(Iterators.<UsingCommand>filter(resource.getAllContents(), UsingCommand.class)).getBrowser().toString().toLowerCase();
+    _builder.append(_lowerCase, "    ");
+    _builder.append("\').build();");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    \t");
     _builder.append("driver = d;");
-    _builder.newLine();
-    _builder.append("    ");
-    _builder.append("});");
     _builder.newLine();
     _builder.append("  ");
     _builder.append("});");
@@ -88,6 +95,24 @@ public class SpecGenerator extends AbstractGenerator {
         }
       }
       if (!_matched) {
+        if ((x instanceof PropertyCommand)) {
+          _matched=true;
+          _switchResult = this.generatePropertyCommand(((PropertyCommand) x));
+        }
+      }
+      if (!_matched) {
+        if ((x instanceof TypeCommand)) {
+          _matched=true;
+          _switchResult = this.generateTypeCommand(((TypeCommand) x));
+        }
+      }
+      if (!_matched) {
+        if ((x instanceof SleepCommand)) {
+          _matched=true;
+          _switchResult = this.generateSleepCommand(((SleepCommand) x));
+        }
+      }
+      if (!_matched) {
         _switchResult = "";
       }
       return _switchResult;
@@ -114,6 +139,67 @@ public class SpecGenerator extends AbstractGenerator {
     fsa.generateFile(_plus, _plus_2);
   }
   
+  public String generateSleepCommand(final SleepCommand sc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append(".then(_ => driver.sleep(");
+    int _time = sc.getTime();
+    int _multiply = (_time * 1000);
+    _builder.append(_multiply, "\t");
+    _builder.append("))");
+    return _builder.toString();
+  }
+  
+  public String generateTypeCommand(final TypeCommand tc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append(".then(e => e.sendKeys(\'");
+    String _string = tc.getStr().toString();
+    _builder.append(_string, "\t");
+    _builder.append("\'))");
+    _builder.append("\n", "\t");
+    return _builder.toString();
+  }
+  
+  public String generatePropertyCommand(final PropertyCommand pc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append(".then(_ => expect(");
+    {
+      Property _prop = pc.getProp();
+      boolean _tripleEquals = (_prop == Property.CLASS);
+      if (_tripleEquals) {
+        _builder.append("_.className");
+      } else {
+        _builder.append("_.innerHTML");
+      }
+    }
+    _builder.append(")");
+    {
+      Condition _cond = pc.getCond();
+      boolean _tripleEquals_1 = (_cond == Condition.SHOULD_BE);
+      if (_tripleEquals_1) {
+        _builder.append(".equals(\'");
+      } else {
+        _builder.append(".notEquals(\'");
+      }
+    }
+    {
+      String _val = pc.getVal();
+      boolean _tripleEquals_2 = (_val == null);
+      if (_tripleEquals_2) {
+        String _string = pc.getVar().getValue().toString();
+        _builder.append(_string, "\t");
+      } else {
+        String _string_1 = pc.getVal().toString();
+        _builder.append(_string_1, "\t");
+      }
+    }
+    _builder.append("\'))");
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+  
   public String generateOpenCommand(final OpenCommand oc) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("driver.get(\"");
@@ -121,11 +207,11 @@ public class SpecGenerator extends AbstractGenerator {
       String _val = oc.getVal();
       boolean _tripleEquals = (_val == null);
       if (_tripleEquals) {
-        VarDeclaration _var = oc.getVar();
-        _builder.append(_var);
+        String _string = oc.getVar().getValue().toString();
+        _builder.append(_string);
       } else {
-        String _val_1 = oc.getVal();
-        _builder.append(_val_1);
+        String _string_1 = oc.getVal().toString();
+        _builder.append(_string_1);
       }
     }
     _builder.append("\")");
@@ -165,14 +251,14 @@ public class SpecGenerator extends AbstractGenerator {
   public String generateSelector(final Selector s) {
     StringConcatenation _builder = new StringConcatenation();
     {
-      String _val = s.getVal();
-      boolean _tripleNotEquals = (_val != null);
+      VarDeclaration _var = s.getVar();
+      boolean _tripleNotEquals = (_var != null);
       if (_tripleNotEquals) {
-        String _value = s.getVar().getValue();
-        _builder.append(_value);
+        String _string = s.getVar().getValue().toString();
+        _builder.append(_string);
       } else {
-        String _val_1 = s.getVal();
-        _builder.append(_val_1);
+        String _string_1 = s.getVal().toString();
+        _builder.append(_string_1);
       }
     }
     return _builder.toString();
@@ -181,17 +267,8 @@ public class SpecGenerator extends AbstractGenerator {
   public String generateSelectCommand(final SelectCommand sc) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append(".then(_ => driver.findElement(By.name(\'");
-    {
-      VarDeclaration _var = sc.getValue().getVar();
-      boolean _tripleNotEquals = (_var != null);
-      if (_tripleNotEquals) {
-        VarDeclaration _var_1 = sc.getValue().getVar();
-        _builder.append(_var_1);
-      } else {
-        String _val = sc.getValue().getVal();
-        _builder.append(_val);
-      }
-    }
+    String _generateSelector = this.generateSelector(sc.getValue());
+    _builder.append(_generateSelector);
     _builder.append("\')))");
     _builder.newLineIfNotEmpty();
     return _builder.toString();

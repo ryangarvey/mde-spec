@@ -31,8 +31,21 @@ class SpecQuickfixProvider extends DefaultQuickfixProvider {
 		acceptor.accept(issue, 'Fix URL', 'Add https://', 'upcase.png') [
 			context |
 			val xtextDocument = context.xtextDocument
-			val firstLetter = xtextDocument.get(issue.offset, 1)
-			xtextDocument.replace(issue.offset, 1, "https://" + firstLetter)
+			xtextDocument.getLineInformation(issue.lineNumber)
+			xtextDocument.replace(issue.offset, 1, '''"https://''')
+		]
+	}
+	
+	@Fix(SpecValidator.TOO_MANY_USING_COMMANDS)
+	def removeUsingCommands(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove using commands', 'Delete all but the first using command', 'upcase.png') [
+			context |
+			val xtextDocument = context.xtextDocument
+			for (var i = xtextDocument.numberOfLines-1; i >= 0; i-=1) {
+				if (xtextDocument.getLineInformation(i).toString.contains("Using")) {
+					// TODO fix this
+				}
+			}	
 		]
 	}
 }

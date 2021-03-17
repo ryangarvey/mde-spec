@@ -68,6 +68,7 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
     {
       case SpecPackage.MODEL: return createModel();
       case SpecPackage.COMMAND: return createCommand();
+      case SpecPackage.USING_COMMAND: return createUsingCommand();
       case SpecPackage.OPEN_COMMAND: return createOpenCommand();
       case SpecPackage.CLICK_COMMAND: return createClickCommand();
       case SpecPackage.SELECT_COMMAND: return createSelectCommand();
@@ -92,6 +93,8 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case SpecPackage.BROWSER:
+        return createBrowserFromString(eDataType, initialValue);
       case SpecPackage.ELEMENT_TYPE:
         return createElementTypeFromString(eDataType, initialValue);
       case SpecPackage.PROPERTY:
@@ -113,6 +116,8 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     switch (eDataType.getClassifierID())
     {
+      case SpecPackage.BROWSER:
+        return convertBrowserToString(eDataType, instanceValue);
       case SpecPackage.ELEMENT_TYPE:
         return convertElementTypeToString(eDataType, instanceValue);
       case SpecPackage.PROPERTY:
@@ -146,6 +151,18 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     CommandImpl command = new CommandImpl();
     return command;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public UsingCommand createUsingCommand()
+  {
+    UsingCommandImpl usingCommand = new UsingCommandImpl();
+    return usingCommand;
   }
 
   /**
@@ -254,6 +271,28 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     VarDeclarationImpl varDeclaration = new VarDeclarationImpl();
     return varDeclaration;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Browser createBrowserFromString(EDataType eDataType, String initialValue)
+  {
+    Browser result = Browser.get(initialValue);
+    if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+    return result;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public String convertBrowserToString(EDataType eDataType, Object instanceValue)
+  {
+    return instanceValue == null ? null : instanceValue.toString();
   }
 
   /**

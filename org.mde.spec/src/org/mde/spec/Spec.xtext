@@ -6,7 +6,8 @@ Model:
 	commands+=Command*;
 	
 Command:
-	OpenCommand
+	UsingCommand
+  | OpenCommand
   | ClickCommand
   | SelectCommand
   | PropertyCommand
@@ -17,12 +18,26 @@ Command:
   | VarDeclaration
 ;
 
+UsingCommand:
+	name="Using" browser=Browser
+;
+
+enum Browser:
+	chrome="Chrome"
+  | firefox="Firefox"
+  | explorer="Explorer"
+  | edge="Edge"
+  | opera="Opera"
+  | safari="Safari"
+;
+
 OpenCommand:
 	{OpenCommand} name="Open" (val=STRING | var=[VarDeclaration])
 ;
 
+// TODO fix this so click works 
 ClickCommand:
-	name="Click" ("on" selector=Selector | "at" point=Point)?
+	name="Click" ("on" selector=Selector | "at" point=Point)
 ;
 
 SelectCommand:
