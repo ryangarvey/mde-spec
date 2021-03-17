@@ -10,71 +10,71 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.mde.spec.spec.Command;
+import org.mde.spec.spec.Point;
 import org.mde.spec.spec.SpecPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Command</b></em>'.
+ * An implementation of the model object '<em><b>Point</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.CommandImpl#getCustom <em>Custom</em>}</li>
- *   <li>{@link org.mde.spec.spec.impl.CommandImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.PointImpl#getX <em>X</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.PointImpl#getY <em>Y</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CommandImpl extends MinimalEObjectImpl.Container implements Command
+public class PointImpl extends MinimalEObjectImpl.Container implements Point
 {
   /**
-   * The default value of the '{@link #getCustom() <em>Custom</em>}' attribute.
+   * The default value of the '{@link #getX() <em>X</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCustom()
+   * @see #getX()
    * @generated
    * @ordered
    */
-  protected static final String CUSTOM_EDEFAULT = null;
+  protected static final int X_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getCustom() <em>Custom</em>}' attribute.
+   * The cached value of the '{@link #getX() <em>X</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCustom()
+   * @see #getX()
    * @generated
    * @ordered
    */
-  protected String custom = CUSTOM_EDEFAULT;
+  protected int x = X_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #getY() <em>Y</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getY()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final int Y_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #getY() <em>Y</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #getY()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected int y = Y_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected CommandImpl()
+  protected PointImpl()
   {
     super();
   }
@@ -87,7 +87,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   @Override
   protected EClass eStaticClass()
   {
-    return SpecPackage.Literals.COMMAND;
+    return SpecPackage.Literals.POINT;
   }
 
   /**
@@ -96,9 +96,9 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * @generated
    */
   @Override
-  public String getCustom()
+  public int getX()
   {
-    return custom;
+    return x;
   }
 
   /**
@@ -107,12 +107,12 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * @generated
    */
   @Override
-  public void setCustom(String newCustom)
+  public void setX(int newX)
   {
-    String oldCustom = custom;
-    custom = newCustom;
+    int oldX = x;
+    x = newX;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.COMMAND__CUSTOM, oldCustom, custom));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.POINT__X, oldX, x));
   }
 
   /**
@@ -121,9 +121,9 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * @generated
    */
   @Override
-  public String getName()
+  public int getY()
   {
-    return name;
+    return y;
   }
 
   /**
@@ -132,12 +132,12 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * @generated
    */
   @Override
-  public void setName(String newName)
+  public void setY(int newY)
   {
-    String oldName = name;
-    name = newName;
+    int oldY = y;
+    y = newY;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.COMMAND__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.POINT__Y, oldY, y));
   }
 
   /**
@@ -150,10 +150,10 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case SpecPackage.COMMAND__CUSTOM:
-        return getCustom();
-      case SpecPackage.COMMAND__NAME:
-        return getName();
+      case SpecPackage.POINT__X:
+        return getX();
+      case SpecPackage.POINT__Y:
+        return getY();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -168,11 +168,11 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case SpecPackage.COMMAND__CUSTOM:
-        setCustom((String)newValue);
+      case SpecPackage.POINT__X:
+        setX((Integer)newValue);
         return;
-      case SpecPackage.COMMAND__NAME:
-        setName((String)newValue);
+      case SpecPackage.POINT__Y:
+        setY((Integer)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -188,11 +188,11 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case SpecPackage.COMMAND__CUSTOM:
-        setCustom(CUSTOM_EDEFAULT);
+      case SpecPackage.POINT__X:
+        setX(X_EDEFAULT);
         return;
-      case SpecPackage.COMMAND__NAME:
-        setName(NAME_EDEFAULT);
+      case SpecPackage.POINT__Y:
+        setY(Y_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -208,10 +208,10 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case SpecPackage.COMMAND__CUSTOM:
-        return CUSTOM_EDEFAULT == null ? custom != null : !CUSTOM_EDEFAULT.equals(custom);
-      case SpecPackage.COMMAND__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case SpecPackage.POINT__X:
+        return x != X_EDEFAULT;
+      case SpecPackage.POINT__Y:
+        return y != Y_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -227,12 +227,12 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (custom: ");
-    result.append(custom);
-    result.append(", name: ");
-    result.append(name);
+    result.append(" (x: ");
+    result.append(x);
+    result.append(", y: ");
+    result.append(y);
     result.append(')');
     return result.toString();
   }
 
-} //CommandImpl
+} //PointImpl

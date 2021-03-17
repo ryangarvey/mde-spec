@@ -7,6 +7,17 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.mde.spec.spec.OpenCommand
+import org.mde.spec.spec.ClickCommand
+import org.mde.spec.spec.SpecPackage
+import org.mde.spec.spec.SelectCommand
+import org.mde.spec.spec.Selector
+import org.mde.spec.spec.PropertyCommand
+import org.mde.spec.spec.Property
+import org.mde.spec.spec.Condition
+import org.mde.spec.spec.TypeCommand
+import org.mde.spec.spec.SleepCommand
+import org.mde.spec.spec.UsingCommand
 
 /**
  * Generates code from your model files on save.
@@ -16,10 +27,85 @@ import org.eclipse.xtext.generator.IGeneratorContext
 class SpecGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
+		fsa.generateFile(resource.URI.lastSegment + ".js", 
+			'''
+			const {Builder, By, until} = require('selenium-webdriver');
+			const test = require('selenium-webdriver/testing');
+				
+			describe('«resource.URI.lastSegment»', function() {
+			  let driver;
+				
+			  before(async function() {
+			    const d = await new Builder().forBrowser('«
+			    	resource.allContents.filter(UsingCommand).head.browser.toString.toLowerCase
+			    	»').build();
+			    	driver = d;
+			  });
+			  
+			  it('example', function theTestFunction() {
+			      return '''+ resource.allContents
+				.map[ x | 
+					switch x {
+						case x instanceof OpenCommand: generateOpenCommand(x as OpenCommand)
+						case x instanceof ClickCommand: generateClickCommand(x as ClickCommand)
+						case x instanceof SelectCommand: generateSelectCommand(x as SelectCommand)
+						case x instanceof PropertyCommand: generatePropertyCommand(x as PropertyCommand)
+						case x instanceof TypeCommand: generateTypeCommand(x as TypeCommand)
+						case x instanceof SleepCommand: generateSleepCommand(x as SleepCommand)
+						default: ''
+					}
+				]
+				.join("")
+			  +'''
+			  });
+			  	
+			    after(function() {
+			      return driver.quit();
+			    });
+			  });
+			''' 
+		)
+	}
+	
+	def generateSleepCommand(SleepCommand sc) {
+		return '''	.then(_ => driver.sleep(«sc.time * 1000»))'''
+	}
+	
+	// TODO understand how to insert strings into text boxes
+	def generateTypeCommand(TypeCommand tc) {
+		return '''	.then(e => e.sendKeys('«tc.str.toString»'))«'\n'»'''
+	}
+	
+	// TODO not sure if the js code is properly implemented
+	def generatePropertyCommand(PropertyCommand pc) {
+		return '''	.then(_ => expect(«IF (pc.prop === Property.CLASS)»_.className«ELSE»_.innerHTML«ENDIF»)«IF (pc.cond === Condition.SHOULD_BE)».equals('«ELSE».notEquals('«ENDIF»« IF (pc.^val === null) »« pc.^var.value.toString »« ELSE »« pc.^val.toString »« ENDIF »'))
+		'''
+	}
+	
+	def String generateOpenCommand(OpenCommand oc) {
+		return '''
+			driver.get("« IF (oc.^val === null) »« oc.^var.value.toString »« ELSE »« oc.^val.toString »« ENDIF »")«'\n'»
+		'''
+	}
+	
+	def String generateClickCommand(ClickCommand cc) {
+		return '''
+			«IF (cc.eIsSet(SpecPackage.Literals.CLICK_COMMAND__POINT))»
+				.then(_ => actions.move_to_element_with_offset(driver.find_element_by_tag_name('body'), 0,0))
+				.then(_ => actions.move_by_offset(«cc.point.x», «cc.point.y»).click().perform())«'\n'»
+			«ELSE»
+				.then(_ => driver.findElement(By.name('« generateSelector(cc.selector) »')).click())«'\n'»
+			«ENDIF»
+		'''
+	}
+	
+	def String generateSelector(Selector s) {
+		return '''« IF (s.^var !== null) »« s.^var.value.toString »« ELSE »« s.^val.toString »« ENDIF »'''
+	}
+	
+	def String generateSelectCommand(SelectCommand sc) {
+		return '''
+			.then(_ => driver.findElement(By.name('« generateSelector(sc.value) »')))
+		'''
 	}
 }

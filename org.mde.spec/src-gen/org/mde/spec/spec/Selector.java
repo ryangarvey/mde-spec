@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.mde.spec.spec.Selector#getType <em>Type</em>}</li>
  *   <li>{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}</li>
- *   <li>{@link org.mde.spec.spec.Selector#getStr <em>Str</em>}</li>
+ *   <li>{@link org.mde.spec.spec.Selector#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @see org.mde.spec.spec.SpecPackage#getSelector()
@@ -55,12 +55,12 @@ public interface Selector extends EObject
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Var</em>' reference.
-   * @see #setVar(Variable)
+   * @see #setVar(VarDeclaration)
    * @see org.mde.spec.spec.SpecPackage#getSelector_Var()
    * @model
    * @generated
    */
-  Variable getVar();
+  VarDeclaration getVar();
 
   /**
    * Sets the value of the '{@link org.mde.spec.spec.Selector#getVar <em>Var</em>}' reference.
@@ -70,28 +70,28 @@ public interface Selector extends EObject
    * @see #getVar()
    * @generated
    */
-  void setVar(Variable value);
+  void setVar(VarDeclaration value);
 
   /**
-   * Returns the value of the '<em><b>Str</b></em>' attribute.
+   * Returns the value of the '<em><b>Val</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Str</em>' attribute.
-   * @see #setStr(String)
-   * @see org.mde.spec.spec.SpecPackage#getSelector_Str()
+   * @return the value of the '<em>Val</em>' attribute.
+   * @see #setVal(String)
+   * @see org.mde.spec.spec.SpecPackage#getSelector_Val()
    * @model
    * @generated
    */
-  String getStr();
+  String getVal();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.Selector#getStr <em>Str</em>}' attribute.
+   * Sets the value of the '{@link org.mde.spec.spec.Selector#getVal <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Str</em>' attribute.
-   * @see #getStr()
+   * @param value the new value of the '<em>Val</em>' attribute.
+   * @see #getVal()
    * @generated
    */
-  void setStr(String value);
+  void setVal(String value);
 
 } // Selector

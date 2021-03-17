@@ -3,10 +3,27 @@
  */
 package org.mde.spec.generator;
 
+import com.google.common.collect.Iterators;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.mde.spec.spec.ClickCommand;
+import org.mde.spec.spec.Condition;
+import org.mde.spec.spec.OpenCommand;
+import org.mde.spec.spec.Property;
+import org.mde.spec.spec.PropertyCommand;
+import org.mde.spec.spec.SelectCommand;
+import org.mde.spec.spec.Selector;
+import org.mde.spec.spec.SleepCommand;
+import org.mde.spec.spec.SpecPackage;
+import org.mde.spec.spec.TypeCommand;
+import org.mde.spec.spec.UsingCommand;
+import org.mde.spec.spec.VarDeclaration;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +34,243 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class SpecGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String _lastSegment = resource.getURI().lastSegment();
+    String _plus = (_lastSegment + ".js");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("const {Builder, By, until} = require(\'selenium-webdriver\');");
+    _builder.newLine();
+    _builder.append("const test = require(\'selenium-webdriver/testing\');");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("describe(\'");
+    String _lastSegment_1 = resource.getURI().lastSegment();
+    _builder.append(_lastSegment_1);
+    _builder.append("\', function() {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("  ");
+    _builder.append("let driver;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("before(async function() {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("const d = await new Builder().forBrowser(\'");
+    String _lowerCase = IteratorExtensions.<UsingCommand>head(Iterators.<UsingCommand>filter(resource.getAllContents(), UsingCommand.class)).getBrowser().toString().toLowerCase();
+    _builder.append(_lowerCase, "    ");
+    _builder.append("\').build();");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    \t");
+    _builder.append("driver = d;");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("});");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("it(\'example\', function theTestFunction() {");
+    _builder.newLine();
+    _builder.append("      ");
+    _builder.append("return ");
+    final Function1<EObject, String> _function = (EObject x) -> {
+      String _switchResult = null;
+      boolean _matched = false;
+      if ((x instanceof OpenCommand)) {
+        _matched=true;
+        _switchResult = this.generateOpenCommand(((OpenCommand) x));
+      }
+      if (!_matched) {
+        if ((x instanceof ClickCommand)) {
+          _matched=true;
+          _switchResult = this.generateClickCommand(((ClickCommand) x));
+        }
+      }
+      if (!_matched) {
+        if ((x instanceof SelectCommand)) {
+          _matched=true;
+          _switchResult = this.generateSelectCommand(((SelectCommand) x));
+        }
+      }
+      if (!_matched) {
+        if ((x instanceof PropertyCommand)) {
+          _matched=true;
+          _switchResult = this.generatePropertyCommand(((PropertyCommand) x));
+        }
+      }
+      if (!_matched) {
+        if ((x instanceof TypeCommand)) {
+          _matched=true;
+          _switchResult = this.generateTypeCommand(((TypeCommand) x));
+        }
+      }
+      if (!_matched) {
+        if ((x instanceof SleepCommand)) {
+          _matched=true;
+          _switchResult = this.generateSleepCommand(((SleepCommand) x));
+        }
+      }
+      if (!_matched) {
+        _switchResult = "";
+      }
+      return _switchResult;
+    };
+    String _join = IteratorExtensions.join(IteratorExtensions.<EObject, String>map(resource.getAllContents(), _function), "");
+    String _plus_1 = (_builder.toString() + _join);
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("});");
+    _builder_1.newLine();
+    _builder_1.append("\t");
+    _builder_1.newLine();
+    _builder_1.append("  ");
+    _builder_1.append("after(function() {");
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append("return driver.quit();");
+    _builder_1.newLine();
+    _builder_1.append("  ");
+    _builder_1.append("});");
+    _builder_1.newLine();
+    _builder_1.append("});");
+    _builder_1.newLine();
+    String _plus_2 = (_plus_1 + _builder_1);
+    fsa.generateFile(_plus, _plus_2);
+  }
+  
+  public String generateSleepCommand(final SleepCommand sc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append(".then(_ => driver.sleep(");
+    int _time = sc.getTime();
+    int _multiply = (_time * 1000);
+    _builder.append(_multiply, "\t");
+    _builder.append("))");
+    return _builder.toString();
+  }
+  
+  public String generateTypeCommand(final TypeCommand tc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append(".then(e => e.sendKeys(\'");
+    String _string = tc.getStr().toString();
+    _builder.append(_string, "\t");
+    _builder.append("\'))");
+    _builder.append("\n", "\t");
+    return _builder.toString();
+  }
+  
+  public String generatePropertyCommand(final PropertyCommand pc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t");
+    _builder.append(".then(_ => expect(");
+    {
+      Property _prop = pc.getProp();
+      boolean _tripleEquals = (_prop == Property.CLASS);
+      if (_tripleEquals) {
+        _builder.append("_.className");
+      } else {
+        _builder.append("_.innerHTML");
+      }
+    }
+    _builder.append(")");
+    {
+      Condition _cond = pc.getCond();
+      boolean _tripleEquals_1 = (_cond == Condition.SHOULD_BE);
+      if (_tripleEquals_1) {
+        _builder.append(".equals(\'");
+      } else {
+        _builder.append(".notEquals(\'");
+      }
+    }
+    {
+      String _val = pc.getVal();
+      boolean _tripleEquals_2 = (_val == null);
+      if (_tripleEquals_2) {
+        String _string = pc.getVar().getValue().toString();
+        _builder.append(_string, "\t");
+      } else {
+        String _string_1 = pc.getVal().toString();
+        _builder.append(_string_1, "\t");
+      }
+    }
+    _builder.append("\'))");
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+  
+  public String generateOpenCommand(final OpenCommand oc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("driver.get(\"");
+    {
+      String _val = oc.getVal();
+      boolean _tripleEquals = (_val == null);
+      if (_tripleEquals) {
+        String _string = oc.getVar().getValue().toString();
+        _builder.append(_string);
+      } else {
+        String _string_1 = oc.getVal().toString();
+        _builder.append(_string_1);
+      }
+    }
+    _builder.append("\")");
+    _builder.append("\n");
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
+  }
+  
+  public String generateClickCommand(final ClickCommand cc) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      boolean _eIsSet = cc.eIsSet(SpecPackage.Literals.CLICK_COMMAND__POINT);
+      if (_eIsSet) {
+        _builder.append(".then(_ => actions.move_to_element_with_offset(driver.find_element_by_tag_name(\'body\'), 0,0))");
+        _builder.newLine();
+        _builder.append(".then(_ => actions.move_by_offset(");
+        int _x = cc.getPoint().getX();
+        _builder.append(_x);
+        _builder.append(", ");
+        int _y = cc.getPoint().getY();
+        _builder.append(_y);
+        _builder.append(").click().perform())");
+        _builder.append("\n");
+        _builder.newLineIfNotEmpty();
+      } else {
+        _builder.append(".then(_ => driver.findElement(By.name(\'");
+        String _generateSelector = this.generateSelector(cc.getSelector());
+        _builder.append(_generateSelector);
+        _builder.append("\')).click())");
+        _builder.append("\n");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder.toString();
+  }
+  
+  public String generateSelector(final Selector s) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      VarDeclaration _var = s.getVar();
+      boolean _tripleNotEquals = (_var != null);
+      if (_tripleNotEquals) {
+        String _string = s.getVar().getValue().toString();
+        _builder.append(_string);
+      } else {
+        String _string_1 = s.getVal().toString();
+        _builder.append(_string_1);
+      }
+    }
+    return _builder.toString();
+  }
+  
+  public String generateSelectCommand(final SelectCommand sc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(".then(_ => driver.findElement(By.name(\'");
+    String _generateSelector = this.generateSelector(sc.getValue());
+    _builder.append(_generateSelector);
+    _builder.append("\')))");
+    _builder.newLineIfNotEmpty();
+    return _builder.toString();
   }
 }

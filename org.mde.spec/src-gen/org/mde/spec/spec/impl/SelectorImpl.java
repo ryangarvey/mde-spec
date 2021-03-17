@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.mde.spec.spec.ElementType;
 import org.mde.spec.spec.Selector;
 import org.mde.spec.spec.SpecPackage;
-import org.mde.spec.spec.Variable;
+import org.mde.spec.spec.VarDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,7 +26,7 @@ import org.mde.spec.spec.Variable;
  * <ul>
  *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getVar <em>Var</em>}</li>
- *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getStr <em>Str</em>}</li>
+ *   <li>{@link org.mde.spec.spec.impl.SelectorImpl#getVal <em>Val</em>}</li>
  * </ul>
  *
  * @generated
@@ -61,27 +61,27 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    * @ordered
    */
-  protected Variable var;
+  protected VarDeclaration var;
 
   /**
-   * The default value of the '{@link #getStr() <em>Str</em>}' attribute.
+   * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStr()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected static final String STR_EDEFAULT = null;
+  protected static final String VAL_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getStr() <em>Str</em>}' attribute.
+   * The cached value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getStr()
+   * @see #getVal()
    * @generated
    * @ordered
    */
-  protected String str = STR_EDEFAULT;
+  protected String val = VAL_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -135,12 +135,12 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public Variable getVar()
+  public VarDeclaration getVar()
   {
     if (var != null && var.eIsProxy())
     {
       InternalEObject oldVar = (InternalEObject)var;
-      var = (Variable)eResolveProxy(oldVar);
+      var = (VarDeclaration)eResolveProxy(oldVar);
       if (var != oldVar)
       {
         if (eNotificationRequired())
@@ -155,7 +155,7 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable basicGetVar()
+  public VarDeclaration basicGetVar()
   {
     return var;
   }
@@ -166,9 +166,9 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public void setVar(Variable newVar)
+  public void setVar(VarDeclaration newVar)
   {
-    Variable oldVar = var;
+    VarDeclaration oldVar = var;
     var = newVar;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__VAR, oldVar, var));
@@ -180,9 +180,9 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public String getStr()
+  public String getVal()
   {
-    return str;
+    return val;
   }
 
   /**
@@ -191,12 +191,12 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
    * @generated
    */
   @Override
-  public void setStr(String newStr)
+  public void setVal(String newVal)
   {
-    String oldStr = str;
-    str = newStr;
+    String oldVal = val;
+    val = newVal;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__STR, oldStr, str));
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SELECTOR__VAL, oldVal, val));
   }
 
   /**
@@ -214,8 +214,8 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
       case SpecPackage.SELECTOR__VAR:
         if (resolve) return getVar();
         return basicGetVar();
-      case SpecPackage.SELECTOR__STR:
-        return getStr();
+      case SpecPackage.SELECTOR__VAL:
+        return getVal();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -234,10 +234,10 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
         setType((ElementType)newValue);
         return;
       case SpecPackage.SELECTOR__VAR:
-        setVar((Variable)newValue);
+        setVar((VarDeclaration)newValue);
         return;
-      case SpecPackage.SELECTOR__STR:
-        setStr((String)newValue);
+      case SpecPackage.SELECTOR__VAL:
+        setVal((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -257,10 +257,10 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
         setType(TYPE_EDEFAULT);
         return;
       case SpecPackage.SELECTOR__VAR:
-        setVar((Variable)null);
+        setVar((VarDeclaration)null);
         return;
-      case SpecPackage.SELECTOR__STR:
-        setStr(STR_EDEFAULT);
+      case SpecPackage.SELECTOR__VAL:
+        setVal(VAL_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -280,8 +280,8 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
         return type != TYPE_EDEFAULT;
       case SpecPackage.SELECTOR__VAR:
         return var != null;
-      case SpecPackage.SELECTOR__STR:
-        return STR_EDEFAULT == null ? str != null : !STR_EDEFAULT.equals(str);
+      case SpecPackage.SELECTOR__VAL:
+        return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
     }
     return super.eIsSet(featureID);
   }
@@ -299,8 +299,8 @@ public class SelectorImpl extends MinimalEObjectImpl.Container implements Select
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (type: ");
     result.append(type);
-    result.append(", str: ");
-    result.append(str);
+    result.append(", val: ");
+    result.append(val);
     result.append(')');
     return result.toString();
   }

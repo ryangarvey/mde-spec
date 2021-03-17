@@ -6,24 +6,38 @@ Model:
 	commands+=Command*;
 	
 Command:
-	OpenCommand
+	UsingCommand
+  | OpenCommand
   | ClickCommand
-  | StoreCommand
   | SelectCommand
-  | RememberCommand
   | PropertyCommand
   | TypeCommand
   | SleepCommand
-  | comment=SL_COMMENT
+  | {Command} SL_COMMENT
   | custom=CUSTOM_COMMAND
+  | VarDeclaration
+;
+
+UsingCommand:
+	name="Using" browser=Browser
+;
+
+enum Browser:
+	chrome="Chrome"
+  | firefox="Firefox"
+  | explorer="Explorer"
+  | edge="Edge"
+  | opera="Opera"
+  | safari="Safari"
 ;
 
 OpenCommand:
-	{OpenCommand} name="Open" (val=STRING | var=Variable)
+	{OpenCommand} name="Open" (val=STRING | var=[VarDeclaration])
 ;
 
+// TODO fix this so click works 
 ClickCommand:
-	name="Click" ("on" selector=Selector | "at" point=Point)?
+	name="Click" ("on" selector=Selector | "at" point=Point)
 ;
 
 SelectCommand:
@@ -32,7 +46,7 @@ SelectCommand:
 ;
 
 Selector:
-  (type=ElementType)? ("$"var=[Variable] | str=STRING)
+  (type=ElementType)? (var=[VarDeclaration] | val=STRING)
 ;
 
 enum ElementType:
@@ -43,31 +57,23 @@ enum ElementType:
   | textarea="textarea"
 ;
 
-StoreCommand:
-	name="Store" var=Variable "as" val=STRING
-;
-
-RememberCommand:
-	name="Remember" prop=Property "as" var=Variable
-;
-
 PropertyCommand:
-	name="Property" prop=Property cond=Condition (val=STRING | "$"var=[Variable])
+	name="Property" prop=Property cond=Condition (val=STRING | var=[VarDeclaration])
 ;
 
-Property:
-    "text"
-  | "class"
-  | "value"
+enum Property:
+    text="text"
+  | class="class"
+  | value="value"
 ;
 
-Condition:
-	"should" "be"
-  | "should" "not" "be"
+enum Condition:
+	shouldBe="should be"
+  | shouldNotBe="should not be"
 ;
 	
 TypeCommand:
-	name="Type" (str=STRING | var=[Variable])
+	name="Type" (str=STRING | var=[VarDeclaration])
 ;
 
 SleepCommand:
@@ -75,7 +81,7 @@ SleepCommand:
 ;
 
 Point:
-	"{" INT "," INT "}"
+	"{" x=INT "," y=INT "}"
 ;
 
 terminal CUSTOM_COMMAND:
@@ -87,6 +93,5 @@ terminal SL_COMMENT:
     '#' !('\n'|'\r')* ('\r'? '\n')?
 ;
 
-Variable:
-	"$" name=ID
-;
+VarDeclaration:
+	"Store" name=ID 'as' value=STRING;
