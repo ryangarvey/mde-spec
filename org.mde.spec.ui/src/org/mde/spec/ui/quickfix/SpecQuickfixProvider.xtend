@@ -36,16 +36,16 @@ class SpecQuickfixProvider extends DefaultQuickfixProvider {
 		]
 	}
 	
-	@Fix(SpecValidator.TOO_MANY_USING_COMMANDS)
-	def removeUsingCommands(Issue issue, IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, 'Remove using commands', 'Delete all but the first using command', 'upcase.png') [
-			context |
-			val xtextDocument = context.xtextDocument
-			for (var i = xtextDocument.numberOfLines-1; i >= 0; i-=1) {
-				if (xtextDocument.getLineInformation(i).toString.contains("Using")) {
-					// TODO fix this
-				}
-			}	
-		]
-	}
+//	@Fix(SpecValidator.TOO_MANY_USING_COMMANDS)
+//	def removeUsingCommands(Issue issue, IssueResolutionAcceptor acceptor) {
+//		acceptor.accept(issue, 'Remove using commands', 'Delete all but the first using command', 'upcase.png') [
+//			context |
+//			val xtextDocument = context.xtextDocument
+//			for (var i = xtextDocument.numberOfLines-1; i >= 0; i-=1) {
+//				if (xtextDocument.getLineInformation(i).toString.contains("Using")) {
+//					// TODO fix this
+//				}
+//			}	
+//		]
+//	}
 }
