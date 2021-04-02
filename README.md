@@ -4,9 +4,10 @@
 # Prerequisites 
 To begin using website-spec, the following must be installed on your machine:
 <ol>
-<li> Eclipse IDE with modelling packages </li>
-<li> ChromeDriver or your own preferred browser's driver (Chrome is recommended) </li>
-<li> SeleniumDriver </li>
+  <li> Eclipse IDE with modelling packages </li>
+  <li> ChromeDriver or your own preferred browser's driver (Chrome is recommended) </li>
+  <li> SeleniumDriver </li>
+  <li> Mocha </li>
 </ol>
 
 
@@ -23,10 +24,29 @@ In order to use website-spec, a web driver is required in order for automated te
 
 Once these steps have been completed, ChromeDriver will be available to use on your computer. You can test this by opening a command prompt and typing <i>chromedriver</i> in the window.
 
-## Installing Selenium
+## Installing Selenium Webdriver
 
-You can easily install the selenium webdriver via Node, using the command below. Be sure to install it either globally (using the -g flag) or inside the src-gen folder of the website-spec project. 
+You can easily install the Selenium Webdriver via Node, using the command below. 
 
 ```node
-npm i -g selenium-webdriver
+npm install --global selenium-webdriver
+```
+If you prefer to install the library as a project dependency, navigate to your **src-gen/** folder and issue the following command to the terminal.
+
+```node
+npm install --save-dev selenium-webdriver
+```
+
+## Installing Mocha
+
+Much like Selenium Webdriver, the Mocha library can be installed using Node. Simply use the command below. 
+
+```node
+npm install --global mocha
+```
+
+Or, much like Selenium Webdriver, you can install Mocha inside the **src-gen/** folder.
+
+```node
+npm install --save-dev mocha
 ```
