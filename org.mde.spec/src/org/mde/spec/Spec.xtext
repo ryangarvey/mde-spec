@@ -90,3 +90,9 @@ terminal SL_COMMENT:
 Variable:
 	"$" name=ID
 ;
+
+LoopCommand:
+	times=INT 'times' 'do'
+	command += Command*
+	'end'
+;	
