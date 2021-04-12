@@ -1,0 +1,2 @@
+/*XPECT_SETUP org.mde.spec.xpect.XPectTests END_SETUP */
+Open "www.google.com"

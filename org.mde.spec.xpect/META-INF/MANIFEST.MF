@@ -4,7 +4,6 @@ Bundle-Name: Xpect
 Bundle-SymbolicName: org.mde.spec.xpect
 Bundle-Version: 1.0.0.qualifier
 Automatic-Module-Name: org.mde.spec.xpect
-Bundle-RequiredExecutionEnvironment: JavaSE-12
 Require-Bundle: org.mde.spec;bundle-version="1.0.0",
  org.mde.spec.ui;bundle-version="1.0.0",
  org.eclipse.xpect.xtext.lib;bundle-version="0.2.0"
