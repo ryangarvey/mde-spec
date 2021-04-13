@@ -41,8 +41,7 @@ ClickCommand:
 ;
 
 SelectCommand:
-	name="Within" value=Selector
-  | name="Select" ("visible")? value=Selector
+	name="Within" value=Selector | name="Select" ("visible")? value=Selector
 ;
 
 Selector:

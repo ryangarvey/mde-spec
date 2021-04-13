@@ -5,14 +5,14 @@ package org.mde.spec.scoping
 
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.eclipse.xtext.scoping.IScope
-import org.mde.spec.src.org.mde.spec.Spec.xtext.Variable
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference
-import org.mde.spec.src.org.mde.spec.Spec.xtext.VariableOrValue
-import org.mde.spec.src.org.mde.spec.Spec.xtext.Variable
 import static extension org.eclipse.xtext.EcoreUtil2.*
 
 import static org.eclipse.xtext.scoping.Scopes.*
+import org.mde.spec.spec.VarDeclaration
+import org.mde.spec.spec.Model
+import org.mde.spec.spec.Selector
 
 /**
  * This class contains custom scoping description.
@@ -22,25 +22,25 @@ import static org.eclipse.xtext.scoping.Scopes.*
  */
 class SpecScopeProvider extends AbstractDeclarativeScopeProvider {
 
-	def IScope scope_Variable_name(Variable context, EReference ref) {
-		val containingVariableOrValue = context.getContextOfType(VariableOrValue)
-				
-		if(containingVariableOrValue !== null) {
-			containingVariableOrValue.visibleVariablesScope
-		}
+	def IScope scope_VarDeclaration_var(VarDeclaration context, EReference ref) {
+		val containingSelector = context.getContainerOfType(Selector)
+		
+		if (containingSelector !== null) {
+			containingSelector.visibleVariableScope
+		}	
 		else {
-			val containingProgram = context.getContainerOfType(Spec)
-			
-			scopeFor(containingProgram.statements.filter(Variable))
+			val containingProgram = context.getContainerOfType(Model)
+			scopeFor(containingProgram.commands.filter(VarDeclaration))
 		}
 	}
+	
+	// TODO this is not a complete solution !!!!!
 	def IScope visibleVariableScope(EObject context) {
-		if(context instanceof VariableOrValue) {
-			scopeFor(context.statements.filter(Variable), context.eContainer.visibleVariablesScope)
+		if (context instanceof Selector) {
+			scopeFor(context.eAllContentsAsList.filter(VarDeclaration), context.eContainer.visibleVariableScope)
 		}
-		else if(context instanceof Spec) {
-			scopeFor(context.statements.filter(Variable))
+		else if (context instanceof Model) {
+			scopeFor(context.commands.filter(VarDeclaration))
 		}
 	}
 }
-//This is the rough outline but Steffen said in his video that it's not quite a complete solution

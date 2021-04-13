@@ -18,6 +18,7 @@ import org.mde.spec.spec.Condition
 import org.mde.spec.spec.TypeCommand
 import org.mde.spec.spec.SleepCommand
 import org.mde.spec.spec.UsingCommand
+import org.mde.spec.spec.Command
 
 /**
  * Generates code from your model files on save.
@@ -27,6 +28,50 @@ import org.mde.spec.spec.UsingCommand
 class SpecGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		generateTestScript(resource, fsa, context);
+		generateMainScript(resource, fsa, context);
+		generatePackageJSON(resource, fsa, context);
+	}
+	
+	private def generatePackageJSON(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		fsa.generateFile("package.json", '''
+			{
+				"scripts": {
+					"test": "mocha test"
+				},
+				"dependencies": {
+					"mocha": "^8.3.2",
+					"selenium-webdriver": "^4.0.0-beta.2"
+				}
+			}
+		''');
+	}
+	
+	private def generateMainScript(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		fsa.generateFile("execute.js",'''
+			const process = require('child_process');
+			
+			function outputCallback(error, stdout, stderr) {
+				if (error) {
+					console.error(`exec error: ${error}`);
+					return;
+				}
+				console.log(`stdout: ${stdout}`);
+				console.error(`stderr: ${stderr}`);
+			}
+			
+			async function run() {
+				process.exec("npm install", (error, stdout, stderr) => outputCallback(error, stdout, stderr));
+				
+				process.exec("npm run test", (error, stdout, stderr) => outputCallback(error, stdout, stderr));
+			}
+			
+			run();
+			'''
+		)
+	}
+	
+	private def generateTestScript(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		fsa.generateFile(resource.URI.lastSegment + ".js", 
 			'''
 			const {Builder, By, until} = require('selenium-webdriver');
@@ -37,75 +82,48 @@ class SpecGenerator extends AbstractGenerator {
 				
 			  before(async function() {
 			    const d = await new Builder().forBrowser('«
-			    	resource.allContents.filter(UsingCommand).head.browser.toString.toLowerCase
+			    	getBrowserName(resource)
 			    	»').build();
 			    	driver = d;
 			  });
 			  
 			  it('example', function theTestFunction() {
-			      return '''+ resource.allContents
-				.map[ x | 
-					switch x {
-						case x instanceof OpenCommand: generateOpenCommand(x as OpenCommand)
-						case x instanceof ClickCommand: generateClickCommand(x as ClickCommand)
-						case x instanceof SelectCommand: generateSelectCommand(x as SelectCommand)
-						case x instanceof PropertyCommand: generatePropertyCommand(x as PropertyCommand)
-						case x instanceof TypeCommand: generateTypeCommand(x as TypeCommand)
-						case x instanceof SleepCommand: generateSleepCommand(x as SleepCommand)
-						default: ''
-					}
-				]
+			      return '''+ resource.allContents.filter[x | x instanceof Command]
+				.map[x | generateCommand(x as Command)]
 				.join("")
-			  +'''
+			  +
+			'''
 			  });
 			  	
 			    after(function() {
 			      return driver.quit();
 			    });
-			  });
+			   });
 			''' 
 		)
 	}
 	
-	def generateSleepCommand(SleepCommand sc) {
-		return '''	.then(_ => driver.sleep(«sc.time * 1000»))'''
-	}
-	
-	// TODO understand how to insert strings into text boxes
-	def generateTypeCommand(TypeCommand tc) {
-		return '''	.then(e => e.sendKeys('«tc.str.toString»'))«'\n'»'''
-	}
+	dispatch def generateCommand(Command c) ''''''
+	dispatch def generateCommand(SleepCommand sc) '''    .then(_ => driver.sleep(«sc.time * 1000»))«'\n'»'''
+	dispatch def generateCommand(TypeCommand tc) '''    .then(e => e.sendKeys('«tc.str.toString»'))«'\n'»'''
 	
 	// TODO not sure if the js code is properly implemented
-	def generatePropertyCommand(PropertyCommand pc) {
-		return '''	.then(_ => expect(«IF (pc.prop === Property.CLASS)»_.className«ELSE»_.innerHTML«ENDIF»)«IF (pc.cond === Condition.SHOULD_BE)».equals('«ELSE».notEquals('«ENDIF»« IF (pc.^val === null) »« pc.^var.value.toString »« ELSE »« pc.^val.toString »« ENDIF »'))
-		'''
-	}
-	
-	def String generateOpenCommand(OpenCommand oc) {
-		return '''
-			driver.get("« IF (oc.^val === null) »« oc.^var.value.toString »« ELSE »« oc.^val.toString »« ENDIF »")«'\n'»
-		'''
-	}
-	
-	def String generateClickCommand(ClickCommand cc) {
-		return '''
-			«IF (cc.eIsSet(SpecPackage.Literals.CLICK_COMMAND__POINT))»
-				.then(_ => actions.move_to_element_with_offset(driver.find_element_by_tag_name('body'), 0,0))
+	dispatch def generateCommand(PropertyCommand pc) 
+		'''    .then(_ => expect(«IF (pc.prop === Property.CLASS)»_.className«ELSE»_.innerHTML«ENDIF»)«IF (pc.cond === Condition.SHOULD_BE)».equals('«ELSE».notEquals('«ENDIF»« IF (pc.^val === null) »« pc.^var.value.toString »« ELSE »« pc.^val.toString »« ENDIF »'))«'\n'»'''
+	dispatch def generateCommand(OpenCommand oc) '''driver.get("« IF (oc.^val === null) »« oc.^var.value.toString »« ELSE »« oc.^val.toString »« ENDIF »")«'\n'»'''
+	dispatch def generateCommand(ClickCommand cc) '''
+			«IF (cc.eIsSet(SpecPackage.Literals.CLICK_COMMAND__POINT))»    .then(_ => actions.move_to_element_with_offset(driver.find_element_by_tag_name('body'), 0,0))«'\n'»
 				.then(_ => actions.move_by_offset(«cc.point.x», «cc.point.y»).click().perform())«'\n'»
-			«ELSE»
-				.then(_ => driver.findElement(By.name('« generateSelector(cc.selector) »')).click())«'\n'»
+			«ELSE»    .then(_ => driver.findElement(By.name('« generateSelector(cc.selector) »')).click())«'\n'»
 			«ENDIF»
 		'''
+	dispatch def generateCommand(SelectCommand sc) '''    .then(_ => driver.findElement(By.name('« generateSelector(sc.value) »')))«'\n'»'''
+	
+	def generateSelector(Selector s) 
+		'''« IF (s.^var !== null) »« s.^var.value.toString »« ELSE »« s.^val.toString »« ENDIF »'''
+		
+	def getBrowserName(Resource resource) {
+		resource.allContents.filter(UsingCommand).head.browser.toString.toLowerCase
 	}
 	
-	def String generateSelector(Selector s) {
-		return '''« IF (s.^var !== null) »« s.^var.value.toString »« ELSE »« s.^val.toString »« ENDIF »'''
-	}
-	
-	def String generateSelectCommand(SelectCommand sc) {
-		return '''
-			.then(_ => driver.findElement(By.name('« generateSelector(sc.value) »')))
-		'''
-	}
 }
