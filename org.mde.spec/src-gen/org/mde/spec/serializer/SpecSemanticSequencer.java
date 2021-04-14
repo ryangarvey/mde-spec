@@ -19,15 +19,15 @@ import org.mde.spec.spec.ClickCommand;
 import org.mde.spec.spec.Command;
 import org.mde.spec.spec.Model;
 import org.mde.spec.spec.OpenCommand;
+import org.mde.spec.spec.Point;
 import org.mde.spec.spec.PropertyCommand;
-import org.mde.spec.spec.RememberCommand;
 import org.mde.spec.spec.SelectCommand;
 import org.mde.spec.spec.Selector;
 import org.mde.spec.spec.SleepCommand;
 import org.mde.spec.spec.SpecPackage;
-import org.mde.spec.spec.StoreCommand;
 import org.mde.spec.spec.TypeCommand;
-import org.mde.spec.spec.Variable;
+import org.mde.spec.spec.UsingCommand;
+import org.mde.spec.spec.VarDeclaration;
 
 @SuppressWarnings("all")
 public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
@@ -55,11 +55,11 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case SpecPackage.OPEN_COMMAND:
 				sequence_OpenCommand(context, (OpenCommand) semanticObject); 
 				return; 
+			case SpecPackage.POINT:
+				sequence_Point(context, (Point) semanticObject); 
+				return; 
 			case SpecPackage.PROPERTY_COMMAND:
 				sequence_PropertyCommand(context, (PropertyCommand) semanticObject); 
-				return; 
-			case SpecPackage.REMEMBER_COMMAND:
-				sequence_RememberCommand(context, (RememberCommand) semanticObject); 
 				return; 
 			case SpecPackage.SELECT_COMMAND:
 				sequence_SelectCommand(context, (SelectCommand) semanticObject); 
@@ -70,14 +70,14 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 			case SpecPackage.SLEEP_COMMAND:
 				sequence_SleepCommand(context, (SleepCommand) semanticObject); 
 				return; 
-			case SpecPackage.STORE_COMMAND:
-				sequence_StoreCommand(context, (StoreCommand) semanticObject); 
-				return; 
 			case SpecPackage.TYPE_COMMAND:
 				sequence_TypeCommand(context, (TypeCommand) semanticObject); 
 				return; 
-			case SpecPackage.VARIABLE:
-				sequence_Variable(context, (Variable) semanticObject); 
+			case SpecPackage.USING_COMMAND:
+				sequence_UsingCommand(context, (UsingCommand) semanticObject); 
+				return; 
+			case SpecPackage.VAR_DECLARATION:
+				sequence_VarDeclaration(context, (VarDeclaration) semanticObject); 
 				return; 
 			}
 		if (errorAcceptor != null)
@@ -90,7 +90,7 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     ClickCommand returns ClickCommand
 	 *
 	 * Constraint:
-	 *     (name='Click' (selector=Selector | point=Point)?)
+	 *     (name='Click' (selector=Selector | point=Point))
 	 */
 	protected void sequence_ClickCommand(ISerializationContext context, ClickCommand semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -102,7 +102,7 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Command returns Command
 	 *
 	 * Constraint:
-	 *     (comment=SL_COMMENT | custom=CUSTOM_COMMAND)
+	 *     custom=CUSTOM_COMMAND?
 	 */
 	protected void sequence_Command(ISerializationContext context, Command semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -127,10 +127,31 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     OpenCommand returns OpenCommand
 	 *
 	 * Constraint:
-	 *     (name='Open' (val=STRING | var=Variable))
+	 *     (name='Open' (val=STRING | var=[VarDeclaration|ID]))
 	 */
 	protected void sequence_OpenCommand(ISerializationContext context, OpenCommand semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Point returns Point
+	 *
+	 * Constraint:
+	 *     (x=INT y=INT)
+	 */
+	protected void sequence_Point(ISerializationContext context, Point semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.POINT__X) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.POINT__X));
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.POINT__Y) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.POINT__Y));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getPointAccess().getXINTTerminalRuleCall_1_0(), semanticObject.getX());
+		feeder.accept(grammarAccess.getPointAccess().getYINTTerminalRuleCall_3_0(), semanticObject.getY());
+		feeder.finish();
 	}
 	
 	
@@ -140,35 +161,10 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     PropertyCommand returns PropertyCommand
 	 *
 	 * Constraint:
-	 *     (name='Property' prop=Property cond=Condition (val=STRING | var=[Variable|ID]))
+	 *     (name='Property' prop=Property cond=Condition (val=STRING | var=[VarDeclaration|ID]))
 	 */
 	protected void sequence_PropertyCommand(ISerializationContext context, PropertyCommand semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     Command returns RememberCommand
-	 *     RememberCommand returns RememberCommand
-	 *
-	 * Constraint:
-	 *     (name='Remember' prop=Property var=Variable)
-	 */
-	protected void sequence_RememberCommand(ISerializationContext context, RememberCommand semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.COMMAND__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.COMMAND__NAME));
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.REMEMBER_COMMAND__PROP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.REMEMBER_COMMAND__PROP));
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.REMEMBER_COMMAND__VAR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.REMEMBER_COMMAND__VAR));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getRememberCommandAccess().getNameRememberKeyword_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getRememberCommandAccess().getPropPropertyParserRuleCall_1_0(), semanticObject.getProp());
-		feeder.accept(grammarAccess.getRememberCommandAccess().getVarVariableParserRuleCall_3_0(), semanticObject.getVar());
-		feeder.finish();
 	}
 	
 	
@@ -190,7 +186,7 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Selector returns Selector
 	 *
 	 * Constraint:
-	 *     (type=ElementType? (var=[Variable|ID] | str=STRING))
+	 *     (type=ElementType? (var=[VarDeclaration|ID] | val=STRING))
 	 */
 	protected void sequence_Selector(ISerializationContext context, Selector semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -221,36 +217,11 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Command returns StoreCommand
-	 *     StoreCommand returns StoreCommand
-	 *
-	 * Constraint:
-	 *     (name='Store' var=Variable val=STRING)
-	 */
-	protected void sequence_StoreCommand(ISerializationContext context, StoreCommand semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.COMMAND__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.COMMAND__NAME));
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.STORE_COMMAND__VAR) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.STORE_COMMAND__VAR));
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.STORE_COMMAND__VAL) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.STORE_COMMAND__VAL));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getStoreCommandAccess().getNameStoreKeyword_0_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getStoreCommandAccess().getVarVariableParserRuleCall_1_0(), semanticObject.getVar());
-		feeder.accept(grammarAccess.getStoreCommandAccess().getValSTRINGTerminalRuleCall_3_0(), semanticObject.getVal());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     Command returns TypeCommand
 	 *     TypeCommand returns TypeCommand
 	 *
 	 * Constraint:
-	 *     (name='Type' (str=STRING | var=[Variable|ID]))
+	 *     (name='Type' (str=STRING | var=[VarDeclaration|ID]))
 	 */
 	protected void sequence_TypeCommand(ISerializationContext context, TypeCommand semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -259,18 +230,44 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	
 	/**
 	 * Contexts:
-	 *     Variable returns Variable
+	 *     Command returns UsingCommand
+	 *     UsingCommand returns UsingCommand
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (name='Using' browser=Browser)
 	 */
-	protected void sequence_Variable(ISerializationContext context, Variable semanticObject) {
+	protected void sequence_UsingCommand(ISerializationContext context, UsingCommand semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.VARIABLE__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.VARIABLE__NAME));
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.COMMAND__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.COMMAND__NAME));
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.USING_COMMAND__BROWSER) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.USING_COMMAND__BROWSER));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getVariableAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getUsingCommandAccess().getNameUsingKeyword_0_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getUsingCommandAccess().getBrowserBrowserEnumRuleCall_1_0(), semanticObject.getBrowser());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Command returns VarDeclaration
+	 *     VarDeclaration returns VarDeclaration
+	 *
+	 * Constraint:
+	 *     (name=ID value=STRING)
+	 */
+	protected void sequence_VarDeclaration(ISerializationContext context, VarDeclaration semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.COMMAND__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.COMMAND__NAME));
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.VAR_DECLARATION__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.VAR_DECLARATION__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getVarDeclarationAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getVarDeclarationAccess().getValueSTRINGTerminalRuleCall_3_0(), semanticObject.getValue());
 		feeder.finish();
 	}
 	

@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.mde.spec.spec.ClickCommand;
+import org.mde.spec.spec.Point;
 import org.mde.spec.spec.Selector;
 import org.mde.spec.spec.SpecPackage;
 
@@ -42,24 +43,14 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
   protected Selector selector;
 
   /**
-   * The default value of the '{@link #getPoint() <em>Point</em>}' attribute.
+   * The cached value of the '{@link #getPoint() <em>Point</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getPoint()
    * @generated
    * @ordered
    */
-  protected static final String POINT_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getPoint() <em>Point</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getPoint()
-   * @generated
-   * @ordered
-   */
-  protected String point = POINT_EDEFAULT;
+  protected Point point;
 
   /**
    * <!-- begin-user-doc -->
@@ -138,7 +129,7 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
    * @generated
    */
   @Override
-  public String getPoint()
+  public Point getPoint()
   {
     return point;
   }
@@ -148,13 +139,38 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setPoint(String newPoint)
+  public NotificationChain basicSetPoint(Point newPoint, NotificationChain msgs)
   {
-    String oldPoint = point;
+    Point oldPoint = point;
     point = newPoint;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.CLICK_COMMAND__POINT, oldPoint, point));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, SpecPackage.CLICK_COMMAND__POINT, oldPoint, newPoint);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPoint(Point newPoint)
+  {
+    if (newPoint != point)
+    {
+      NotificationChain msgs = null;
+      if (point != null)
+        msgs = ((InternalEObject)point).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - SpecPackage.CLICK_COMMAND__POINT, null, msgs);
+      if (newPoint != null)
+        msgs = ((InternalEObject)newPoint).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - SpecPackage.CLICK_COMMAND__POINT, null, msgs);
+      msgs = basicSetPoint(newPoint, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.CLICK_COMMAND__POINT, newPoint, newPoint));
   }
 
   /**
@@ -169,6 +185,8 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
     {
       case SpecPackage.CLICK_COMMAND__SELECTOR:
         return basicSetSelector(null, msgs);
+      case SpecPackage.CLICK_COMMAND__POINT:
+        return basicSetPoint(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -205,7 +223,7 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
         setSelector((Selector)newValue);
         return;
       case SpecPackage.CLICK_COMMAND__POINT:
-        setPoint((String)newValue);
+        setPoint((Point)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -225,7 +243,7 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
         setSelector((Selector)null);
         return;
       case SpecPackage.CLICK_COMMAND__POINT:
-        setPoint(POINT_EDEFAULT);
+        setPoint((Point)null);
         return;
     }
     super.eUnset(featureID);
@@ -244,26 +262,9 @@ public class ClickCommandImpl extends CommandImpl implements ClickCommand
       case SpecPackage.CLICK_COMMAND__SELECTOR:
         return selector != null;
       case SpecPackage.CLICK_COMMAND__POINT:
-        return POINT_EDEFAULT == null ? point != null : !POINT_EDEFAULT.equals(point);
+        return point != null;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (point: ");
-    result.append(point);
-    result.append(')');
-    return result.toString();
   }
 
 } //ClickCommandImpl

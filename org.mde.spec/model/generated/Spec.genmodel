@@ -6,6 +6,14 @@
     copyrightFields="false" runtimeVersion="2.20">
   <genPackages prefix="Spec" basePackage="org.mde.spec" disposableProviderFactory="true"
       fileExtensions="spec" ecorePackage="Spec.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Spec.ecore#//Browser">
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/chrome"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/firefox"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/explorer"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/edge"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/opera"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Browser/safari"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="Spec.ecore#//ElementType">
       <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//ElementType/button"/>
       <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//ElementType/element"/>
@@ -13,21 +21,32 @@
       <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//ElementType/input"/>
       <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//ElementType/textarea"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Spec.ecore#//Property">
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Property/text"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Property/class"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Property/value"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="Spec.ecore#//Condition">
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Condition/shouldBe"/>
+      <genEnumLiterals ecoreEnumLiteral="Spec.ecore#//Condition/shouldNotBe"/>
+    </genEnums>
     <genClasses ecoreClass="Spec.ecore#//Model">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//Model/commands"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//Command">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Command/comment"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Command/custom"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Command/name"/>
     </genClasses>
+    <genClasses ecoreClass="Spec.ecore#//UsingCommand">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//UsingCommand/browser"/>
+    </genClasses>
     <genClasses ecoreClass="Spec.ecore#//OpenCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//OpenCommand/val"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//OpenCommand/var"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//OpenCommand/var"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//ClickCommand">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//ClickCommand/selector"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//ClickCommand/point"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//ClickCommand/point"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//SelectCommand">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//SelectCommand/value"/>
@@ -35,15 +54,7 @@
     <genClasses ecoreClass="Spec.ecore#//Selector">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Selector/type"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference Spec.ecore#//Selector/var"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Selector/str"/>
-    </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//StoreCommand">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//StoreCommand/var"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//StoreCommand/val"/>
-    </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//RememberCommand">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//RememberCommand/prop"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Spec.ecore#//RememberCommand/var"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Selector/val"/>
     </genClasses>
     <genClasses ecoreClass="Spec.ecore#//PropertyCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//PropertyCommand/prop"/>
@@ -58,8 +69,12 @@
     <genClasses ecoreClass="Spec.ecore#//SleepCommand">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//SleepCommand/time"/>
     </genClasses>
-    <genClasses ecoreClass="Spec.ecore#//Variable">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Variable/name"/>
+    <genClasses ecoreClass="Spec.ecore#//Point">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Point/x"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//Point/y"/>
+    </genClasses>
+    <genClasses ecoreClass="Spec.ecore#//VarDeclaration">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Spec.ecore#//VarDeclaration/value"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

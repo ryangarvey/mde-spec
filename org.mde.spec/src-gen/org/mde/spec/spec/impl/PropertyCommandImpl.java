@@ -10,9 +10,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.mde.spec.spec.Condition;
+import org.mde.spec.spec.Property;
 import org.mde.spec.spec.PropertyCommand;
 import org.mde.spec.spec.SpecPackage;
-import org.mde.spec.spec.Variable;
+import org.mde.spec.spec.VarDeclaration;
 
 /**
  * <!-- begin-user-doc -->
@@ -40,7 +42,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    * @ordered
    */
-  protected static final String PROP_EDEFAULT = null;
+  protected static final Property PROP_EDEFAULT = Property.TEXT;
 
   /**
    * The cached value of the '{@link #getProp() <em>Prop</em>}' attribute.
@@ -50,7 +52,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    * @ordered
    */
-  protected String prop = PROP_EDEFAULT;
+  protected Property prop = PROP_EDEFAULT;
 
   /**
    * The default value of the '{@link #getCond() <em>Cond</em>}' attribute.
@@ -60,7 +62,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    * @ordered
    */
-  protected static final String COND_EDEFAULT = null;
+  protected static final Condition COND_EDEFAULT = Condition.SHOULD_BE;
 
   /**
    * The cached value of the '{@link #getCond() <em>Cond</em>}' attribute.
@@ -70,7 +72,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    * @ordered
    */
-  protected String cond = COND_EDEFAULT;
+  protected Condition cond = COND_EDEFAULT;
 
   /**
    * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
@@ -100,7 +102,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    * @ordered
    */
-  protected Variable var;
+  protected VarDeclaration var;
 
   /**
    * <!-- begin-user-doc -->
@@ -129,7 +131,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public String getProp()
+  public Property getProp()
   {
     return prop;
   }
@@ -140,10 +142,10 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public void setProp(String newProp)
+  public void setProp(Property newProp)
   {
-    String oldProp = prop;
-    prop = newProp;
+    Property oldProp = prop;
+    prop = newProp == null ? PROP_EDEFAULT : newProp;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.PROPERTY_COMMAND__PROP, oldProp, prop));
   }
@@ -154,7 +156,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public String getCond()
+  public Condition getCond()
   {
     return cond;
   }
@@ -165,10 +167,10 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public void setCond(String newCond)
+  public void setCond(Condition newCond)
   {
-    String oldCond = cond;
-    cond = newCond;
+    Condition oldCond = cond;
+    cond = newCond == null ? COND_EDEFAULT : newCond;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.PROPERTY_COMMAND__COND, oldCond, cond));
   }
@@ -204,12 +206,12 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public Variable getVar()
+  public VarDeclaration getVar()
   {
     if (var != null && var.eIsProxy())
     {
       InternalEObject oldVar = (InternalEObject)var;
-      var = (Variable)eResolveProxy(oldVar);
+      var = (VarDeclaration)eResolveProxy(oldVar);
       if (var != oldVar)
       {
         if (eNotificationRequired())
@@ -224,7 +226,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * <!-- end-user-doc -->
    * @generated
    */
-  public Variable basicGetVar()
+  public VarDeclaration basicGetVar()
   {
     return var;
   }
@@ -235,9 +237,9 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
    * @generated
    */
   @Override
-  public void setVar(Variable newVar)
+  public void setVar(VarDeclaration newVar)
   {
-    Variable oldVar = var;
+    VarDeclaration oldVar = var;
     var = newVar;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.PROPERTY_COMMAND__VAR, oldVar, var));
@@ -277,16 +279,16 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
     switch (featureID)
     {
       case SpecPackage.PROPERTY_COMMAND__PROP:
-        setProp((String)newValue);
+        setProp((Property)newValue);
         return;
       case SpecPackage.PROPERTY_COMMAND__COND:
-        setCond((String)newValue);
+        setCond((Condition)newValue);
         return;
       case SpecPackage.PROPERTY_COMMAND__VAL:
         setVal((String)newValue);
         return;
       case SpecPackage.PROPERTY_COMMAND__VAR:
-        setVar((Variable)newValue);
+        setVar((VarDeclaration)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -312,7 +314,7 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
         setVal(VAL_EDEFAULT);
         return;
       case SpecPackage.PROPERTY_COMMAND__VAR:
-        setVar((Variable)null);
+        setVar((VarDeclaration)null);
         return;
     }
     super.eUnset(featureID);
@@ -329,9 +331,9 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
     switch (featureID)
     {
       case SpecPackage.PROPERTY_COMMAND__PROP:
-        return PROP_EDEFAULT == null ? prop != null : !PROP_EDEFAULT.equals(prop);
+        return prop != PROP_EDEFAULT;
       case SpecPackage.PROPERTY_COMMAND__COND:
-        return COND_EDEFAULT == null ? cond != null : !COND_EDEFAULT.equals(cond);
+        return cond != COND_EDEFAULT;
       case SpecPackage.PROPERTY_COMMAND__VAL:
         return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
       case SpecPackage.PROPERTY_COMMAND__VAR:

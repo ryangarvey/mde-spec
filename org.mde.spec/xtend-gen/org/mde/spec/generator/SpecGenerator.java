@@ -3,10 +3,29 @@
  */
 package org.mde.spec.generator;
 
+import com.google.common.collect.Iterators;
+import java.util.Arrays;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.mde.spec.spec.ClickCommand;
+import org.mde.spec.spec.Command;
+import org.mde.spec.spec.Condition;
+import org.mde.spec.spec.OpenCommand;
+import org.mde.spec.spec.Property;
+import org.mde.spec.spec.PropertyCommand;
+import org.mde.spec.spec.SelectCommand;
+import org.mde.spec.spec.Selector;
+import org.mde.spec.spec.SleepCommand;
+import org.mde.spec.spec.SpecPackage;
+import org.mde.spec.spec.TypeCommand;
+import org.mde.spec.spec.UsingCommand;
+import org.mde.spec.spec.VarDeclaration;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +36,323 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class SpecGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    this.generateTestScript(resource, fsa, context);
+    this.generateMainScript(resource, fsa, context);
+    this.generatePackageJSON(resource, fsa, context);
+  }
+  
+  private void generatePackageJSON(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("{");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\"scripts\": {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("\"test\": \"mocha test\"");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("},");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("\"dependencies\": {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("\"mocha\": \"^8.3.2\",");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("\"selenium-webdriver\": \"^4.0.0-beta.2\"");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    fsa.generateFile("package.json", _builder);
+  }
+  
+  private void generateMainScript(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("const process = require(\'child_process\');");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("function outputCallback(error, stdout, stderr) {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("if (error) {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("console.error(`exec error: ${error}`);");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("return;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("console.log(`stdout: ${stdout}`);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("console.error(`stderr: ${stderr}`);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("async function run() {");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("process.exec(\"npm install\", (error, stdout, stderr) => outputCallback(error, stdout, stderr));");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("process.exec(\"npm run test\", (error, stdout, stderr) => outputCallback(error, stdout, stderr));");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("run();");
+    _builder.newLine();
+    fsa.generateFile("execute.js", _builder);
+  }
+  
+  private void generateTestScript(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    String _lastSegment = resource.getURI().lastSegment();
+    String _plus = (_lastSegment + ".js");
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("const {Builder, By, until} = require(\'selenium-webdriver\');");
+    _builder.newLine();
+    _builder.append("const test = require(\'selenium-webdriver/testing\');");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("describe(\'");
+    String _lastSegment_1 = resource.getURI().lastSegment();
+    _builder.append(_lastSegment_1);
+    _builder.append("\', function() {");
+    _builder.newLineIfNotEmpty();
+    _builder.append("  ");
+    _builder.append("let driver;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("before(async function() {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("const d = await new Builder().forBrowser(\'");
+    String _browserName = this.getBrowserName(resource);
+    _builder.append(_browserName, "    ");
+    _builder.append("\').build();");
+    _builder.newLineIfNotEmpty();
+    _builder.append("    \t");
+    _builder.append("driver = d;");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("});");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.newLine();
+    _builder.append("  ");
+    _builder.append("it(\'example\', function theTestFunction() {");
+    _builder.newLine();
+    _builder.append("      ");
+    _builder.append("return ");
+    final Function1<EObject, Boolean> _function = (EObject x) -> {
+      return Boolean.valueOf((x instanceof Command));
+    };
+    final Function1<EObject, CharSequence> _function_1 = (EObject x) -> {
+      return this.generateCommand(((Command) x));
+    };
+    String _join = IteratorExtensions.join(IteratorExtensions.<EObject, CharSequence>map(IteratorExtensions.<EObject>filter(resource.getAllContents(), _function), _function_1), "");
+    String _plus_1 = (_builder.toString() + _join);
+    StringConcatenation _builder_1 = new StringConcatenation();
+    _builder_1.append("});");
+    _builder_1.newLine();
+    _builder_1.append("\t");
+    _builder_1.newLine();
+    _builder_1.append("  ");
+    _builder_1.append("after(function() {");
+    _builder_1.newLine();
+    _builder_1.append("    ");
+    _builder_1.append("return driver.quit();");
+    _builder_1.newLine();
+    _builder_1.append("  ");
+    _builder_1.append("});");
+    _builder_1.newLine();
+    _builder_1.append(" ");
+    _builder_1.append("});");
+    _builder_1.newLine();
+    String _plus_2 = (_plus_1 + _builder_1);
+    fsa.generateFile(_plus, _plus_2);
+  }
+  
+  protected CharSequence _generateCommand(final Command c) {
+    StringConcatenation _builder = new StringConcatenation();
+    return _builder;
+  }
+  
+  protected CharSequence _generateCommand(final SleepCommand sc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("    ");
+    _builder.append(".then(_ => driver.sleep(");
+    int _time = sc.getTime();
+    int _multiply = (_time * 1000);
+    _builder.append(_multiply, "    ");
+    _builder.append("))");
+    _builder.append("\n", "    ");
+    return _builder;
+  }
+  
+  protected CharSequence _generateCommand(final TypeCommand tc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("    ");
+    _builder.append(".then(e => e.sendKeys(\'");
+    String _string = tc.getStr().toString();
+    _builder.append(_string, "    ");
+    _builder.append("\'))");
+    _builder.append("\n", "    ");
+    return _builder;
+  }
+  
+  protected CharSequence _generateCommand(final PropertyCommand pc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("    ");
+    _builder.append(".then(_ => expect(");
+    {
+      Property _prop = pc.getProp();
+      boolean _tripleEquals = (_prop == Property.CLASS);
+      if (_tripleEquals) {
+        _builder.append("_.className");
+      } else {
+        _builder.append("_.innerHTML");
+      }
+    }
+    _builder.append(")");
+    {
+      Condition _cond = pc.getCond();
+      boolean _tripleEquals_1 = (_cond == Condition.SHOULD_BE);
+      if (_tripleEquals_1) {
+        _builder.append(".equals(\'");
+      } else {
+        _builder.append(".notEquals(\'");
+      }
+    }
+    {
+      String _val = pc.getVal();
+      boolean _tripleEquals_2 = (_val == null);
+      if (_tripleEquals_2) {
+        String _string = pc.getVar().getValue().toString();
+        _builder.append(_string, "    ");
+      } else {
+        String _string_1 = pc.getVal().toString();
+        _builder.append(_string_1, "    ");
+      }
+    }
+    _builder.append("\'))");
+    _builder.append("\n", "    ");
+    return _builder;
+  }
+  
+  protected CharSequence _generateCommand(final OpenCommand oc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("driver.get(\"");
+    {
+      String _val = oc.getVal();
+      boolean _tripleEquals = (_val == null);
+      if (_tripleEquals) {
+        String _string = oc.getVar().getValue().toString();
+        _builder.append(_string);
+      } else {
+        String _string_1 = oc.getVal().toString();
+        _builder.append(_string_1);
+      }
+    }
+    _builder.append("\")");
+    _builder.append("\n");
+    return _builder;
+  }
+  
+  protected CharSequence _generateCommand(final ClickCommand cc) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      boolean _eIsSet = cc.eIsSet(SpecPackage.Literals.CLICK_COMMAND__POINT);
+      if (_eIsSet) {
+        _builder.append("    .then(_ => actions.move_to_element_with_offset(driver.find_element_by_tag_name(\'body\'), 0,0))");
+        _builder.append("\n");
+        _builder.newLineIfNotEmpty();
+        _builder.append("\t");
+        _builder.append(".then(_ => actions.move_by_offset(");
+        int _x = cc.getPoint().getX();
+        _builder.append(_x, "\t");
+        _builder.append(", ");
+        int _y = cc.getPoint().getY();
+        _builder.append(_y, "\t");
+        _builder.append(").click().perform())");
+        _builder.append("\n", "\t");
+        _builder.newLineIfNotEmpty();
+      } else {
+        _builder.append("    .then(_ => driver.findElement(By.name(\'");
+        CharSequence _generateSelector = this.generateSelector(cc.getSelector());
+        _builder.append(_generateSelector);
+        _builder.append("\')).click())");
+        _builder.append("\n");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+  
+  protected CharSequence _generateCommand(final SelectCommand sc) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("    ");
+    _builder.append(".then(_ => driver.findElement(By.name(\'");
+    CharSequence _generateSelector = this.generateSelector(sc.getValue());
+    _builder.append(_generateSelector, "    ");
+    _builder.append("\')))");
+    _builder.append("\n", "    ");
+    return _builder;
+  }
+  
+  public CharSequence generateSelector(final Selector s) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      VarDeclaration _var = s.getVar();
+      boolean _tripleNotEquals = (_var != null);
+      if (_tripleNotEquals) {
+        String _string = s.getVar().getValue().toString();
+        _builder.append(_string);
+      } else {
+        String _string_1 = s.getVal().toString();
+        _builder.append(_string_1);
+      }
+    }
+    return _builder;
+  }
+  
+  public String getBrowserName(final Resource resource) {
+    return IteratorExtensions.<UsingCommand>head(Iterators.<UsingCommand>filter(resource.getAllContents(), UsingCommand.class)).getBrowser().toString().toLowerCase();
+  }
+  
+  public CharSequence generateCommand(final Command cc) {
+    if (cc instanceof ClickCommand) {
+      return _generateCommand((ClickCommand)cc);
+    } else if (cc instanceof OpenCommand) {
+      return _generateCommand((OpenCommand)cc);
+    } else if (cc instanceof PropertyCommand) {
+      return _generateCommand((PropertyCommand)cc);
+    } else if (cc instanceof SelectCommand) {
+      return _generateCommand((SelectCommand)cc);
+    } else if (cc instanceof SleepCommand) {
+      return _generateCommand((SleepCommand)cc);
+    } else if (cc instanceof TypeCommand) {
+      return _generateCommand((TypeCommand)cc);
+    } else if (cc != null) {
+      return _generateCommand(cc);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(cc).toString());
+    }
   }
 }

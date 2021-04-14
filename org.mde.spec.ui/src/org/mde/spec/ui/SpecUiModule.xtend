@@ -4,10 +4,21 @@
 package org.mde.spec.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.eclipse.xtext.generator.GeneratorDelegate
+import org.eclipse.xtext.builder.EclipseResourceFileSystemAccess2
+import org.mde.spec.ui.generator.SpecGeneratorDelegate
+import org.mde.spec.ui.generator.EclipseResourceFileSystemAccess3
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  */
 @FinalFieldsConstructor
 class SpecUiModule extends AbstractSpecUiModule {
+	def Class<? extends GeneratorDelegate> bindGeneratorDelegate() {
+		SpecGeneratorDelegate
+	}
+	
+	def Class<? extends EclipseResourceFileSystemAccess2> bindEclipseResourceFileSystemAccess2() {
+		EclipseResourceFileSystemAccess3
+	}
 }

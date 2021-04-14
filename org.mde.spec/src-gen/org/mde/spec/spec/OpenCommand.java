@@ -46,25 +46,25 @@ public interface OpenCommand extends Command
   void setVal(String value);
 
   /**
-   * Returns the value of the '<em><b>Var</b></em>' containment reference.
+   * Returns the value of the '<em><b>Var</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Var</em>' containment reference.
-   * @see #setVar(Variable)
+   * @return the value of the '<em>Var</em>' reference.
+   * @see #setVar(VarDeclaration)
    * @see org.mde.spec.spec.SpecPackage#getOpenCommand_Var()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  Variable getVar();
+  VarDeclaration getVar();
 
   /**
-   * Sets the value of the '{@link org.mde.spec.spec.OpenCommand#getVar <em>Var</em>}' containment reference.
+   * Sets the value of the '{@link org.mde.spec.spec.OpenCommand#getVar <em>Var</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Var</em>' containment reference.
+   * @param value the new value of the '<em>Var</em>' reference.
    * @see #getVar()
    * @generated
    */
-  void setVar(Variable value);
+  void setVar(VarDeclaration value);
 
 } // OpenCommand

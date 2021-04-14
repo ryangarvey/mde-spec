@@ -21,7 +21,6 @@ import org.mde.spec.spec.SpecPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.CommandImpl#getComment <em>Comment</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.CommandImpl#getCustom <em>Custom</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.CommandImpl#getName <em>Name</em>}</li>
  * </ul>
@@ -30,26 +29,6 @@ import org.mde.spec.spec.SpecPackage;
  */
 public class CommandImpl extends MinimalEObjectImpl.Container implements Command
 {
-  /**
-   * The default value of the '{@link #getComment() <em>Comment</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getComment()
-   * @generated
-   * @ordered
-   */
-  protected static final String COMMENT_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getComment() <em>Comment</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getComment()
-   * @generated
-   * @ordered
-   */
-  protected String comment = COMMENT_EDEFAULT;
-
   /**
    * The default value of the '{@link #getCustom() <em>Custom</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -117,31 +96,6 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
    * @generated
    */
   @Override
-  public String getComment()
-  {
-    return comment;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setComment(String newComment)
-  {
-    String oldComment = comment;
-    comment = newComment;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.COMMAND__COMMENT, oldComment, comment));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public String getCustom()
   {
     return custom;
@@ -196,8 +150,6 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case SpecPackage.COMMAND__COMMENT:
-        return getComment();
       case SpecPackage.COMMAND__CUSTOM:
         return getCustom();
       case SpecPackage.COMMAND__NAME:
@@ -216,9 +168,6 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case SpecPackage.COMMAND__COMMENT:
-        setComment((String)newValue);
-        return;
       case SpecPackage.COMMAND__CUSTOM:
         setCustom((String)newValue);
         return;
@@ -239,9 +188,6 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case SpecPackage.COMMAND__COMMENT:
-        setComment(COMMENT_EDEFAULT);
-        return;
       case SpecPackage.COMMAND__CUSTOM:
         setCustom(CUSTOM_EDEFAULT);
         return;
@@ -262,8 +208,6 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
   {
     switch (featureID)
     {
-      case SpecPackage.COMMAND__COMMENT:
-        return COMMENT_EDEFAULT == null ? comment != null : !COMMENT_EDEFAULT.equals(comment);
       case SpecPackage.COMMAND__CUSTOM:
         return CUSTOM_EDEFAULT == null ? custom != null : !CUSTOM_EDEFAULT.equals(custom);
       case SpecPackage.COMMAND__NAME:
@@ -283,9 +227,7 @@ public class CommandImpl extends MinimalEObjectImpl.Container implements Command
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (comment: ");
-    result.append(comment);
-    result.append(", custom: ");
+    result.append(" (custom: ");
     result.append(custom);
     result.append(", name: ");
     result.append(name);
