@@ -1,0 +1,7 @@
+/*XPECT_SETUP org.mde.spec.xpect.XPectTests END_SETUP */
+Using Chrome
+Store var1 as "hello"
+Open "https://www.google.com"
+Select textarea "Search"
+Type var1
+Select button "Google Search"

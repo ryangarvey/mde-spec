@@ -1,0 +1,6 @@
+/*XPECT_SETUP org.mde.spec.xpect.XPectTests END_SETUP */
+Using Chrome
+Open "https://www.google.com"
+Select textarea "Search"
+Type "Hello world"
+Property "Search" should be "Hello world"
