@@ -92,5 +92,11 @@ terminal SL_COMMENT:
     '#' !('\n'|'\r')* ('\r'? '\n')?
 ;
 
+LoopCommand:
+	times=INT 'times' 'do'
+	command += Command*
+	'end'
+;	
+
 VarDeclaration:
 	"Store" name=ID 'as' value=STRING;
