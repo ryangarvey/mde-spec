@@ -24,6 +24,7 @@ import org.mde.spec.spec.VarDeclaration;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.mde.spec.spec.impl.PropertyCommandImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.PropertyCommandImpl#getProp <em>Prop</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.PropertyCommandImpl#getCond <em>Cond</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.PropertyCommandImpl#getVal <em>Val</em>}</li>
@@ -34,6 +35,26 @@ import org.mde.spec.spec.VarDeclaration;
  */
 public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The default value of the '{@link #getProp() <em>Prop</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -123,6 +144,31 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.PROPERTY_COMMAND;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.PROPERTY_COMMAND__NAME, oldName, name));
   }
 
   /**
@@ -255,6 +301,8 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
   {
     switch (featureID)
     {
+      case SpecPackage.PROPERTY_COMMAND__NAME:
+        return getName();
       case SpecPackage.PROPERTY_COMMAND__PROP:
         return getProp();
       case SpecPackage.PROPERTY_COMMAND__COND:
@@ -278,6 +326,9 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
   {
     switch (featureID)
     {
+      case SpecPackage.PROPERTY_COMMAND__NAME:
+        setName((String)newValue);
+        return;
       case SpecPackage.PROPERTY_COMMAND__PROP:
         setProp((Property)newValue);
         return;
@@ -304,6 +355,9 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
   {
     switch (featureID)
     {
+      case SpecPackage.PROPERTY_COMMAND__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case SpecPackage.PROPERTY_COMMAND__PROP:
         setProp(PROP_EDEFAULT);
         return;
@@ -330,6 +384,8 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
   {
     switch (featureID)
     {
+      case SpecPackage.PROPERTY_COMMAND__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.PROPERTY_COMMAND__PROP:
         return prop != PROP_EDEFAULT;
       case SpecPackage.PROPERTY_COMMAND__COND:
@@ -353,7 +409,9 @@ public class PropertyCommandImpl extends CommandImpl implements PropertyCommand
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (prop: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", prop: ");
     result.append(prop);
     result.append(", cond: ");
     result.append(cond);

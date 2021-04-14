@@ -20,6 +20,7 @@ import org.mde.spec.spec.VarDeclaration;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.mde.spec.spec.impl.VarDeclarationImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.VarDeclarationImpl#getValue <em>Value</em>}</li>
  * </ul>
  *
@@ -27,6 +28,26 @@ import org.mde.spec.spec.VarDeclaration;
  */
 public class VarDeclarationImpl extends CommandImpl implements VarDeclaration
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -74,6 +95,31 @@ public class VarDeclarationImpl extends CommandImpl implements VarDeclaration
    * @generated
    */
   @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.VAR_DECLARATION__NAME, oldName, name));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public String getValue()
   {
     return value;
@@ -103,6 +149,8 @@ public class VarDeclarationImpl extends CommandImpl implements VarDeclaration
   {
     switch (featureID)
     {
+      case SpecPackage.VAR_DECLARATION__NAME:
+        return getName();
       case SpecPackage.VAR_DECLARATION__VALUE:
         return getValue();
     }
@@ -119,6 +167,9 @@ public class VarDeclarationImpl extends CommandImpl implements VarDeclaration
   {
     switch (featureID)
     {
+      case SpecPackage.VAR_DECLARATION__NAME:
+        setName((String)newValue);
+        return;
       case SpecPackage.VAR_DECLARATION__VALUE:
         setValue((String)newValue);
         return;
@@ -136,6 +187,9 @@ public class VarDeclarationImpl extends CommandImpl implements VarDeclaration
   {
     switch (featureID)
     {
+      case SpecPackage.VAR_DECLARATION__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case SpecPackage.VAR_DECLARATION__VALUE:
         setValue(VALUE_EDEFAULT);
         return;
@@ -153,6 +207,8 @@ public class VarDeclarationImpl extends CommandImpl implements VarDeclaration
   {
     switch (featureID)
     {
+      case SpecPackage.VAR_DECLARATION__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.VAR_DECLARATION__VALUE:
         return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
     }
@@ -170,7 +226,9 @@ public class VarDeclarationImpl extends CommandImpl implements VarDeclaration
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (value: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", value: ");
     result.append(value);
     result.append(')');
     return result.toString();

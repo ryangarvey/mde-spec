@@ -157,6 +157,14 @@ public class SpecSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case SpecPackage.LOOP_COMMAND:
+      {
+        LoopCommand loopCommand = (LoopCommand)theEObject;
+        T result = caseLoopCommand(loopCommand);
+        if (result == null) result = caseCommand(loopCommand);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case SpecPackage.VAR_DECLARATION:
       {
         VarDeclaration varDeclaration = (VarDeclaration)theEObject;
@@ -341,6 +349,22 @@ public class SpecSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePoint(Point object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Loop Command</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Loop Command</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseLoopCommand(LoopCommand object)
   {
     return null;
   }

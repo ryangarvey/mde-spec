@@ -13,6 +13,7 @@ Command:
   | PropertyCommand
   | TypeCommand
   | SleepCommand
+//  | LoopCommand
   | {Command} SL_COMMENT
   | custom=CUSTOM_COMMAND
   | VarDeclaration
@@ -35,7 +36,6 @@ OpenCommand:
 	{OpenCommand} name="Open" (val=STRING | var=[VarDeclaration])
 ;
 
-// TODO fix this so click works 
 ClickCommand:
 	name="Click" ("on" selector=Selector | "at" point=Point)
 ;
@@ -91,6 +91,11 @@ terminal CUSTOM_COMMAND:
 terminal SL_COMMENT:
     '#' !('\n'|'\r')* ('\r'? '\n')?
 ;
+
+//LoopCommand:
+//	"Perform" times=INT 'times' ':'
+//	command += Command* '\n\n'
+//;	
 
 VarDeclaration:
 	"Store" name=ID 'as' value=STRING;

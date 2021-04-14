@@ -15,37 +15,59 @@ import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
  * See https://www.eclipse.org/Xtext/documentation/310_eclipse_support.html#quick-fixes
  */
 class SpecQuickfixProvider extends DefaultQuickfixProvider {
-
-	@Fix(SpecValidator.INVALID_NAME)
-	def deCapitalizeName(Issue issue, IssueResolutionAcceptor acceptor) {
-		acceptor.accept(issue, 'Capitalize name', 'Capitalize the name.', 'upcase.png') [
-			context |
-			val xtextDocument = context.xtextDocument
-			val firstLetter = xtextDocument.get(issue.offset, 1)
-			xtextDocument.replace(issue.offset, 1, firstLetter.toLowerCase)
-		]
-	}
 	
 	@Fix(SpecValidator.INVALID_URL)
 	def appendHTTPS(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 'Fix URL', 'Add https://', 'upcase.png') [
 			context |
 			val xtextDocument = context.xtextDocument
-			xtextDocument.getLineInformation(issue.lineNumber)
-			xtextDocument.replace(issue.offset, 1, '''"https://''')
+			
+			val end = xtextDocument.search(issue.offset, "www.", true, true, false)
+			
+			xtextDocument.replace(issue.offset, end - issue.offset, '''"https://''')
 		]
 	}
 	
-//	@Fix(SpecValidator.TOO_MANY_USING_COMMANDS)
-//	def removeUsingCommands(Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 'Remove using commands', 'Delete all but the first using command', 'upcase.png') [
-//			context |
-//			val xtextDocument = context.xtextDocument
-//			for (var i = xtextDocument.numberOfLines-1; i >= 0; i-=1) {
-//				if (xtextDocument.getLineInformation(i).toString.contains("Using")) {
-//					// TODO fix this
-//				}
-//			}	
-//		]
-//	}
+	@Fix(SpecValidator.INVALID_OPEN)
+	def addToOpen(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Fix URL', 'Add https://', 'upcase.png') [
+			context |
+			val xtextDocument = context.xtextDocument
+			
+			val end = xtextDocument.search(issue.offset, "www.", true, true, false)
+			
+			xtextDocument.replace(issue.offset, end - issue.offset, '''"https://''')
+		]
+	}
+	
+	@Fix(SpecValidator.TOO_MANY_USING_COMMANDS)
+	def removeUsingCommands(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove excess Using commands', 'Delete all but the first using command', 'upcase.png') [
+			context |
+			val xtextDocument = context.xtextDocument
+			var usingCounter = 0
+			
+			for (var i = xtextDocument.numberOfLines-1; i >= 0; i -= 1) {
+				val start = xtextDocument.getLineInformation(i).offset
+				val end = start + xtextDocument.getLineLength(i)
+				
+				if (xtextDocument.get(start, end - start).contains("Using")) {
+					usingCounter += 1
+				}
+			}	
+			
+			
+			for (var i = xtextDocument.numberOfLines-1; i >= 0; i -= 1) {
+				if (usingCounter < 2) return
+				
+				val start = xtextDocument.getLineInformation(i).offset
+				val end = start + xtextDocument.getLineLength(i)
+				
+				if (xtextDocument.get(start, end - start).contains("Using")) {
+					xtextDocument.replace(start, end - start, "");
+					usingCounter -= 1
+				}
+			}	
+		]
+	}
 }

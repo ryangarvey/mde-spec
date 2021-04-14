@@ -17,6 +17,7 @@ import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransi
 import org.mde.spec.services.SpecGrammarAccess;
 import org.mde.spec.spec.ClickCommand;
 import org.mde.spec.spec.Command;
+import org.mde.spec.spec.LoopCommand;
 import org.mde.spec.spec.Model;
 import org.mde.spec.spec.OpenCommand;
 import org.mde.spec.spec.Point;
@@ -48,6 +49,9 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 				return; 
 			case SpecPackage.COMMAND:
 				sequence_Command(context, (Command) semanticObject); 
+				return; 
+			case SpecPackage.LOOP_COMMAND:
+				sequence_LoopCommand(context, (LoopCommand) semanticObject); 
 				return; 
 			case SpecPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
@@ -105,6 +109,19 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     custom=CUSTOM_COMMAND?
 	 */
 	protected void sequence_Command(ISerializationContext context, Command semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Command returns LoopCommand
+	 *     LoopCommand returns LoopCommand
+	 *
+	 * Constraint:
+	 *     (times=INT command+=Command*)
+	 */
+	protected void sequence_LoopCommand(ISerializationContext context, LoopCommand semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -203,8 +220,8 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_SleepCommand(ISerializationContext context, SleepCommand semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.COMMAND__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.COMMAND__NAME));
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.SLEEP_COMMAND__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.SLEEP_COMMAND__NAME));
 			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.SLEEP_COMMAND__TIME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.SLEEP_COMMAND__TIME));
 		}
@@ -238,8 +255,8 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_UsingCommand(ISerializationContext context, UsingCommand semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.COMMAND__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.COMMAND__NAME));
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.USING_COMMAND__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.USING_COMMAND__NAME));
 			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.USING_COMMAND__BROWSER) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.USING_COMMAND__BROWSER));
 		}
@@ -260,8 +277,8 @@ public class SpecSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 */
 	protected void sequence_VarDeclaration(ISerializationContext context, VarDeclaration semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.COMMAND__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.COMMAND__NAME));
+			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.VAR_DECLARATION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.VAR_DECLARATION__NAME));
 			if (transientValues.isValueTransient(semanticObject, SpecPackage.Literals.VAR_DECLARATION__VALUE) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, SpecPackage.Literals.VAR_DECLARATION__VALUE));
 		}

@@ -107,8 +107,11 @@ public class SpecGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t");
-    _builder.append("process.exec(\"npm run test\", (error, stdout, stderr) => outputCallback(error, stdout, stderr));");
-    _builder.newLine();
+    _builder.append("process.exec(\"mocha ");
+    String _lastSegment = resource.getURI().lastSegment();
+    _builder.append(_lastSegment, "\t");
+    _builder.append(".js\", (error, stdout, stderr) => outputCallback(error, stdout, stderr));");
+    _builder.newLineIfNotEmpty();
     _builder.append("}");
     _builder.newLine();
     _builder.newLine();

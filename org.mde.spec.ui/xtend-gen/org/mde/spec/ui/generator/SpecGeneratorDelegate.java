@@ -1,6 +1,5 @@
 package org.mde.spec.ui.generator;
 
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.generator.GeneratorDelegate;
@@ -22,8 +21,7 @@ public class SpecGeneratorDelegate extends GeneratorDelegate {
   /**
    * Initialise the project if that hasn't happened yet.
    */
-  private void initialise(final IProject project) {
-    final IFolder srcGenFolder = project.getFolder("src-gen");
-    final IFolder libFolder = project.getFolder("lib");
+  private Object initialise(final IProject project) {
+    return null;
   }
 }

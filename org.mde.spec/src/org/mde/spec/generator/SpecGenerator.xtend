@@ -63,7 +63,7 @@ class SpecGenerator extends AbstractGenerator {
 			async function run() {
 				process.exec("npm install", (error, stdout, stderr) => outputCallback(error, stdout, stderr));
 				
-				process.exec("npm run test", (error, stdout, stderr) => outputCallback(error, stdout, stderr));
+				process.exec("mocha «resource.URI.lastSegment».js", (error, stdout, stderr) => outputCallback(error, stdout, stderr));
 			}
 			
 			run();

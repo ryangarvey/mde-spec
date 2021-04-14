@@ -13,6 +13,7 @@ package org.mde.spec.spec;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.mde.spec.spec.PropertyCommand#getName <em>Name</em>}</li>
  *   <li>{@link org.mde.spec.spec.PropertyCommand#getProp <em>Prop</em>}</li>
  *   <li>{@link org.mde.spec.spec.PropertyCommand#getCond <em>Cond</em>}</li>
  *   <li>{@link org.mde.spec.spec.PropertyCommand#getVal <em>Val</em>}</li>
@@ -25,6 +26,28 @@ package org.mde.spec.spec;
  */
 public interface PropertyCommand extends Command
 {
+  /**
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see org.mde.spec.spec.SpecPackage#getPropertyCommand_Name()
+   * @model
+   * @generated
+   */
+  String getName();
+
+  /**
+   * Sets the value of the '{@link org.mde.spec.spec.PropertyCommand#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
+  void setName(String value);
+
   /**
    * Returns the value of the '<em><b>Prop</b></em>' attribute.
    * The literals are from the enumeration {@link org.mde.spec.spec.Property}.

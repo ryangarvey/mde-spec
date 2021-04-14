@@ -22,6 +22,7 @@ import org.mde.spec.spec.VarDeclaration;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.mde.spec.spec.impl.TypeCommandImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.TypeCommandImpl#getStr <em>Str</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.TypeCommandImpl#getVar <em>Var</em>}</li>
  * </ul>
@@ -30,6 +31,26 @@ import org.mde.spec.spec.VarDeclaration;
  */
 public class TypeCommandImpl extends CommandImpl implements TypeCommand
 {
+  /**
+   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected static final String NAME_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getName()
+   * @generated
+   * @ordered
+   */
+  protected String name = NAME_EDEFAULT;
+
   /**
    * The default value of the '{@link #getStr() <em>Str</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -79,6 +100,31 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.TYPE_COMMAND;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getName()
+  {
+    return name;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setName(String newName)
+  {
+    String oldName = name;
+    name = newName;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.TYPE_COMMAND__NAME, oldName, name));
   }
 
   /**
@@ -161,6 +207,8 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
   {
     switch (featureID)
     {
+      case SpecPackage.TYPE_COMMAND__NAME:
+        return getName();
       case SpecPackage.TYPE_COMMAND__STR:
         return getStr();
       case SpecPackage.TYPE_COMMAND__VAR:
@@ -180,6 +228,9 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
   {
     switch (featureID)
     {
+      case SpecPackage.TYPE_COMMAND__NAME:
+        setName((String)newValue);
+        return;
       case SpecPackage.TYPE_COMMAND__STR:
         setStr((String)newValue);
         return;
@@ -200,6 +251,9 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
   {
     switch (featureID)
     {
+      case SpecPackage.TYPE_COMMAND__NAME:
+        setName(NAME_EDEFAULT);
+        return;
       case SpecPackage.TYPE_COMMAND__STR:
         setStr(STR_EDEFAULT);
         return;
@@ -220,6 +274,8 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
   {
     switch (featureID)
     {
+      case SpecPackage.TYPE_COMMAND__NAME:
+        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.TYPE_COMMAND__STR:
         return STR_EDEFAULT == null ? str != null : !STR_EDEFAULT.equals(str);
       case SpecPackage.TYPE_COMMAND__VAR:
@@ -239,7 +295,9 @@ public class TypeCommandImpl extends CommandImpl implements TypeCommand
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (str: ");
+    result.append(" (name: ");
+    result.append(name);
+    result.append(", str: ");
     result.append(str);
     result.append(')');
     return result.toString();

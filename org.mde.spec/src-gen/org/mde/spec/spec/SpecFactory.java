@@ -123,6 +123,15 @@ public interface SpecFactory extends EFactory
   Point createPoint();
 
   /**
+   * Returns a new object of class '<em>Loop Command</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Loop Command</em>'.
+   * @generated
+   */
+  LoopCommand createLoopCommand();
+
+  /**
    * Returns a new object of class '<em>Var Declaration</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

@@ -131,6 +131,11 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
         return createPointAdapter();
       }
       @Override
+      public Adapter caseLoopCommand(LoopCommand object)
+      {
+        return createLoopCommandAdapter();
+      }
+      @Override
       public Adapter caseVarDeclaration(VarDeclaration object)
       {
         return createVarDeclarationAdapter();
@@ -318,6 +323,21 @@ public class SpecAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPointAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.mde.spec.spec.LoopCommand <em>Loop Command</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.mde.spec.spec.LoopCommand
+   * @generated
+   */
+  public Adapter createLoopCommandAdapter()
   {
     return null;
   }
