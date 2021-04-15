@@ -6,11 +6,8 @@ To begin using website-spec, the following must be installed on your machine:
 <ol>
   <li> Eclipse IDE with modelling packages </li>
   <li> ChromeDriver or your own preferred browser's driver (Chrome is recommended) </li>
-  <li> SeleniumDriver </li>
   <li> Mocha </li>
 </ol>
-
-
 
 ## Installing ChromeDriver
 In order to use website-spec, a web driver is required in order for automated testing to work. For this installation guide, ChromeDriver will be used. However, you can use whichever browser you deem necessary.
@@ -24,29 +21,27 @@ In order to use website-spec, a web driver is required in order for automated te
 
 Once these steps have been completed, ChromeDriver will be available to use on your computer. You can test this by opening a command prompt and typing <i>chromedriver</i> in the window.
 
-## Installing Selenium Webdriver
-
-You can easily install the Selenium Webdriver via Node, using the command below. 
-
-```node
-npm install --global selenium-webdriver
-```
-If you prefer to install the library as a project dependency, navigate to your **src-gen/** folder and issue the following command to the terminal.
-
-```node
-npm install --save-dev selenium-webdriver
-```
-
 ## Installing Mocha
 
-Much like Selenium Webdriver, the Mocha library can be installed using Node. Simply use the command below. 
+In order for **website-spec** to function correctly, Mocha must be installed globally using the command below.
 
 ```node
-npm install --global mocha
+npm install --g mocha
 ```
 
-Or, much like Selenium Webdriver, you can install Mocha inside the **src-gen/** folder.
+## Creating an External Tool Configuration
 
-```node
-npm install --save-dev mocha
-```
+When using **website-spec** inside your runtime eclipse, an external tool will need to be created in order to run the language successfully.
+
+<ol>
+  <li>Go to External Tools -> External Tool Configurations</li>
+  <li>Click on Program and click New Launch Configuration from the top left corner</li>
+  <li>Locate where Mocha has been installed, this can be done by opening a command prompt and typing "where mocha"</li>
+  <li>In location, paste the folder location and include the file "mocha.cmd" on the end, so it should look like "C:\path\to\mocha\mocha.cmd"</li>
+  <li>In working directory, paste "${container_loc}", and in arguments, paste "${resource_name}"</li>
+  <li>Press Apply</li>
+</ol>
+
+You should now be able to highlight **run.js** in your _\src-gen_ folder and the test file should run.
+
+
