@@ -77,7 +77,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
       case SpecPackage.TYPE_COMMAND: return createTypeCommand();
       case SpecPackage.SLEEP_COMMAND: return createSleepCommand();
       case SpecPackage.POINT: return createPoint();
-      case SpecPackage.LOOP_COMMAND: return createLoopCommand();
       case SpecPackage.VAR_DECLARATION: return createVarDeclaration();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
@@ -260,18 +259,6 @@ public class SpecFactoryImpl extends EFactoryImpl implements SpecFactory
   {
     PointImpl point = new PointImpl();
     return point;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public LoopCommand createLoopCommand()
-  {
-    LoopCommandImpl loopCommand = new LoopCommandImpl();
-    return loopCommand;
   }
 
   /**

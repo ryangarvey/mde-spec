@@ -43,7 +43,7 @@ public class SpecParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getElementTypeAccess().getAlternatives(), "rule__ElementType__Alternatives");
 			builder.put(grammarAccess.getPropertyAccess().getAlternatives(), "rule__Property__Alternatives");
 			builder.put(grammarAccess.getConditionAccess().getAlternatives(), "rule__Condition__Alternatives");
-			builder.put(grammarAccess.getCommandAccess().getGroup_8(), "rule__Command__Group_8__0");
+			builder.put(grammarAccess.getCommandAccess().getGroup_7(), "rule__Command__Group_7__0");
 			builder.put(grammarAccess.getUsingCommandAccess().getGroup(), "rule__UsingCommand__Group__0");
 			builder.put(grammarAccess.getOpenCommandAccess().getGroup(), "rule__OpenCommand__Group__0");
 			builder.put(grammarAccess.getClickCommandAccess().getGroup(), "rule__ClickCommand__Group__0");
@@ -56,10 +56,9 @@ public class SpecParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getTypeCommandAccess().getGroup(), "rule__TypeCommand__Group__0");
 			builder.put(grammarAccess.getSleepCommandAccess().getGroup(), "rule__SleepCommand__Group__0");
 			builder.put(grammarAccess.getPointAccess().getGroup(), "rule__Point__Group__0");
-			builder.put(grammarAccess.getLoopCommandAccess().getGroup(), "rule__LoopCommand__Group__0");
 			builder.put(grammarAccess.getVarDeclarationAccess().getGroup(), "rule__VarDeclaration__Group__0");
 			builder.put(grammarAccess.getModelAccess().getCommandsAssignment(), "rule__Model__CommandsAssignment");
-			builder.put(grammarAccess.getCommandAccess().getCustomAssignment_9(), "rule__Command__CustomAssignment_9");
+			builder.put(grammarAccess.getCommandAccess().getCustomAssignment_8(), "rule__Command__CustomAssignment_8");
 			builder.put(grammarAccess.getUsingCommandAccess().getNameAssignment_0(), "rule__UsingCommand__NameAssignment_0");
 			builder.put(grammarAccess.getUsingCommandAccess().getBrowserAssignment_1(), "rule__UsingCommand__BrowserAssignment_1");
 			builder.put(grammarAccess.getOpenCommandAccess().getNameAssignment_1(), "rule__OpenCommand__NameAssignment_1");
@@ -87,8 +86,6 @@ public class SpecParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getSleepCommandAccess().getTimeAssignment_2(), "rule__SleepCommand__TimeAssignment_2");
 			builder.put(grammarAccess.getPointAccess().getXAssignment_1(), "rule__Point__XAssignment_1");
 			builder.put(grammarAccess.getPointAccess().getYAssignment_3(), "rule__Point__YAssignment_3");
-			builder.put(grammarAccess.getLoopCommandAccess().getTimesAssignment_1(), "rule__LoopCommand__TimesAssignment_1");
-			builder.put(grammarAccess.getLoopCommandAccess().getCommandAssignment_4(), "rule__LoopCommand__CommandAssignment_4");
 			builder.put(grammarAccess.getVarDeclarationAccess().getNameAssignment_1(), "rule__VarDeclaration__NameAssignment_1");
 			builder.put(grammarAccess.getVarDeclarationAccess().getValueAssignment_3(), "rule__VarDeclaration__ValueAssignment_3");
 		}

@@ -20,7 +20,6 @@ import org.mde.spec.spec.SpecPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.SleepCommandImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.SleepCommandImpl#getTime <em>Time</em>}</li>
  * </ul>
  *
@@ -28,26 +27,6 @@ import org.mde.spec.spec.SpecPackage;
  */
 public class SleepCommandImpl extends CommandImpl implements SleepCommand
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The default value of the '{@link #getTime() <em>Time</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -95,31 +74,6 @@ public class SleepCommandImpl extends CommandImpl implements SleepCommand
    * @generated
    */
   @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.SLEEP_COMMAND__NAME, oldName, name));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public int getTime()
   {
     return time;
@@ -149,8 +103,6 @@ public class SleepCommandImpl extends CommandImpl implements SleepCommand
   {
     switch (featureID)
     {
-      case SpecPackage.SLEEP_COMMAND__NAME:
-        return getName();
       case SpecPackage.SLEEP_COMMAND__TIME:
         return getTime();
     }
@@ -167,9 +119,6 @@ public class SleepCommandImpl extends CommandImpl implements SleepCommand
   {
     switch (featureID)
     {
-      case SpecPackage.SLEEP_COMMAND__NAME:
-        setName((String)newValue);
-        return;
       case SpecPackage.SLEEP_COMMAND__TIME:
         setTime((Integer)newValue);
         return;
@@ -187,9 +136,6 @@ public class SleepCommandImpl extends CommandImpl implements SleepCommand
   {
     switch (featureID)
     {
-      case SpecPackage.SLEEP_COMMAND__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case SpecPackage.SLEEP_COMMAND__TIME:
         setTime(TIME_EDEFAULT);
         return;
@@ -207,8 +153,6 @@ public class SleepCommandImpl extends CommandImpl implements SleepCommand
   {
     switch (featureID)
     {
-      case SpecPackage.SLEEP_COMMAND__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.SLEEP_COMMAND__TIME:
         return time != TIME_EDEFAULT;
     }
@@ -226,9 +170,7 @@ public class SleepCommandImpl extends CommandImpl implements SleepCommand
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", time: ");
+    result.append(" (time: ");
     result.append(time);
     result.append(')');
     return result.toString();

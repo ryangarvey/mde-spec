@@ -66,13 +66,13 @@ class SpecValidator extends AbstractSpecValidator {
 	def void checkWhenTypingThatElementIsSelected(Model m, TypeCommand tc) {
 		val listOfSelectAndTypingCommands = m.commands.filter[x | x instanceof SelectCommand || x instanceof TypeCommand]
 		if (listOfSelectAndTypingCommands.head instanceof TypeCommand)
-			error("An element must be selected to provide input", SpecPackage.Literals.TYPE_COMMAND__NAME, NO_ELEMENT_SELECTED)
+			error("An element must be selected to provide input", SpecPackage.Literals.TYPE_COMMAND__STR, NO_ELEMENT_SELECTED)
 	}
 	
 	@Check(NORMAL)
 	def void checkWhenQueryingThatElementIsSelected(Model m, PropertyCommand pc) {
 		val listOfSelectAndTypingCommands = m.commands.filter[x | x instanceof SelectCommand || x instanceof PropertyCommand]
 		if (listOfSelectAndTypingCommands.head instanceof TypeCommand)
-			error("An element must be selected to test properties", SpecPackage.Literals.PROPERTY_COMMAND__NAME, NO_ELEMENT_SELECTED)
+			error("An element must be selected to test properties", SpecPackage.Literals.PROPERTY_COMMAND__VAL, NO_ELEMENT_SELECTED)
 	}
 }

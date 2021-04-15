@@ -31,16 +31,6 @@ public enum Property implements Enumerator
   TEXT(0, "text", "text"),
 
   /**
-   * The '<em><b>Class</b></em>' literal object.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #CLASS_VALUE
-   * @generated
-   * @ordered
-   */
-  CLASS(1, "class", "class"),
-
-  /**
    * The '<em><b>Value</b></em>' literal object.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -48,7 +38,7 @@ public enum Property implements Enumerator
    * @generated
    * @ordered
    */
-  VALUE(2, "value", "value");
+  VALUE(1, "value", "value");
 
   /**
    * The '<em><b>Text</b></em>' literal value.
@@ -62,17 +52,6 @@ public enum Property implements Enumerator
   public static final int TEXT_VALUE = 0;
 
   /**
-   * The '<em><b>Class</b></em>' literal value.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #CLASS
-   * @model name="class"
-   * @generated
-   * @ordered
-   */
-  public static final int CLASS_VALUE = 1;
-
-  /**
    * The '<em><b>Value</b></em>' literal value.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -81,7 +60,7 @@ public enum Property implements Enumerator
    * @generated
    * @ordered
    */
-  public static final int VALUE_VALUE = 2;
+  public static final int VALUE_VALUE = 1;
 
   /**
    * An array of all the '<em><b>Property</b></em>' enumerators.
@@ -93,7 +72,6 @@ public enum Property implements Enumerator
     new Property[]
     {
       TEXT,
-      CLASS,
       VALUE,
     };
 
@@ -160,7 +138,6 @@ public enum Property implements Enumerator
     switch (value)
     {
       case TEXT_VALUE: return TEXT;
-      case CLASS_VALUE: return CLASS;
       case VALUE_VALUE: return VALUE;
     }
     return null;

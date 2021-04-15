@@ -13,7 +13,6 @@ package org.mde.spec.spec;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.UsingCommand#getName <em>Name</em>}</li>
  *   <li>{@link org.mde.spec.spec.UsingCommand#getBrowser <em>Browser</em>}</li>
  * </ul>
  *
@@ -23,28 +22,6 @@ package org.mde.spec.spec;
  */
 public interface UsingCommand extends Command
 {
-  /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see org.mde.spec.spec.SpecPackage#getUsingCommand_Name()
-   * @model
-   * @generated
-   */
-  String getName();
-
-  /**
-   * Sets the value of the '{@link org.mde.spec.spec.UsingCommand#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
-  void setName(String value);
-
   /**
    * Returns the value of the '<em><b>Browser</b></em>' attribute.
    * The literals are from the enumeration {@link org.mde.spec.spec.Browser}.

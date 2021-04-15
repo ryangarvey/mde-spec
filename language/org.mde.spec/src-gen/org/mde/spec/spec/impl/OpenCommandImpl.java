@@ -22,7 +22,6 @@ import org.mde.spec.spec.VarDeclaration;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.mde.spec.spec.impl.OpenCommandImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.OpenCommandImpl#getVal <em>Val</em>}</li>
  *   <li>{@link org.mde.spec.spec.impl.OpenCommandImpl#getVar <em>Var</em>}</li>
  * </ul>
@@ -31,26 +30,6 @@ import org.mde.spec.spec.VarDeclaration;
  */
 public class OpenCommandImpl extends CommandImpl implements OpenCommand
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The default value of the '{@link #getVal() <em>Val</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -100,31 +79,6 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   protected EClass eStaticClass()
   {
     return SpecPackage.Literals.OPEN_COMMAND;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, SpecPackage.OPEN_COMMAND__NAME, oldName, name));
   }
 
   /**
@@ -207,8 +161,6 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   {
     switch (featureID)
     {
-      case SpecPackage.OPEN_COMMAND__NAME:
-        return getName();
       case SpecPackage.OPEN_COMMAND__VAL:
         return getVal();
       case SpecPackage.OPEN_COMMAND__VAR:
@@ -228,9 +180,6 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   {
     switch (featureID)
     {
-      case SpecPackage.OPEN_COMMAND__NAME:
-        setName((String)newValue);
-        return;
       case SpecPackage.OPEN_COMMAND__VAL:
         setVal((String)newValue);
         return;
@@ -251,9 +200,6 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   {
     switch (featureID)
     {
-      case SpecPackage.OPEN_COMMAND__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case SpecPackage.OPEN_COMMAND__VAL:
         setVal(VAL_EDEFAULT);
         return;
@@ -274,8 +220,6 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
   {
     switch (featureID)
     {
-      case SpecPackage.OPEN_COMMAND__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case SpecPackage.OPEN_COMMAND__VAL:
         return VAL_EDEFAULT == null ? val != null : !VAL_EDEFAULT.equals(val);
       case SpecPackage.OPEN_COMMAND__VAR:
@@ -295,9 +239,7 @@ public class OpenCommandImpl extends CommandImpl implements OpenCommand
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", val: ");
+    result.append(" (val: ");
     result.append(val);
     result.append(')');
     return result.toString();

@@ -52,13 +52,12 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPropertyCommandParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cTypeCommandParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		private final RuleCall cSleepCommandParserRuleCall_6 = (RuleCall)cAlternatives.eContents().get(6);
-		private final RuleCall cLoopCommandParserRuleCall_7 = (RuleCall)cAlternatives.eContents().get(7);
-		private final Group cGroup_8 = (Group)cAlternatives.eContents().get(8);
-		private final Action cCommandAction_8_0 = (Action)cGroup_8.eContents().get(0);
-		private final RuleCall cSL_COMMENTTerminalRuleCall_8_1 = (RuleCall)cGroup_8.eContents().get(1);
-		private final Assignment cCustomAssignment_9 = (Assignment)cAlternatives.eContents().get(9);
-		private final RuleCall cCustomCUSTOM_COMMANDTerminalRuleCall_9_0 = (RuleCall)cCustomAssignment_9.eContents().get(0);
-		private final RuleCall cVarDeclarationParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
+		private final Group cGroup_7 = (Group)cAlternatives.eContents().get(7);
+		private final Action cCommandAction_7_0 = (Action)cGroup_7.eContents().get(0);
+		private final RuleCall cSL_COMMENTTerminalRuleCall_7_1 = (RuleCall)cGroup_7.eContents().get(1);
+		private final Assignment cCustomAssignment_8 = (Assignment)cAlternatives.eContents().get(8);
+		private final RuleCall cCustomCUSTOM_COMMANDTerminalRuleCall_8_0 = (RuleCall)cCustomAssignment_8.eContents().get(0);
+		private final RuleCall cVarDeclarationParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		
 		//Command:
 		//	UsingCommand
@@ -68,14 +67,13 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//	| PropertyCommand
 		//	| TypeCommand
 		//	| SleepCommand
-		//	| LoopCommand
 		//	| {Command} SL_COMMENT
 		//	| custom=CUSTOM_COMMAND
 		//	| VarDeclaration;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//UsingCommand | OpenCommand | ClickCommand | SelectCommand | PropertyCommand | TypeCommand | SleepCommand | LoopCommand |
-		//{Command} SL_COMMENT | custom=CUSTOM_COMMAND | VarDeclaration
+		//UsingCommand | OpenCommand | ClickCommand | SelectCommand | PropertyCommand | TypeCommand | SleepCommand | {Command}
+		//SL_COMMENT | custom=CUSTOM_COMMAND | VarDeclaration
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//UsingCommand
@@ -99,26 +97,23 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//SleepCommand
 		public RuleCall getSleepCommandParserRuleCall_6() { return cSleepCommandParserRuleCall_6; }
 		
-		//LoopCommand
-		public RuleCall getLoopCommandParserRuleCall_7() { return cLoopCommandParserRuleCall_7; }
-		
 		//{Command} SL_COMMENT
-		public Group getGroup_8() { return cGroup_8; }
+		public Group getGroup_7() { return cGroup_7; }
 		
 		//{Command}
-		public Action getCommandAction_8_0() { return cCommandAction_8_0; }
+		public Action getCommandAction_7_0() { return cCommandAction_7_0; }
 		
 		//SL_COMMENT
-		public RuleCall getSL_COMMENTTerminalRuleCall_8_1() { return cSL_COMMENTTerminalRuleCall_8_1; }
+		public RuleCall getSL_COMMENTTerminalRuleCall_7_1() { return cSL_COMMENTTerminalRuleCall_7_1; }
 		
 		//custom=CUSTOM_COMMAND
-		public Assignment getCustomAssignment_9() { return cCustomAssignment_9; }
+		public Assignment getCustomAssignment_8() { return cCustomAssignment_8; }
 		
 		//CUSTOM_COMMAND
-		public RuleCall getCustomCUSTOM_COMMANDTerminalRuleCall_9_0() { return cCustomCUSTOM_COMMANDTerminalRuleCall_9_0; }
+		public RuleCall getCustomCUSTOM_COMMANDTerminalRuleCall_8_0() { return cCustomCUSTOM_COMMANDTerminalRuleCall_8_0; }
 		
 		//VarDeclaration
-		public RuleCall getVarDeclarationParserRuleCall_10() { return cVarDeclarationParserRuleCall_10; }
+		public RuleCall getVarDeclarationParserRuleCall_9() { return cVarDeclarationParserRuleCall_9; }
 	}
 	public class UsingCommandElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.UsingCommand");
@@ -531,50 +526,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"}"
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 	}
-	public class LoopCommandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.LoopCommand");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cPerformKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cTimesAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cTimesINTTerminalRuleCall_1_0 = (RuleCall)cTimesAssignment_1.eContents().get(0);
-		private final Keyword cTimesKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cCommandAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cCommandCommandParserRuleCall_4_0 = (RuleCall)cCommandAssignment_4.eContents().get(0);
-		private final Keyword cControl000aControl000aKeyword_5 = (Keyword)cGroup.eContents().get(5);
-		
-		//LoopCommand:
-		//	"Perform" times=INT 'times' ':'
-		//	command+=Command* '\n\n';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//"Perform" times=INT 'times' ':' command+=Command* '\n\n'
-		public Group getGroup() { return cGroup; }
-		
-		//"Perform"
-		public Keyword getPerformKeyword_0() { return cPerformKeyword_0; }
-		
-		//times=INT
-		public Assignment getTimesAssignment_1() { return cTimesAssignment_1; }
-		
-		//INT
-		public RuleCall getTimesINTTerminalRuleCall_1_0() { return cTimesINTTerminalRuleCall_1_0; }
-		
-		//'times'
-		public Keyword getTimesKeyword_2() { return cTimesKeyword_2; }
-		
-		//':'
-		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
-		
-		//command+=Command*
-		public Assignment getCommandAssignment_4() { return cCommandAssignment_4; }
-		
-		//Command
-		public RuleCall getCommandCommandParserRuleCall_4_0() { return cCommandCommandParserRuleCall_4_0; }
-		
-		//'\n\n'
-		public Keyword getControl000aControl000aKeyword_5() { return cControl000aControl000aKeyword_5; }
-	}
 	public class VarDeclarationElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.VarDeclaration");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -731,16 +682,14 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cTextEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cTextTextKeyword_0_0 = (Keyword)cTextEnumLiteralDeclaration_0.eContents().get(0);
-		private final EnumLiteralDeclaration cClassEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
-		private final Keyword cClassClassKeyword_1_0 = (Keyword)cClassEnumLiteralDeclaration_1.eContents().get(0);
-		private final EnumLiteralDeclaration cValueEnumLiteralDeclaration_2 = (EnumLiteralDeclaration)cAlternatives.eContents().get(2);
-		private final Keyword cValueValueKeyword_2_0 = (Keyword)cValueEnumLiteralDeclaration_2.eContents().get(0);
+		private final EnumLiteralDeclaration cValueEnumLiteralDeclaration_1 = (EnumLiteralDeclaration)cAlternatives.eContents().get(1);
+		private final Keyword cValueValueKeyword_1_0 = (Keyword)cValueEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum Property:
-		//	text | class | value;
+		//	text | value;
 		public EnumRule getRule() { return rule; }
 		
-		//text | class | value
+		//text | value
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//text
@@ -749,17 +698,11 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		//"text"
 		public Keyword getTextTextKeyword_0_0() { return cTextTextKeyword_0_0; }
 		
-		//class
-		public EnumLiteralDeclaration getClassEnumLiteralDeclaration_1() { return cClassEnumLiteralDeclaration_1; }
-		
-		//"class"
-		public Keyword getClassClassKeyword_1_0() { return cClassClassKeyword_1_0; }
-		
 		//value
-		public EnumLiteralDeclaration getValueEnumLiteralDeclaration_2() { return cValueEnumLiteralDeclaration_2; }
+		public EnumLiteralDeclaration getValueEnumLiteralDeclaration_1() { return cValueEnumLiteralDeclaration_1; }
 		
 		//"value"
-		public Keyword getValueValueKeyword_2_0() { return cValueValueKeyword_2_0; }
+		public Keyword getValueValueKeyword_1_0() { return cValueValueKeyword_1_0; }
 	}
 	public class ConditionElements extends AbstractEnumRuleElementFinder {
 		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.Condition");
@@ -807,7 +750,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	private final PointElements pPoint;
 	private final TerminalRule tCUSTOM_COMMAND;
 	private final TerminalRule tSL_COMMENT;
-	private final LoopCommandElements pLoopCommand;
 	private final VarDeclarationElements pVarDeclaration;
 	
 	private final Grammar grammar;
@@ -836,7 +778,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 		this.pPoint = new PointElements();
 		this.tCUSTOM_COMMAND = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.CUSTOM_COMMAND");
 		this.tSL_COMMENT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.mde.spec.Spec.SL_COMMENT");
-		this.pLoopCommand = new LoopCommandElements();
 		this.pVarDeclaration = new VarDeclarationElements();
 	}
 	
@@ -885,7 +826,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	| PropertyCommand
 	//	| TypeCommand
 	//	| SleepCommand
-	//	| LoopCommand
 	//	| {Command} SL_COMMENT
 	//	| custom=CUSTOM_COMMAND
 	//	| VarDeclaration;
@@ -983,7 +923,7 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//enum Property:
-	//	text | class | value;
+	//	text | value;
 	public PropertyElements getPropertyAccess() {
 		return eProperty;
 	}
@@ -1044,17 +984,6 @@ public class SpecGrammarAccess extends AbstractGrammarElementFinder {
 	//	'#' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
 		return tSL_COMMENT;
-	}
-	
-	//LoopCommand:
-	//	"Perform" times=INT 'times' ':'
-	//	command+=Command* '\n\n';
-	public LoopCommandElements getLoopCommandAccess() {
-		return pLoopCommand;
-	}
-	
-	public ParserRule getLoopCommandRule() {
-		return getLoopCommandAccess().getRule();
 	}
 	
 	//VarDeclaration:

@@ -176,34 +176,25 @@ ruleCommand returns [EObject current=null]
 			afterParserOrEnumRuleCall();
 		}
 		    |
-		{
-			newCompositeNode(grammarAccess.getCommandAccess().getLoopCommandParserRuleCall_7());
-		}
-		this_LoopCommand_7=ruleLoopCommand
-		{
-			$current = $this_LoopCommand_7.current;
-			afterParserOrEnumRuleCall();
-		}
-		    |
 		(
 			(
 				{
 					$current = forceCreateModelElement(
-						grammarAccess.getCommandAccess().getCommandAction_8_0(),
+						grammarAccess.getCommandAccess().getCommandAction_7_0(),
 						$current);
 				}
 			)
-			this_SL_COMMENT_9=RULE_SL_COMMENT
+			this_SL_COMMENT_8=RULE_SL_COMMENT
 			{
-				newLeafNode(this_SL_COMMENT_9, grammarAccess.getCommandAccess().getSL_COMMENTTerminalRuleCall_8_1());
+				newLeafNode(this_SL_COMMENT_8, grammarAccess.getCommandAccess().getSL_COMMENTTerminalRuleCall_7_1());
 			}
 		)
 		    |
 		(
 			(
-				lv_custom_10_0=RULE_CUSTOM_COMMAND
+				lv_custom_9_0=RULE_CUSTOM_COMMAND
 				{
-					newLeafNode(lv_custom_10_0, grammarAccess.getCommandAccess().getCustomCUSTOM_COMMANDTerminalRuleCall_9_0());
+					newLeafNode(lv_custom_9_0, grammarAccess.getCommandAccess().getCustomCUSTOM_COMMANDTerminalRuleCall_8_0());
 				}
 				{
 					if ($current==null) {
@@ -212,18 +203,18 @@ ruleCommand returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"custom",
-						lv_custom_10_0,
+						lv_custom_9_0,
 						"org.mde.spec.Spec.CUSTOM_COMMAND");
 				}
 			)
 		)
 		    |
 		{
-			newCompositeNode(grammarAccess.getCommandAccess().getVarDeclarationParserRuleCall_10());
+			newCompositeNode(grammarAccess.getCommandAccess().getVarDeclarationParserRuleCall_9());
 		}
-		this_VarDeclaration_11=ruleVarDeclaration
+		this_VarDeclaration_10=ruleVarDeclaration
 		{
-			$current = $this_VarDeclaration_11.current;
+			$current = $this_VarDeclaration_10.current;
 			afterParserOrEnumRuleCall();
 		}
 	)
@@ -914,78 +905,6 @@ rulePoint returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleLoopCommand
-entryRuleLoopCommand returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getLoopCommandRule()); }
-	iv_ruleLoopCommand=ruleLoopCommand
-	{ $current=$iv_ruleLoopCommand.current; }
-	EOF;
-
-// Rule LoopCommand
-ruleLoopCommand returns [EObject current=null]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		otherlv_0='Perform'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getLoopCommandAccess().getPerformKeyword_0());
-		}
-		(
-			(
-				lv_times_1_0=RULE_INT
-				{
-					newLeafNode(lv_times_1_0, grammarAccess.getLoopCommandAccess().getTimesINTTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getLoopCommandRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"times",
-						lv_times_1_0,
-						"org.eclipse.xtext.common.Terminals.INT");
-				}
-			)
-		)
-		otherlv_2='times'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getLoopCommandAccess().getTimesKeyword_2());
-		}
-		otherlv_3=':'
-		{
-			newLeafNode(otherlv_3, grammarAccess.getLoopCommandAccess().getColonKeyword_3());
-		}
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getLoopCommandAccess().getCommandCommandParserRuleCall_4_0());
-				}
-				lv_command_4_0=ruleCommand
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getLoopCommandRule());
-					}
-					add(
-						$current,
-						"command",
-						lv_command_4_0,
-						"org.mde.spec.Spec.Command");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)*
-		otherlv_5='\n\n'
-		{
-			newLeafNode(otherlv_5, grammarAccess.getLoopCommandAccess().getControl000aControl000aKeyword_5());
-		}
-	)
-;
-
 // Entry rule entryRuleVarDeclaration
 entryRuleVarDeclaration returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getVarDeclarationRule()); }
@@ -1177,18 +1096,10 @@ ruleProperty returns [Enumerator current=null]
 		)
 		    |
 		(
-			enumLiteral_1='class'
+			enumLiteral_1='value'
 			{
-				$current = grammarAccess.getPropertyAccess().getClassEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_1, grammarAccess.getPropertyAccess().getClassEnumLiteralDeclaration_1());
-			}
-		)
-		    |
-		(
-			enumLiteral_2='value'
-			{
-				$current = grammarAccess.getPropertyAccess().getValueEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
-				newLeafNode(enumLiteral_2, grammarAccess.getPropertyAccess().getValueEnumLiteralDeclaration_2());
+				$current = grammarAccess.getPropertyAccess().getValueEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
+				newLeafNode(enumLiteral_1, grammarAccess.getPropertyAccess().getValueEnumLiteralDeclaration_1());
 			}
 		)
 	)
