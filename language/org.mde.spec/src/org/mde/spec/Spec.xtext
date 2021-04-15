@@ -1,0 +1,94 @@
+grammar org.mde.spec.Spec with org.eclipse.xtext.common.Terminals
+
+generate spec "http://www.mde.org/spec/Spec"
+
+Model:
+	commands+=Command*;
+	
+Command:
+	UsingCommand
+  | OpenCommand
+  | ClickCommand
+  | SelectCommand
+  | PropertyCommand
+  | TypeCommand
+  | SleepCommand
+  | {Command} SL_COMMENT
+  | custom=CUSTOM_COMMAND
+  | VarDeclaration
+;
+
+UsingCommand:
+	name="Using" browser=Browser
+;
+
+enum Browser:
+	chrome="Chrome"
+  | firefox="Firefox"
+  | explorer="Explorer"
+  | edge="Edge"
+  | opera="Opera"
+  | safari="Safari"
+;
+
+OpenCommand:
+	{OpenCommand} name="Open" (val=STRING | var=[VarDeclaration])
+;
+
+ClickCommand:
+	name="Click" ("on" selector=Selector | "at" point=Point)
+;
+
+SelectCommand:
+	name="Within" value=Selector | name="Select" ("visible")? value=Selector
+;
+
+Selector:
+  (type=ElementType)? (var=[VarDeclaration] | val=STRING)
+;
+
+enum ElementType:
+    button="button"
+  | element="element"
+  | link="link"
+  | input="input"
+  | textarea="textarea"
+;
+
+PropertyCommand:
+	name="Property" prop=Property cond=Condition (val=STRING | var=[VarDeclaration])
+;
+
+enum Property:
+    text="text"
+  | value="value"
+;
+
+enum Condition:
+	shouldBe="should be"
+  | shouldNotBe="should not be"
+;
+	
+TypeCommand:
+	name="Type" (str=STRING | var=[VarDeclaration])
+;
+
+SleepCommand:
+	name="Sleep" "for" time=INT ("second" | "seconds")
+;
+
+Point:
+	"{" x=INT "," y=INT "}"
+;
+
+terminal CUSTOM_COMMAND:
+	'!' !('\n'|'\r')* ('\r'? '\n')?
+;
+
+@Override
+terminal SL_COMMENT:
+    '#' !('\n'|'\r')* ('\r'? '\n')?
+;
+
+VarDeclaration:
+	"Store" name=ID 'as' value=STRING;

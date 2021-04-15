@@ -1,9 +1,0 @@
-/*XPECT_SETUP org.mde.spec.xpect.XPectTests END_SETUP */
-Using Chrome
-10 times do
-	Open "https://www.google.com"
-	Sleep for 5 seconds
-	Select textarea "Search"
-	Type "BBC News"
-	Select button "Google Search"
-end

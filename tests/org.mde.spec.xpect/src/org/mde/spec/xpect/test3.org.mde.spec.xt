@@ -1,0 +1,4 @@
+/*XPECT_SETUP org.mde.spec.xpect.XPectTests END_SETUP */
+Using Chrome
+Open "https://www.bbc.co.uk/news"
+Select button "UK"

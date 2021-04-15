@@ -1,8 +1,0 @@
-/*XPECT_SETUP org.mde.spec.xpect.XPectTests END_SETUP */
-10 times do
-	Open "www.google.com"
-	Select "Search"
-	Type "BBC News"
-	Select "Google Search"
-	Sleep for 5 seconds
-end
