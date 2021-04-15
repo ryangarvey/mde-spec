@@ -13,7 +13,6 @@ Command:
   | PropertyCommand
   | TypeCommand
   | SleepCommand
-//  | LoopCommand
   | {Command} SL_COMMENT
   | custom=CUSTOM_COMMAND
   | VarDeclaration
@@ -91,11 +90,6 @@ terminal CUSTOM_COMMAND:
 terminal SL_COMMENT:
     '#' !('\n'|'\r')* ('\r'? '\n')?
 ;
-
-//LoopCommand:
-//	"Perform" times=INT 'times' ':'
-//	command += Command* '\n\n'
-//;	
 
 VarDeclaration:
 	"Store" name=ID 'as' value=STRING;
